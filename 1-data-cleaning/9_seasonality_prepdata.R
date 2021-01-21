@@ -13,7 +13,7 @@ source(paste0(here::here(), "/0-config.R"))
 # Read in .csv file and save as an .rds file
 #--------------------------------------------
 
-d <- readRDS(paste0(ghapdata_dir, "ki-manuscript-dataset.rds"))
+d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 
 #--------------------------------------------
 # Subset to  just identifying, Z-score data, and time data

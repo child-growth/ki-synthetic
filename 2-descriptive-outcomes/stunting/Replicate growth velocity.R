@@ -6,7 +6,7 @@ source(paste0(here::here(), "/0-config.R"))
 
 
 
-df <- readRDS(paste0(ghapdata_dir, "ki-manuscript-dataset.rds"))
+df <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 
 #Temp subset to just maled
 df <- df %>% filter(studyid == "MAL-ED")

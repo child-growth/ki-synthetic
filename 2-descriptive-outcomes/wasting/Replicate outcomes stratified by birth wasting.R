@@ -4,7 +4,7 @@ source(paste0(here::here(), "/0-config.R"))
 
 
 
-d <- readRDS(paste0(ghapdata_dir, "ki-manuscript-dataset.rds"))
+d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 
 
 co <- d  %>% 

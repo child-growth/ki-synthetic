@@ -2,7 +2,7 @@
 source(paste0(here::here(), "/0-config.R"))
 library(epiR)
 
-dfull <- readRDS(paste0(ghapdata_dir, "ki-manuscript-dataset.rds"))
+dfull <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 d <- dfull %>% 
   group_by(studyid, country, subjid) %>%
   filter(agedays < 731) %>% 

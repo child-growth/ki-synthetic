@@ -230,7 +230,7 @@ Registered S3 method overwritten by 'pryr':
   method      from
   print.bytes Rcpp
 > 
-> d <- readRDS(paste0(ghapdata_dir,"ki-manuscript-dataset.rds"))
+> d <- readRDS(paste0(ghapdata_dir,"ki-synthetic-dataset.rds"))
 > 
 > #Drop yearly
 > d <- d %>% filter(measurefreq!="yearly")

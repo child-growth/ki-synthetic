@@ -7,7 +7,7 @@ library(epiR)
 # calculate muac-based wasting
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-dfull <- readRDS(paste0(ghapdata_dir, "ki-manuscript-dataset.rds"))
+dfull <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 d <- dfull %>% 
   group_by(studyid, country, subjid) %>%
   filter(agedays < 6*30.4167, !is.na(muaz)) %>%

@@ -8,7 +8,7 @@ source(paste0(here::here(), "/0-config.R"))
 
 
 #read csv file
-d <- readRDS(paste0(ghapdata_dir, "ki-manuscript-dataset.rds"))
+d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 gc()
 
 d <- subset(d, select= c(studyid, country, subjid, agedays, dead, agedth, causedth, haz, waz))

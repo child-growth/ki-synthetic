@@ -23,7 +23,7 @@ head(df)
 
 
 #  load full data
-dfull <- readRDS(paste0(ghapdata_dir, "ki-manuscript-dataset.rds"))
+dfull <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 
 
 

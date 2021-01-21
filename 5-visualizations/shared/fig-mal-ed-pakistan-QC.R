@@ -11,7 +11,7 @@ library(growthstandards)
 # Read in master data file and subset to Kenaba
 #--------------------------------------------
 
-d <- readRDS(paste0(ghapdata_dir, "ki-manuscript-dataset.rds"))
+d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 
 d <- d %>% 
   subset(., select=c(studyid, subjid, country, region, measurefreq, 

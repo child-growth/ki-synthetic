@@ -8,7 +8,7 @@ rm(list=ls())
 source(paste0(here::here(), "/0-config.R"))
 library(growthstandards)
 
-d <- readRDS(paste0(ghapdata_dir,"ki-manuscript-dataset.rds"))
+d <- readRDS(paste0(ghapdata_dir,"ki-synthetic-dataset.rds"))
 
 #Drop yearly
 d <- d %>% filter(measurefreq!="yearly")
