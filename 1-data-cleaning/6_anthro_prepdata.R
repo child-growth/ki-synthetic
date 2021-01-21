@@ -26,7 +26,7 @@ drop_int_arms <- function(d){
 # Read in master data file
 #--------------------------------------------
 
-d <- readRDS(paste0(ghapdata_dir, "ki-manuscript-dataset.rds"))
+d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 dim(d)
 length(unique(paste0(d$studyid,d$country,d$subjid)))
 
