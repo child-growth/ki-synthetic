@@ -37,6 +37,62 @@ d <- readRDS(paste0(ghapdata_dir, "stunting_data.rds"))
 head(d)
 d <- d %>% subset(., select = -c(tr))
 
+calc_method = "REML"
+output_file_suffix = ""
+data = d
+
+
+#----------------------------------------
+# calculation functions
+#----------------------------------------
+calc_prevalence = function(severe){
+  prev.data <- summary.prev.haz(dprev, severe.stunted = severe, method = calc_method)
+  prev.region <- dprev  %>% group_by(region) %>% do(summary.prev.haz(., severe.stunted = severe, method = calc_method)$prev.res)
+  prev.cohort <-
+    prev.data$prev.cohort %>% subset(., select = c(cohort, region, agecat, nmeas,  prev,  ci.lb,  ci.ub)) %>%
+    rename(est = prev,  lb = ci.lb,  ub = ci.ub)
+  
+  prev <- bind_rows(
+    data.frame(cohort = "pooled", region = "Overall", prev.data$prev.res),
+    data.frame(cohort = "pooled", prev.region),
+    prev.cohort
+  )
+  return(prev)
+}
+
+calc_ci = function(datatable, age_list, birth_strat, severe){
+  ci.data <- summary.ci(datatable, birthstrat = birth_strat, agelist = age_list, severe.stunted = severe, method = calc_method)
+  ci.region <- datatable %>% group_by(region) %>% do(summary.ci(., agelist = age_list,  birthstrat = birth_strat, severe.stunted = severe, method = calc_method)$ci.res)
+  ci.cohort <-
+    ci.data$ci.cohort %>% subset(., select = c(cohort, region, agecat, nchild,  yi,  ci.lb,  ci.ub)) %>%
+    rename(est = yi,  lb = ci.lb,  ub = ci.ub, nmeas=nchild)
+  
+  cuminc <- bind_rows(
+    data.frame(cohort = "pooled", region = "Overall", ci.data$ci.res),
+    data.frame(cohort = "pooled", ci.region),
+    ci.cohort
+  )
+  return(cuminc)
+}
+
+calc_ip = function(datatable, age_list, severe){
+  ip.data <- summary.stunt.incprop(datatable, agelist = age_list, severe.stunted = severe, method = calc_method)
+  ip.region <- datatable %>% group_by(region) %>% do(summary.stunt.incprop(., agelist = age_list, severe.stunted = severe, method = calc_method)$ip.res)
+  ip.cohort <-
+    ip.data$ip.cohort %>% 
+    subset(., select = c(cohort, region, agecat, nchild,  yi,  ci.lb,  ci.ub)) %>%
+    rename(est = yi,  lb = ci.lb,  ub = ci.ub, nmeas=nchild)
+  
+  
+  ip <- bind_rows(
+    data.frame(cohort = "pooled", region = "Overall", ip.data$ip.res),
+    data.frame(cohort = "pooled", ip.region),
+    ip.cohort
+  )
+  return(ip)
+}
+
+
 #----------------------------------------
 # subset to monthly cohorts
 #----------------------------------------
@@ -104,20 +160,7 @@ calc_outcomes = function(data, calc_method, output_file_suffix){
   ######################################################################
   # Prevalence
   ######################################################################
-  calc_prevalence = function(severe){
-    prev.data <- summary.prev.haz(dprev, severe.stunted = severe, method = calc_method)
-    prev.region <- dprev  %>% group_by(region) %>% do(summary.prev.haz(., severe.stunted = severe, method = calc_method)$prev.res)
-    prev.cohort <-
-      prev.data$prev.cohort %>% subset(., select = c(cohort, region, agecat, nmeas,  prev,  ci.lb,  ci.ub)) %>%
-      rename(est = prev,  lb = ci.lb,  ub = ci.ub)
-    
-    prev <- bind_rows(
-      data.frame(cohort = "pooled", region = "Overall", prev.data$prev.res),
-      data.frame(cohort = "pooled", prev.region),
-      prev.cohort
-    )
-    return(prev)
-  }
+  
   #----------------------------------------
   # Prevalence and WHZ  - not including yearly studies
   #----------------------------------------
@@ -226,22 +269,7 @@ calc_outcomes = function(data, calc_method, output_file_suffix){
   ######################################################################
   # Incidence proportion
   ######################################################################
-  calc_ip = function(datatable, age_list, severe){
-    ip.data <- summary.stunt.incprop(datatable, agelist = age_list, severe.stunted = severe, method = calc_method)
-    ip.region <- datatable %>% group_by(region) %>% do(summary.stunt.incprop(., agelist = age_list, severe.stunted = severe, method = calc_method)$ip.res)
-    ip.cohort <-
-      ip.data$ip.cohort %>% 
-      subset(., select = c(cohort, region, agecat, nchild,  yi,  ci.lb,  ci.ub)) %>%
-      rename(est = yi,  lb = ci.lb,  ub = ci.ub, nmeas=nchild)
-    
-    
-    ip <- bind_rows(
-      data.frame(cohort = "pooled", region = "Overall", ip.data$ip.res),
-      data.frame(cohort = "pooled", ip.region),
-      ip.cohort
-    )
-    return(ip)
-  }
+
   #----------------------------------------
   # Incidence proportion 3 month intervals
   #----------------------------------------
@@ -274,21 +302,7 @@ calc_outcomes = function(data, calc_method, output_file_suffix){
   # Cumulative incidence
   ######################################################################
   
-  calc_ci = function(datatable, age_list, birth_strat, severe){
-    ci.data <- summary.ci(datatable, birthstrat = birth_strat, agelist = age_list, severe.stunted = severe, method = calc_method)
-    ci.region <- datatable %>% group_by(region) %>% do(summary.ci(., agelist = age_list,  birthstrat = birth_strat, severe.stunted = severe, method = calc_method)$ci.res)
-    ci.cohort <-
-      ci.data$ci.cohort %>% subset(., select = c(cohort, region, agecat, nchild,  yi,  ci.lb,  ci.ub)) %>%
-      rename(est = yi,  lb = ci.lb,  ub = ci.ub, nmeas=nchild)
-    
-    cuminc <- bind_rows(
-      data.frame(cohort = "pooled", region = "Overall", ci.data$ci.res),
-      data.frame(cohort = "pooled", ci.region),
-      ci.cohort
-    )
-    return(cuminc)
-  }
-    
+
   #----------------------------------------
   # Cumulative Incidence  - 3 month intervals
   #----------------------------------------
@@ -345,11 +359,14 @@ calc_outcomes = function(data, calc_method, output_file_suffix){
   return(shiny_desc_data)
 }
 
+
+
+
 stunt_outcomes = calc_outcomes(data = d, calc_method = "REML", output_file_suffix = "")
 saveRDS(stunt_outcomes, file = paste0(res_dir,"shiny_desc_data_stunting_objects.RDS"))
 
-stunt_outcomes_monthly = calc_outcomes(data = monthly_d, calc_method = "REML", output_file_suffix = "_monthly24")
-saveRDS(stunt_outcomes_monthly, file =  paste0(res_dir, "shiny_desc_data_stunting_objects_monthly24.RDS"))
-
-stunt_outcomes_fe = calc_outcomes(data = d, calc_method = "FE", output_file_suffix = "_fe")
-saveRDS(stunt_outcomes_fe, file = paste0(res_dir,"shiny_desc_data_stunting_objects_fe.RDS"))
+# stunt_outcomes_monthly = calc_outcomes(data = monthly_d, calc_method = "REML", output_file_suffix = "_monthly24")
+# saveRDS(stunt_outcomes_monthly, file =  paste0(res_dir, "shiny_desc_data_stunting_objects_monthly24.RDS"))
+# 
+# stunt_outcomes_fe = calc_outcomes(data = d, calc_method = "FE", output_file_suffix = "_fe")
+# saveRDS(stunt_outcomes_fe, file = paste0(res_dir,"shiny_desc_data_stunting_objects_fe.RDS"))

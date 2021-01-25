@@ -2,6 +2,15 @@
 rm(list=ls())
 source(paste0(here::here(), "/0-config.R"))
 
+
+stunt<- wast<- co_desc_data<- NULL
+stunt_fe<- wast_fe<- co_fe<- NULL
+stunt_monthly24<- NULL
+stunt_noProbit<- stunt_noProbit_fe<- NULL
+wast_noKenabaBirth<- co_noKenabaBirth<- NULL
+stunt_noKenaba<- stunt_noKenaba_fe<- stunt_noKenaba_monthly24 <- NULL
+
+
 #Primary outcomes
 wast <- readRDS(paste0(res_dir,"wasting_desc_data.RDS")) %>% mutate(analysis = "Primary")
 stunt = readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects.RDS")) %>% mutate(analysis = "Primary")
