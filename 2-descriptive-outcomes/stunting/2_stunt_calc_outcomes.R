@@ -348,7 +348,7 @@ calc_outcomes = function(data, calc_method, output_file_suffix){
     data.frame(disease = "Stunting", age_range="6 months",   birth="yes", severe="yes", measure= "Incidence_proportion",  sev.ip6)
   )
   
-  assert_that(names(table(shiny_desc_data$method.used)) == calc_method)
+  #assert_that(names(table(shiny_desc_data$method.used)) == calc_method)
   
   shiny_desc_data <- shiny_desc_data %>% subset(., select = -c(se, nmeas.f,  ptest.f))
   
