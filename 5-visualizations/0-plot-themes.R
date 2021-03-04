@@ -23,9 +23,91 @@ tableau11 <- c("Black","#1F77B4","#FF7F0E","#2CA02C","#D62728",
 theme_set(theme_ki)
 
 
+
 #-------------------------------------------------------------------------------------------
 # Plot functions
 #-------------------------------------------------------------------------------------------
+ki_cohort_plot <- function(d, Disease, Measure, Birth, Severe, Age_range, 
+                         Cohort="pooled",
+                         xlabel="Age category",
+                         ylabel="",
+                         Region=NULL,
+                         h1=0,
+                         h2=3,
+                         strip.text.size=18,
+                         yrange=NULL,
+                         returnData=F) {
+  
+  df <- d %>% filter(
+    disease == Disease &
+      measure == Measure &
+      birth == Birth &
+      severe == Severe &
+      age_range == Age_range &
+      !is.na(agecat),
+    cohort %in% c("JiVitA-4-BANGLADESH", "LCNI-5-MALAWI", "SAS-CompFeed-INDIA","SAS-FoodSuppl-INDIA")
+  )
+  df <- droplevels(df)
+  
+  # remove N= from labels
+  df <- df %>% mutate(nmeas.f = gsub('N=', '', nmeas.f)) %>%
+    mutate(nstudy.f = gsub('N=', '', nstudy.f))
+  
+  # remove text from labels
+  df <- df %>% mutate(nmeas.f = gsub(' children', '', nmeas.f)) %>%
+    mutate(nstudy.f = gsub(' studies', '', nstudy.f))
+  
+  # # Remove 'months' from x axis labels
+  # df <- df %>% arrange(agecat)
+  # df$agecat <- as.character(df$agecat)
+  # df$agecat <- gsub(" months", "", df$agecat)
+  # df$agecat <- factor(df$agecat, levels=unique(df$agecat))
+  
+  if (min(df$lb) < 0) {
+    print("Warning: some lower bounds < 0")
+  }
+  
+  p <- ggplot(df,aes(y=est,x=agecat, group=dataset)) +
+    geom_errorbar(aes(color=dataset, ymin=lb, ymax=ub), position = position_dodge(0.4), width = 0) +
+    geom_point(aes(fill=dataset, shape=dataset, color=dataset), position = position_dodge(0.4), size = 2) +
+    scale_color_manual(values=tableau11, drop=TRUE, limits = levels(df$measure)) +
+    xlab(xlabel)+
+    ylab(ylabel) +
+    
+    # add space to the left and right of points on x axis
+    # to accommodate point estimate labels
+    scale_x_discrete(expand = expand_scale(add = 1)) +
+    
+    scale_y_continuous(breaks = scales::pretty_breaks(n = 10))  +
+    
+    theme(
+      axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=0.5,
+                                 margin =
+                                   margin(t = 0, r = 0, b = 0, l = 0),
+                                 size = 10)) +
+    theme(legend.position = "bottom",
+          axis.title.y = element_text(size = 14)) +
+    
+    ggtitle("")+ facet_wrap(~cohort) +
+      theme(strip.text = element_text(size=strip.text.size, margin = margin(t = 0)))
+
+  
+  if(!is.null(yrange)){
+    p <- p + coord_cartesian(ylim=yrange)
+  }
+  
+  
+  
+  if(returnData){
+    return(list(plot=p,data=df))
+  }else{
+    return(list(plot=p))
+  }
+}
+
+
+
+
 ki_desc_plot <- function(d, Disease, Measure, Birth, Severe, Age_range, 
                          Cohort="pooled",
                          xlabel="Age category",
@@ -52,47 +134,48 @@ ki_desc_plot <- function(d, Disease, Measure, Birth, Severe, Age_range,
   } else {
     df <- df %>% filter(cohort == Cohort)
   }
-
+  
   # remove N= from labels
   df <- df %>% mutate(nmeas.f = gsub('N=', '', nmeas.f)) %>%
     mutate(nstudy.f = gsub('N=', '', nstudy.f))
-
+  
   # remove text from labels
   df <- df %>% mutate(nmeas.f = gsub(' children', '', nmeas.f)) %>%
     mutate(nstudy.f = gsub(' studies', '', nstudy.f))
-
+  
   # Remove 'months' from x axis labels
   df <- df %>% arrange(agecat)
   df$agecat <- as.character(df$agecat)
   df$agecat <- gsub(" months", "", df$agecat)
   df$agecat <- factor(df$agecat, levels=unique(df$agecat))
-
+  
   if (min(df$lb) < 0) {
     print("Warning: some lower bounds < 0")
   }
   
-  p <- ggplot(df,aes(y=est,x=agecat)) +
-    geom_errorbar(aes(color=region, ymin=lb, ymax=ub), width = 0) +
-    geom_point(aes(fill=region, color=region), size = 2) +
-    geom_text(aes(x = agecat, y = est, label = round(est)), hjust = 1.5) +
+  p <- ggplot(df,aes(y=est,x=agecat, group=dataset)) +
+    geom_errorbar(aes(color=dataset, ymin=lb, ymax=ub), position = position_dodge(0.4), width = 0) +
+    geom_point(aes(fill=dataset, shape=dataset, color=dataset), position = position_dodge(0.4), size = 2) +
     scale_color_manual(values=tableau11, drop=TRUE, limits = levels(df$measure)) +
     xlab(xlabel)+
     ylab(ylabel) +
-
+    
     # add space to the left and right of points on x axis
     # to accommodate point estimate labels
     scale_x_discrete(expand = expand_scale(add = 1)) +
-
+    
     scale_y_continuous(breaks = scales::pretty_breaks(n = 10))  +
-
+    
     theme(
-      axis.text.x = element_text(margin =
-                                       margin(t = 0, r = 0, b = 0, l = 0),
-                                     size = 14)) +
-    theme(axis.title.y = element_text(size = 14)) +
-
+      axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=0.5,
+                                  margin =
+                                   margin(t = 0, r = 0, b = 0, l = 0),
+                                 size = 10)) +
+    theme(legend.position = "bottom",
+          axis.title.y = element_text(size = 14)) +
+    
     ggtitle("")
-
+  
   if(!is.null(Region)) {
     p <- p + facet_wrap(~cohort) +
       theme(strip.text = element_text(size=strip.text.size, margin = margin(t = 0)))
@@ -100,103 +183,17 @@ ki_desc_plot <- function(d, Disease, Measure, Birth, Severe, Age_range,
     p <- p + facet_grid(~region) +
       theme(strip.text = element_text(size=14, margin = margin(t = 0))) 
   }
-
+  
   if(!is.null(yrange)){
     p <- p + coord_cartesian(ylim=yrange)
   }
-
-
-
+  
+  
+  
   if(returnData){
     return(list(plot=p,data=df))
   }else{
     return(list(plot=p))
-  }
-}
-
-# fixed effects descriptive epi plot, 
-# which has different aesthetics
-ki_desc_plot_fe <- function(d, Disease, Measure, Birth, Severe, Age_range, 
-                         Cohort="pooled",
-                         xlabel="Age category",
-                         ylabel="",
-                         Region=NULL,
-                         h1=0,
-                         h2=3,
-                         yrange=NULL,
-                         returnData=F) {
-  
-  df <- d %>% filter(
-    disease == Disease &
-      measure == Measure &
-      birth == Birth &
-      severe == Severe &
-      age_range == Age_range &
-      !is.na(region) & !is.na(agecat)
-  )
-  df <- droplevels(df)
-  
-  if (!is.null(Region)) {
-    df <- df %>% filter(region == Region, cohort != "pooled")
-  } else {
-    df <- df %>% filter(cohort == Cohort)
-  }
-  
-  # remove N= from labels
-  df <- df %>% mutate(nmeas.f = gsub('N=', '', nmeas.f)) %>%
-    mutate(nstudy.f = gsub('N=', '', nstudy.f))
-  
-  # remove text from labels
-  df <- df %>% mutate(nmeas.f = gsub(' children', '', nmeas.f)) %>%
-    mutate(nstudy.f = gsub(' studies', '', nstudy.f))
-  
-  # Remove 'months' from x axis labels
-  df <- df %>% arrange(agecat)
-  df$agecat <- as.character(df$agecat)
-  df$agecat <- gsub(" months", "", df$agecat)
-  df$agecat <- factor(df$agecat, levels=unique(df$agecat))
-  
-  if (min(df$lb) < 0) {
-    print("Warning: some lower bounds < 0")
-  }
-  
-  p <- ggplot(df,aes(y=est,x=agecat)) +
-    geom_errorbar(aes(color=region, ymin=lb, ymax=ub), width = 0) +
-    geom_point(aes(fill=region, color=region), size = 2) +
-    geom_text(aes(x = agecat, y = est, label = round(est)), hjust = 1.5) +
-    scale_color_manual(values=tableau11, drop=TRUE, limits = levels(df$measure)) +
-    xlab(xlabel)+
-    ylab(ylabel) +
-    # add space to the left and right of points on x axis
-    # to accommodate point estimate labels
-    scale_x_discrete(expand = expand_scale(add = 1)) +
-    
-    scale_y_continuous(breaks = scales::pretty_breaks(n = 10))  +
-    
-    theme(axis.text.x = element_text(margin =
-                                       margin(t = 0, r = 0, b = 0, l = 0),
-                                     size = 10)) +
-    theme(axis.title.y = element_text(size = 12)) +
-    ggtitle("")
-  
-  if (!is.null(Region)) {
-    p <- p + facet_wrap(~cohort) +
-      theme(strip.text = element_text(size=18, margin = margin(t = 0)))
-  } else {
-    p <- p + facet_grid(~region) +
-      theme(strip.text = element_text(size=16, margin = margin(t = 0))) 
-  }
-  
-  if(!is.null(yrange)){
-    p <- p + coord_cartesian(ylim=yrange)
-  }
-  
-  
-  
-  if(returnData){
-    return(list(plot=p,data=df))
-  }else{
-    return(p)
   }
 }
 

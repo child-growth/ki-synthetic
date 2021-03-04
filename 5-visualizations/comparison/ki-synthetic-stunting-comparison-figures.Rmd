@@ -1,0 +1,66 @@
+---
+title: "Synthetic comparison figures"
+author: "Andrew Mertens"
+date: "1/25/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r, include="F"}
+
+load("C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/stunting/fig-comparisons.Rdata")
+
+
+```
+
+
+## Mean LAZ score
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+Z_plot$plot
+
+```
+
+## Stunting prevalence
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+prev_plot$plot
+
+
+```
+
+## Severe stunting prevalence
+
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+prev_plot_sev$plot
+
+
+```
+
+## Stunting cumulative incidence
+
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+
+ci_plot$plot
+
+```
+
+## Stunting incidence proportion
+
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+
+ip_plot$plot
+
+```
