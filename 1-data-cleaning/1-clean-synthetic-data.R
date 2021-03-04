@@ -8,21 +8,51 @@ source(paste0(here::here(), "/0-config.R"))
 # Read in synthetic data file
 #--------------------------------------------
 
-d <- readRDS(paste0(ghapdata_dir, "Synthetic-cohorts-initial.rds"))
+d <- readRDS(paste0(ghapdata_dir, "Synthetic-cohorts-full-v1.rds"))
 
 head(d)
 
+d$studyid <- gsub(" Trial","",d$studyid)
+d$studyid <- gsub(" Study","",d$studyid)
 unique(d$studyid)
 
+                                                                    
+        
 d <- d %>% mutate(
   studyid = case_when(
+    studyid=="MRC Keneba" ~ "Keneba",
+    studyid=="PROBIT Study" ~ "PROBIT",
+    studyid=="INCAP Nutrition Supplementation Longitudinal" ~ "COHORTS",
+    studyid=="Vellore Crypto Study" ~ "IRC",
+    studyid=="Tanzania Child 2" ~ "TanzaniaChild2",
+    studyid=="Vitamin A Trial" ~ "Vitamin A",
+    studyid=="Food Suppl RCT " ~ "SAS-FoodSuppl",
+    studyid=="Optimal Infant Feeding" ~ "SAS-CompFeed",
+    studyid=="New Delhi Birth Cohort" ~ "COHORTS",
+    studyid=="NIH Cryptosporidium" ~ "NIH-Crypto",
+    studyid=="Vitamin A" ~ "Vitamin A",
+    studyid=="Burkina Faso Zinc trial" ~ "Burkina Faso Zn",
+    studyid=="The Cebu Longitudinal Health and Nutrition Survey" ~ "COHORTS",
+    studyid=="Lungwena Child Nutrition RCT" ~ "LCNI-5",
+    studyid=="PROVIDE RCT" ~ "PROVIDE",
+    studyid=="CMC Birth Cohort, Vellore" ~ "CMC-V-BCS-2002",
+    studyid=="Growth Monitoring" ~ "GMS-Nepal",
+    studyid=="Biomarkers for EE" ~ "EE",
+    studyid=="CONTENT" ~ "CONTENT",
+    studyid=="NIH Birth Cohort" ~ "NIH-Birth",
+    studyid=="Resp. Pathogens" ~ "ResPak",
+    studyid=="Bovine Serum RCT" ~ "Guatemala BSC",
+    studyid=="JiVitA-3 Trial" ~ "JiVitA-3",
     studyid=="JiVitA-4 Trial" ~ "JiVitA-4",
     studyid=="Food Suppl RCT" ~ "SAS-FoodSuppl",
     studyid=="Optimal Infant Feeding" ~ "SAS-CompFeed",
-    studyid=="Lungwena Child Nutrition RCT" ~ "LCNI-5"
+    studyid=="Lungwena Child Nutrition RCT" ~ "LCNI-5",
+    studyid==studyid ~ studyid
   )
-                                 
 )
+
+unique(d$studyid)
+
 
 
 #code tr treatment variable
@@ -72,11 +102,6 @@ d$tr[d$studyid=="Guatemala BSC" & (d$arm=="WPC"|d$arm=="MNT + WPC")] <- "Control
 d$tr[d$studyid=="iLiNS-Zinc" ] <- "LNS"
 d$tr[d$studyid=="iLiNS-Zinc" & d$arm=="e.Control"] <- "Control"
 
-#Create secondary dataset for Zinc+LNS vs LNS contrast
-iLiNS_Zinc_df <- d[d$studyid=="iLiNS-Zinc" & d$arm!="e.Control", ]
-iLiNS_Zinc_df$tr <- "Zinc"
-iLiNS_Zinc_df$tr[iLiNS_Zinc_df$arm=="a.LNS-Zn0"] <- "Control"
-iLiNS_Zinc_df$studyid <- "iLiNS-Zinc_ZvLNS"
 
 d$tr[d$studyid=="PROBIT" ] <- "Maternal"
 d$tr[d$studyid=="PROBIT" & d$arm=="Control group"] <- "Control"
@@ -111,6 +136,9 @@ d$tr[d$studyid=="JiVitA-4"] <- "Other"
 d$tr[d$studyid=="JiVitA-4" & d$arm=="CFC"] <- "Control"
 d$tr[d$studyid=="JiVitA-4" & d$arm=="Plumpy Doz"] <- "LNS"
 
+d$tr[is.na(d$tr)] <- ""
+
+table(d$studyid, d$tr)
 
 saveRDS(d, paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 

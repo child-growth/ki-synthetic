@@ -258,10 +258,10 @@ vel_wtkg <- vel %>% filter(ycat=="wtkg") %>% subset(., select=c(studyid, country
 #--------------------------------------
 
 
-save(prev, file="/home/andrew.mertens/data/KI/UCB-SuperLearner/Manuscript analysis data/st_prev_outcomes.RData")
-save(meanHAZ, file="/home/andrew.mertens/data/KI/UCB-SuperLearner/Manuscript analysis data/st_meanZ_outcomes.RData")
-save(cuminc, file="/home/andrew.mertens/data/KI/UCB-SuperLearner/Manuscript analysis data/st_cuminc_outcomes.rdata")
-save(cuminc_nobirth, file="/home/andrew.mertens/data/KI/UCB-SuperLearner/Manuscript analysis data/st_cuminc_outcomes_nobirth.rdata")
-save(rev, file="/home/andrew.mertens/data/KI/UCB-SuperLearner/Manuscript analysis data/st_rec_outcomes.RData")
-save(vel_haz, vel_lencm, file="/home/andrew.mertens/data/KI/UCB-SuperLearner/Manuscript analysis data/st_vel_outcomes.RData")
-save(vel_waz, vel_wtkg, file="/home/andrew.mertens/data/KI/UCB-SuperLearner/Manuscript analysis data/waz_vel_outcomes.RData")
+save(prev, file="/data/KI/synthetic-data/st_prev_outcomes.RData")
+save(meanHAZ, file="/data/KI/synthetic-data/st_meanZ_outcomes.RData")
+save(cuminc, file="/data/KI/synthetic-data/st_cuminc_outcomes.rdata")
+save(cuminc_nobirth, file="/data/KI/synthetic-data/st_cuminc_outcomes_nobirth.rdata")
+save(rev, file="/data/KI/synthetic-data/st_rec_outcomes.RData")
+save(vel_haz, vel_lencm, file="/data/KI/synthetic-data/st_vel_outcomes.RData")
+save(vel_waz, vel_wtkg, file="/data/KI/synthetic-data/waz_vel_outcomes.RData")

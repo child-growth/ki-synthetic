@@ -409,9 +409,9 @@ rec.data90 <- summary.rec60( d, length = 90)
 rec30.region <- d %>% group_by(region) %>% do(summary.rec60( ., length = 30)$ci.res)
 rec60.region <- d %>% group_by(region) %>% do(summary.rec60( ., length = 60)$ci.res)
 rec90.region <- d %>% group_by(region) %>% do(summary.rec60( ., length = 90)$ci.res)
-rec30.country <- d %>% group_by(region, country) %>% do(summary.rec60( ., length = 30)$ci.res) 
-rec60.country <- d %>% group_by(region, country) %>% do(summary.rec60( ., length = 60)$ci.res) 
-rec90.country <- d %>% group_by(region, country) %>% do(summary.rec60( ., length = 90)$ci.res) 
+# rec30.country <- d %>% group_by(region, country) %>% do(summary.rec60( ., length = 30)$ci.res) 
+# rec60.country <- d %>% group_by(region, country) %>% do(summary.rec60( ., length = 60)$ci.res) 
+# rec90.country <- d %>% group_by(region, country) %>% do(summary.rec60( ., length = 90)$ci.res) 
 
 rec30.cohort <-
   rec.data30$ci.cohort %>% subset(., select = c(cohort, region, agecat,  yi,  ci.lb,  ci.ub)) %>%
@@ -425,19 +425,19 @@ rec90.cohort <-
 
 rec30<- bind_rows(
   data.frame(cohort = "pooled", region = "Overall", rec.data30$ci.res),
-  data.frame(cohort = "pooled", rec30.country),
+  #data.frame(cohort = "pooled", rec30.country),
   data.frame(cohort = "pooled", rec30.region),
   rec30.cohort
 )
 rec60<- bind_rows(
   data.frame(cohort = "pooled", region = "Overall", rec.data60$ci.res),
-  data.frame(cohort = "pooled", rec60.country),
+  #data.frame(cohort = "pooled", rec60.country),
   data.frame(cohort = "pooled", rec60.region),
   rec60.cohort
 )
 rec90<- bind_rows(
   data.frame(cohort = "pooled", region = "Overall", rec.data90$ci.res),
-  data.frame(cohort = "pooled", rec90.country),
+  #data.frame(cohort = "pooled", rec90.country),
   data.frame(cohort = "pooled", rec90.region),
   rec90.cohort
 )
@@ -445,14 +445,14 @@ rec90<- bind_rows(
 #Persistant wasting
 perswast.data <- summary.perswast(d)
 perswast.region <- d %>% group_by(region) %>% do(summary.perswast(.)$pers.res)
-perswast.country <- d %>% group_by(region, country) %>% do(summary.perswast(.)$pers.res) 
+#perswast.country <- d %>% group_by(region, country) %>% do(summary.perswast(.)$pers.res) 
 perswast.cohort <-
   perswast.data$pers.cohort %>% subset(., select = c(cohort, region, agecat,  yi,  ci.lb,  ci.ub)) %>%
   rename(est = yi,  lb = ci.lb,  ub = ci.ub)
 
 perswast <- bind_rows(
   data.frame(cohort = "pooled", region = "Overall", perswast.data$pers.res),
-  data.frame(cohort = "pooled", perswast.country),
+  #data.frame(cohort = "pooled", perswast.country),
   data.frame(cohort = "pooled", perswast.region),
   perswast.cohort
 )
