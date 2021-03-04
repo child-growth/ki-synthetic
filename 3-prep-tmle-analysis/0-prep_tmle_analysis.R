@@ -12,9 +12,7 @@ source(here("3-prep-tmle-analysis/08_merge_mortality_outcomes_and_covariates.R")
 source(here("3-prep-tmle-analysis/09_specify_analyses.R"))
 source(here("3-prep-tmle-analysis/09_merge_seasonality_outcomes_and_covariates.R"))
 source(here("3-prep-tmle-analysis/10_specify_mortality_analyses.R"))
-source(here("3-prep-tmle-analysis/11_specify_mediation_analyses.R"))
-source(here("3-prep-tmle-analysis/12_specify_one-step_analyses.R"))
-source(here("3-prep-tmle-analysis/13_table1.R"))
+
 source(here("3-prep-tmle-analysis/14_calc_mort_pooled_logistic_regressions.R"))
 source(here("3-prep-tmle-analysis/15_R2_estimation.R"))
 

@@ -55,7 +55,7 @@ metadata_dir                      = "U:/results/Metadata/"
 
 
 
-#ghapdata_dir                      = "/home/andrew.mertens/data/KI/UCB-SuperLearner/Manuscript analysis data/"
+true_data_dir                      = "/home/andrew.mertens/data/KI/UCB-SuperLearner/Manuscript analysis data/"
 ghapdata_dir                      = "/data/KI/synthetic-data/"
 
 

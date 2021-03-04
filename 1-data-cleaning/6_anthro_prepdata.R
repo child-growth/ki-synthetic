@@ -10,14 +10,23 @@ source(paste0(here::here(), "/0-config.R"))
 
 #Function to drop correct trial arms
 drop_int_arms <- function(d){
-  if(length(which(d$studyid=="JiVitA-4" & d$tr!="Control")) > 0){
-    d=d[-which(d$studyid=="JiVitA-4" & d$tr!="Control"),]
-    #d=d[-which(d$studyid=="JiVitA-3" & d$tr!="Control"),]
-  }
-  #d=d[-which(d$studyid=="PROBIT" & d$tr!="Control"),]
-  #d=d[-which(d$studyid=="iLiNS-Zinc" & d$tr!="Control"),]
-  d=d[-which(d$studyid=="SAS-CompFeed" & d$tr!="Control"),]
-  #d=d[-which(d$studyid=="COHORTS" & d$tr=="Other"),]
+  d <- d %>%
+    filter(!(studyid=="JiVitA-4" & tr!="Control") &
+           !(studyid=="JiVitA-3" & tr!="Control") &
+           !(studyid=="PROBIT" & tr!="Control") &
+            !(studyid=="iLiNS-Zinc" & tr!="Control") &
+            !(studyid=="SAS-CompFeed" & tr!="Control") &
+            !(studyid=="COHORTS" & tr=="Other"))
+  
+  
+  # if(length(which(d$studyid=="JiVitA-4" & d$tr!="Control")) > 0){
+  #   d=d[-which(d$studyid=="JiVitA-4" & d$tr!="Control"),]
+  #   d=d[-which(d$studyid=="JiVitA-3" & d$tr!="Control"),]
+  # }
+  # d=d[-which(d$studyid=="PROBIT" & d$tr!="Control"),]
+  # d=d[-which(d$studyid=="iLiNS-Zinc" & d$tr!="Control"),]
+  # d=d[-which(d$studyid=="SAS-CompFeed" & d$tr!="Control"),]
+  # d=d[-which(d$studyid=="COHORTS" & d$tr=="Other"),]
   return(d)
 }
 
