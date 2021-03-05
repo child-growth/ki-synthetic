@@ -12,6 +12,7 @@ load(paste0(ghapdata_dir, "Wasting_inc_data.RData"))
 d <- d %>% filter(measurefreq == "monthly")
 d_noBW <- d_noBW %>% filter(measurefreq == "monthly")
 
+d %>% group_by(region) %>% summarize(mean(whz < -2)*100)
 
 #Overall absolute counts
 df <- d %>% filter(agedays < 24 *30.4167) %>%
@@ -21,6 +22,8 @@ table(df$wast)
 prop.table(table(df$wast))
 table(df$sevwast)
 prop.table(table(df$sevwast))
+
+prop.table(table(df$region, df$wast),1)*100
 
 
 #Number wasted by 3 months
