@@ -45,7 +45,7 @@ ki_cohort_plot <- function(d, Disease, Measure, Birth, Severe, Age_range,
       severe == Severe &
       age_range == Age_range &
       !is.na(agecat),
-    cohort %in% c("JiVitA-4-BANGLADESH", "LCNI-5-MALAWI", "SAS-CompFeed-INDIA","SAS-FoodSuppl-INDIA")
+    cohort !="pooled"
   )
   df <- droplevels(df)
   
@@ -125,7 +125,7 @@ ki_desc_plot <- function(d, Disease, Measure, Birth, Severe, Age_range,
       birth == Birth &
       severe == Severe &
       age_range == Age_range &
-      !is.na(region) & !is.na(agecat)
+      !is.na(region) & !is.na(agecat) & !is.na(est)
   )
   df <- droplevels(df)
   
@@ -219,7 +219,7 @@ ki_combo_plot <- function(d, Disease, Measure, Birth, Severe, Age_range,
                           h1=0,
                           h2=3,
                           yrange=NULL,
-                          dodge=0,
+                          dodge=0.4,
                           returnData=F){
   
   df <- d %>% filter(
@@ -285,11 +285,12 @@ ki_combo_plot <- function(d, Disease, Measure, Birth, Severe, Age_range,
     print("Warning: some lower bounds < 0")
   }
   
+
   p <- ggplot(df,aes(y=est,x=agecat)) +
-    geom_errorbar(aes(color=region, 
-                      group=interaction(measure, region), ymin=lb, ymax=ub), 
+    geom_errorbar(aes(color=dataset, 
+                      group=interaction(measure, dataset), ymin=lb, ymax=ub), 
                   width = 0, position = position_dodge(dodge)) +
-    geom_point(aes(shape=measure, size=measure, fill=region, color=region
+    geom_point(aes(shape=measure, size=measure, fill=dataset, color=dataset
     ),  position = position_dodge(dodge)) +
     
     geom_text(data=df[df$measure =='Incidence proportion',], 
@@ -377,7 +378,7 @@ ip_plot <- function(d,
                     h1 = 0,
                     h2 = 3,
                     yrange = NULL,
-                    dodge = 0,
+                    dodge = 0.4,
                     returnData = F,
                     Region = NULL,
                     strip.text.size=12,
@@ -421,10 +422,10 @@ ip_plot <- function(d,
   
   
   p <- ggplot(df,aes(y=est,x=agecat)) +
-    geom_errorbar(aes(color=region, 
-                      group=interaction(measure, region), ymin=lb, ymax=ub), 
+    geom_errorbar(aes(color=dataset, 
+                      group=interaction(measure, dataset), ymin=lb, ymax=ub), 
                   width = 0, position = position_dodge(dodge)) +
-    geom_point(aes(shape=measure, fill=region, color=region
+    geom_point(aes(shape=measure, fill=dataset, color=dataset
     ), size = 2, position = position_dodge(dodge)) +
     geom_text(aes(x = agecat, y = est, label = round(est)), 
               hjust = 1.5, 
