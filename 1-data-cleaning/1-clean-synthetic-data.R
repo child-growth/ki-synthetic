@@ -10,6 +10,8 @@ source(paste0(here::here(), "/0-config.R"))
 
 d <- readRDS(paste0(ghapdata_dir, "Synthetic-cohorts-full-v1.rds"))
 
+summary(d$haz)
+
 head(d)
 
 d$studyid <- gsub(" Trial","",d$studyid)
@@ -52,6 +54,7 @@ d <- d %>% mutate(
 )
 
 unique(d$studyid)
+table(d$studyid)
 
 
 

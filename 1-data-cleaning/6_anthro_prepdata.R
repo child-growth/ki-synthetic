@@ -39,6 +39,7 @@ d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 dim(d)
 length(unique(paste0(d$studyid,d$country,d$subjid)))
 
+d %>% group_by(region) %>% summarize(mean(whz < -2)*100)
 
 #--------------------------------------------
 # Subset to  just identifying and anthro data
