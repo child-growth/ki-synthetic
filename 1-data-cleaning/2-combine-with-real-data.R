@@ -72,7 +72,13 @@ df <- df %>% mutate(cohort=paste0(studyid,"-",country)) %>% filter(studyid=="MAL
 p <- ggplot(df, aes(x=agedays, y=whz, group=dataset, color=dataset)) + 
   geom_smooth() +
   facet_wrap(~cohort, scales="free") + theme(legend.position = "right")
-p
 
-saveRDS(p, file=paste0(fig_dir, "plot-objects/fig-Z-comp.RDS"))
+
+saveRDS(p, file=paste0(fig_dir, "plot-objects/fig-WLZ-comp.RDS"))
+
+p <- ggplot(df, aes(x=agedays, y=haz, group=dataset, color=dataset)) + 
+  geom_smooth() +
+  facet_wrap(~cohort, scales="free") + theme(legend.position = "right")
+
+saveRDS(p, file=paste0(fig_dir, "plot-objects/fig-LAZ-comp.RDS"))
 
