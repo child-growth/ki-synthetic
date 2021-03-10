@@ -1,7 +1,7 @@
 ---
 title: "Synthetic comparison figures"
 author: "Andrew Mertens"
-date: "1/25/2021"
+date: "3/08/2021"
 output: html_document
 ---
 
@@ -11,26 +11,72 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 ```{r, include="F"}
+fig_dir="C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/"
+
+load("C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/wasting/fig-comparisons.Rdata")
+WLZ_plot <- Z_plot
+wast_plot <-prev_plot
+wast_ci_plot <-ci_plot
+wast_ci_africa_plot <-ci_plot_Africa
+#sevwast_plot
 
 load("C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/stunting/fig-comparisons.Rdata")
+LAZ_plot <- Z_plot
+stunt_plot <- prev_plot_pooled
+sevstunt_plot <- prev_plot_sev
+stunt_ci_plot <- ci_plot
+stunt_prev_cohort <- prev_plot
+
+
+
+pwhz <- readRDS(file=paste0(fig_dir, "plot-objects/fig-WLZ-comp.RDS"))
+phaz <- readRDS(file=paste0(fig_dir, "plot-objects/fig-LAZ-comp.RDS"))
 
 
 ```
 
 
-## Mean LAZ score
+## Mean Z-scores
+
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
-Z_plot$plot
+LAZ_plot
+WLZ_plot
+
 
 ```
 
-## Stunting prevalence
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
-prev_plot$plot
+phaz
+pwhz
+
+```
+
+__Note:__ `Recalculated` are Z-scores calculated using the growthstandard() R package from the synthetic height, weight, and age variables, versus the `Synthetic` Z-scores, which are the directly-synthesized Z-scores. 
+
+
+## Stunting  prevalence
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+#Stunting
+stunt_plot$plot
+
+
+
+
+```
+
+## Wasting prevalence
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+
+#Wasting
+wast_plot$plot
 
 
 ```
@@ -39,28 +85,44 @@ prev_plot$plot
 
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+#Stunting
+sevstunt_plot$plot
 
-prev_plot_sev$plot
 
 
 ```
 
-## Stunting cumulative incidence
+## Severe  wasting prevalence
+
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+#Wasting
+sevwast_plot$plot
+
+```
+
+## Stunting  cumulative incidence
+
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+#Stunting
+stunt_ci_plot$plot
+
+
+```
+
+
+## Wasting cumulative incidence
 
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
 
-ci_plot$plot
 
+#Wasting
+wast_ci_plot$plot
+wast_ci_africa_plot$plot
 ```
 
-## Stunting incidence proportion
-
-
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
-
-
-ip_plot$plot
-
-```
