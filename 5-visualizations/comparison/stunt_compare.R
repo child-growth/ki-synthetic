@@ -60,6 +60,53 @@ returnData=T
 
 
 #-------------------------------------------------------------------------------------------
+# Mean WLZ by month 
+#-------------------------------------------------------------------------------------------
+
+df <- d %>% filter(
+  disease == "Stunting" &
+    measure == "Mean LAZ" & 
+    birth == "yes" &
+    severe == "no" &
+    age_range == "1 month" &
+    cohort == "pooled" 
+)
+df <- droplevels(df)
+
+df <- df %>% 
+  arrange(agecat) %>%
+  filter(!is.na(agecat)) %>%
+  filter(!is.na(region)) %>%
+  mutate(agecat = as.character(agecat)) %>%
+  mutate(agecat = ifelse(agecat == "Two weeks", ".5", agecat)) %>%
+  mutate(agecat = gsub(" month", "", agecat)) %>%
+  mutate(agecat = gsub(" months", "", agecat)) %>%
+  mutate(agecat = gsub("s", "", agecat)) %>%
+  mutate(agecat = ifelse(agecat == "One", "1", agecat)) %>%
+  mutate(agecat = as.numeric(agecat)) 
+
+
+Z_plot <- ggplot(df,aes(y=est,x=agecat, group=region)) +
+  stat_smooth(aes(fill=region, color=region), se=F, span = 1) +
+  geom_hline(yintercept = 0, colour = "black") +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 10),
+                     limits = c(-3, 0)) +
+  scale_x_continuous(limits = c(0,24), breaks = seq(0,24,2), labels = seq(0,24,2)) +
+  scale_fill_manual(values=tableau11, drop=TRUE, limits = levels(df$measure),
+                    name = 'Region') +
+  scale_color_manual(values=tableau11, drop=TRUE, limits = levels(df$measure),
+                     name = 'Region') +
+  facet_wrap(~dataset) +
+  xlab("Child age, months")+
+  ylab("Length-for-age Z-score") +
+  ggtitle("") +
+  theme(legend.position="right")
+Z_plot
+
+ggsave(Z_plot, file=here::here("/figures/stunting/LAZ_by_region.png"), width=10, height=4)
+
+
+#-------------------------------------------------------------------------------------------
 # Stunting prevalence - 3 months
 #-------------------------------------------------------------------------------------------
 prev_plot <- ki_cohort_plot(d,
@@ -149,23 +196,7 @@ ggsave(ci_plot$plot, file=paste0(fig_dir, "stunting/fig-ci.png"), width=14, heig
 #-------------------------------------------------------------------------------------------
 
 
-#Z-scores
 
-Z_plot <- ki_desc_plot(d,
-                         Disease="Stunting",
-                         Measure="Mean LAZ", 
-                         Birth="yes", 
-                         Severe="no", 
-                         Age_range="3 months", 
-                         Cohort="pooled",
-                         xlabel="Child age, months",
-                         ylabel='Mean LAZ (95% CI)',
-                         h1=69,
-                         h2=72,
-                         returnData=T)
-Z_plot$plot
-
-ggsave(Z_plot$plot, file=paste0(fig_dir, "stunting/fig-Zscore.png"), width=14, height=4)
 
 save(Z_plot, prev_plot_pooled, prev_plot, prev_plot_sev, ci_plot, file=paste0(fig_dir, "stunting/fig-comparisons.Rdata"))
 

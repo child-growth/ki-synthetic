@@ -8,7 +8,8 @@ source(paste0(here::here(), "/0-config.R"))
 # Read in synthetic data file
 #--------------------------------------------
 
-d <- readRDS(paste0(ghapdata_dir, "Synthetic-cohorts-full-v1.rds"))
+#d <- readRDS(paste0(ghapdata_dir, "Synthetic-cohorts-full-v1.rds"))
+d <- readRDS(here("synthetic data/Partially Synthetic Data - All BC Synthesized.rds"))
 
 summary(d$haz)
 
