@@ -70,7 +70,7 @@ Z_plot <- ggplot(df,aes(y=est,x=agecat, group=region)) +
   theme(legend.position="right")
 Z_plot
 
-ggsave(Z_plot, file=here::here("/figures/wasting/WLZ_by_region.png"), width=10, height=4)
+ggsave(Z_plot, file=here::here("figures/wasting/WLZ_by_region.png"), width=10, height=4)
 
 
 
