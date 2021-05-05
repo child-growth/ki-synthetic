@@ -16,4 +16,4 @@ source(here("3-prep-tmle-analysis/10_specify_mortality_analyses.R"))
 # source(here("3-prep-tmle-analysis/14_calc_mort_pooled_logistic_regressions.R"))
 # source(here("3-prep-tmle-analysis/15_R2_estimation.R"))
 
-source(here("3-prep-tmle-analysis/01_risk_factor_presence.R"))
+#source(here("3-prep-tmle-analysis/01_risk_factor_presence.R"))
