@@ -1,6 +1,6 @@
 
 rm(list=ls())
-.libPaths( c( "/data/KI/R/x86_64-pc-linux-gnu-library/3.6/" , .libPaths() ) )
+.libPaths( c( "/data/KI/R/x86_64-pc-linux-gnu-library/4.0/" , .libPaths() ) )
 
 source(paste0(here::here(), "/0-config.R"))
 .libPaths( "~/rlibs" )
@@ -32,7 +32,7 @@ writeLines(toJSON(enumerated_analyses),"all_bin_analyses.json")
 
 configure_cluster(here("0-project-functions","cluster_credentials.json"))
 
-rmd_filename <- system.file("templates/longbow_RiskFactors.Rmd", package="longbowRiskFactors")
+rmd_filename <- here("4-longbow-tmle-analysis/run-longbow/longbow_RiskFactors.Rmd")
 # inputs <- "inputs_template.json"
 inputs <- "single_bin_analysis.json"
 
@@ -58,5 +58,6 @@ obs_counts <- load_batch_results("obs_counts.rdata", results_folder = "results_b
 # save concatenated results
 filename1 <- paste(paste('results_bin_unadj',Sys.Date( ),sep='_'),'RDS',sep='.')
 filename2 <- paste(paste('results_bin_unadj_obs_counts',Sys.Date( ),sep='_'),'RDS',sep='.')
-saveRDS(results, file=here("results","rf results","raw longbow results",filename1))
-saveRDS(obs_counts, file=here("results","rf results","raw longbow results",filename2))
+saveRDS(results, file=paste0(res_dir,"rf results/raw longbow results/",filename1))
+saveRDS(obs_counts, file=paste0(res_dir,"rf results/raw longbow results/",filename2))
+
