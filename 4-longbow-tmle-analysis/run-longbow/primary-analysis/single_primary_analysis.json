@@ -1,0 +1,1 @@
+{"roles":["exclude","strata","id","W","A","Y"],"data":{"uri":["/data/KI/synthetic-data/st_cuminc_rf_primary.rdata"],"type":["web"]},"nodes":{"W":[],"A":["sex"],"Y":["ever_stunted"],"strata":[["agecat","studyid","country"]],"id":["id"]},"script_params":{"parallelize":[false],"count_A":[true],"count_Y":[true],"baseline_level":[null]},"output_directory":[""]}

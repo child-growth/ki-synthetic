@@ -8,7 +8,7 @@ rm(list=ls())
 source(paste0(here::here(), "/0-config.R"))
 
 #load covariates
-cov<-readRDS(paste0(true_data_dir,"FINAL_clean_covariates.rds"))
+cov<-readRDS(clean_covariates_path)
 
 #Check reference levels
 for(i in 3:ncol(cov)){
@@ -17,25 +17,25 @@ for(i in 3:ncol(cov)){
 }
 
 #Set reference level to the lowest
-cov$trth2o <- relevel(cov$trth2o, ref="1")
-cov$cleanck <- relevel(cov$cleanck, ref="1")
-cov$impfloor <- relevel(cov$impfloor, ref="1")
-cov$earlybf <- relevel(cov$earlybf, ref="1")
+cov$trth2o <- relevel(factor(cov$trth2o), ref="1")
+cov$cleanck <- relevel(factor(cov$cleanck), ref="1")
+cov$impfloor <- relevel(factor(cov$impfloor), ref="1")
+cov$earlybf <- relevel(factor(cov$earlybf), ref="1")
 
-cov$impsan <- relevel(cov$impsan, ref="1")
-cov$safeh20 <- relevel(cov$safeh20, ref="1")
-cov$predfeed3 <- relevel(cov$predfeed3, ref="1")
-cov$exclfeed3 <- relevel(cov$exclfeed3, ref="1")
-cov$predfeed6 <- relevel(cov$predfeed6, ref="1")
-cov$exclfeed6 <- relevel(cov$exclfeed6, ref="1")
-cov$predfeed36 <- relevel(cov$predfeed36, ref="1")
-cov$exclfeed36 <- relevel(cov$exclfeed36, ref="1")
-cov$predexfd6 <- relevel(cov$predexfd6, ref="1")
+cov$impsan <- relevel(factor(cov$impsan), ref="1")
+cov$safeh20 <- NA
+cov$predfeed3 <- NA
+cov$exclfeed3 <- NA
+cov$predfeed6 <- NA
+cov$exclfeed6 <- NA
+cov$predfeed36 <- NA
+cov$exclfeed36 <- NA
+cov$predexfd6 <- relevel(factor(cov$predexfd6), ref="1")
 
 
 
-cov$perdiar6 <- relevel(cov$perdiar6, ref="[0%, 2%]")
-cov$perdiar24 <- relevel(cov$perdiar24, ref="[0%, 2%]")
+# cov$perdiar6 <- relevel(cov$perdiar6, ref="[0%, 2%]")
+# cov$perdiar24 <- relevel(cov$perdiar24, ref="[0%, 2%]")
 
 
 #XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

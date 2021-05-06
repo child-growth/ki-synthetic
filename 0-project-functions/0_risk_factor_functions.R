@@ -4,7 +4,7 @@
 #-----------------------------------------------------------------------------------------
 
 specify_longbow <- function(j, analyses_df=analyses, params=default_params){
-  params$data$uri <- "/data/KI/UCB-SuperLearner/Manuscript analysis data/"
+  params$data$uri <- ghapdata_dir
   params$data$type <- "web"
   params$data$repository_path <- NULL
   
