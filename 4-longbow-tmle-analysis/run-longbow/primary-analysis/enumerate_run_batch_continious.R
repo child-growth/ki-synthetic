@@ -29,7 +29,8 @@ dim(analyses)
 
 #specify analyses
 enumerated_analyses <- lapply(seq_len(nrow(analyses)), specify_longbow)
-
+enumerated_analyses[[17]]
+load("/data/KI/synthetic-data/st_meanZ_rf.Rdata")
 
 writeLines(toJSON(enumerated_analyses[[17]]),"single_cont_analysis.json")
 writeLines(toJSON(enumerated_analyses),"all_cont_analyses.json")

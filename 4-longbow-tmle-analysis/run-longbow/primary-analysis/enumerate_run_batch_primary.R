@@ -20,13 +20,12 @@ default_params <- jsonlite::fromJSON(inputs)
 analyses <- readRDS(here("4-longbow-tmle-analysis","analysis specification","adjusted_binary_analyses_primary.rds"))
 enumerated_analyses <- lapply(seq_len(nrow(analyses)), specify_longbow)
 
-writeLines(jsonlite::toJSON(enumerated_analyses[[1]]),"single_primary_analysis.json")
+writeLines(jsonlite::toJSON(enumerated_analyses[[2]]),"single_primary_analysis.json")
 writeLines(jsonlite::toJSON(enumerated_analyses),"primary_bin_analyses.json")
 
 #check data
 load("/data/KI/UCB-SuperLearner/Manuscript analysis data/st_cuminc_rf_primary.rdata")
-assert_that(all(monthly_and_quarterly_cohorts %in% unique(d$studyid)))
-
+head(d)
 
 # 2. run batch
 configure_cluster(here("0-project-functions","cluster_credentials.json"))
