@@ -7,8 +7,6 @@ source(paste0(here::here(), "/0-project-functions/0_risk_factor_functions.R"))
 Zscores<- Zscores_unadj<- Zscores_waz<- bin<- mort<- lagwhz <-velocity <- velocity_wlz_quart <- season <- NULL
 
 Zscores <- readRDS(here("/results/rf results/raw longbow results/results_cont_2020-05-02.RDS"))
-Zscores_diar <- readRDS(here("/results/rf results/raw longbow results/results_cont_diar_2020-06-08.RDS")) 
-Zscores_fhtcm <- readRDS(here("/results/rf results/raw longbow results/results_cont_fhtcm_2020-05-29.RDS"))
 dim(Zscores_diar)
 dim(Zscores_fhtcm)
 dim(Zscores)
