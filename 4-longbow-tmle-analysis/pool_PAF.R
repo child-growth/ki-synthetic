@@ -25,11 +25,11 @@ d <- d %>% filter(type=="PAR")
 
 
 
-RMAest <- d %>% group_by(intervention_variable, agecat, intervention_level, baseline_level, outcome_variable,n_cell,n) %>%
+RMAest <- d %>% group_by(intervention_variable, agecat, intervention_level, baseline_level, outcome_variable,n_cell,n, syntype) %>%
   do(pool.par(.)) %>% as.data.frame()
 RMAest$region <- "Pooled"
 
-RMAest_region <- d %>% group_by(region, intervention_variable, agecat, intervention_level, baseline_level, outcome_variable,n_cell,n) %>%
+RMAest_region <- d %>% group_by(region, intervention_variable, agecat, intervention_level, baseline_level, outcome_variable,n_cell,n, syntype) %>%
   do(pool.par(.)) %>% as.data.frame()
 
 RMAest_raw <- rbind(RMAest, RMAest_region)
@@ -42,11 +42,11 @@ RMAest_raw <- rbind(RMAest, RMAest_region)
 
 
 #Calculate pooled prevalences
-Prev_est <- prev %>% group_by(intervention_variable, agecat, intervention_level, baseline_level, outcome_variable) %>%
+Prev_est <- prev %>% group_by(intervention_variable, agecat, intervention_level, baseline_level, outcome_variable, syntype) %>%
   do(pool.prev(.)) %>% as.data.frame()
 Prev_est$region <- "Pooled"
 
-Prev_est_region <- prev %>% group_by(region, intervention_variable, agecat, intervention_level, baseline_level, outcome_variable) %>%
+Prev_est_region <- prev %>% group_by(region, intervention_variable, agecat, intervention_level, baseline_level, outcome_variable, syntype) %>%
   do(pool.prev(.)) %>% as.data.frame()
 
 Prev_est_raw <- rbind(Prev_est, Prev_est_region)

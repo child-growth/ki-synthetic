@@ -6,7 +6,7 @@ source(paste0(here::here(), "/0-config.R"))
 try(.libPaths( "~/rlibs" ))
 library(data.table)
 library(longbowtools)
-library(jsonlite)
+#library(jsonlite)
 library(progress)
 library(longbowRiskFactors)
 
@@ -14,7 +14,7 @@ library(longbowRiskFactors)
 # 1. enumerate analysis
 setwd(here("4-longbow-tmle-analysis","run-longbow","primary-analysis"))
 inputs <- "inputs_template.json"
-default_params <- fromJSON(inputs)
+default_params <- jsonlite::fromJSON(inputs)
 
 #Set to continious
 default_params$script_params$count_Y <- FALSE
@@ -31,9 +31,10 @@ dim(analyses)
 enumerated_analyses <- lapply(seq_len(nrow(analyses)), specify_longbow)
 enumerated_analyses[[17]]
 load("/data/KI/synthetic-data/st_meanZ_rf.Rdata")
+table(d$syntype)
 
-writeLines(toJSON(enumerated_analyses[[17]]),"single_cont_analysis.json")
-writeLines(toJSON(enumerated_analyses),"all_cont_analyses.json")
+writeLines(jsonlite::toJSON(enumerated_analyses[[17]]),"single_cont_analysis.json")
+writeLines(jsonlite::toJSON(enumerated_analyses),"all_cont_analyses.json")
 
 load("/data/KI/synthetic-data/st_meanZ_rf.Rdata")
 head(d)

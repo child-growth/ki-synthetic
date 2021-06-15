@@ -14,6 +14,10 @@ library(gtable)
 par <- readRDS(paste0(here::here(),"/results/rf results/pooled_Zscore_PAR_results.rds"))
 
 dim(par)
+table(par$syntype)
+
+#par <- par %>% filter(intervention_variable=="single")
+table(par$syntype)
 
 unique(par$intervention_level)
 unique(par$intervention_variable)
@@ -50,7 +54,7 @@ par <- par %>% filter( agecat=="24 months", region=="Pooled", !is.na(PAR)) %>%
  
 unique(par$RFlabel_ref)
 
-df <- par %>% subset(., select = c(outcome_variable, intervention_variable, PAR, CI1, CI2, RFlabel, RFlabel_ref,  RFtype, n_cell, n)) %>% 
+df <- par %>% subset(., select = c(outcome_variable, intervention_variable, PAR, CI1, CI2, RFlabel, RFlabel_ref,  RFtype, n_cell, n, syntype)) %>% 
   filter(!is.na(PAR)) %>% mutate(measure="PAR")
 
 
@@ -95,7 +99,7 @@ dpool <- df %>% ungroup() %>%
 #----------------------------------------------------------
 
 plotdf_laz <- dpool %>% filter(outcome_variable=="LAZ") %>%
-  arrange(-PAR) 
+  arrange(syntype , -PAR) 
 rflevels = unique(plotdf_laz$RFlabel_ref)
 plotdf_laz$RFlabel_ref=factor(plotdf_laz$RFlabel_ref, levels=rflevels)
 
@@ -115,9 +119,9 @@ plotdf_laz$RFlabel_ref=factor(plotdf_laz$RFlabel_ref, levels=rflevels)
 
 
 
-pPAR_laz <-  ggplot(plotdf_laz, aes(x=RFlabel_ref)) + 
-  geom_point(aes(y=-PAR), color=main_color, size = 4) +
-  geom_linerange(aes(ymin=-CI1, ymax=-CI2), color=main_color) +
+pPAR_laz <-  ggplot(plotdf_laz, aes(x=RFlabel_ref, group=syntype)) + 
+  geom_point(aes(y=-PAR, color=syntype), size = 4, position = position_dodge(0.5)) +
+  geom_linerange(aes(ymin=-CI1, ymax=-CI2, color=syntype), position = position_dodge(0.5)) +
   coord_flip(ylim=c(-0.2, 0.55)) +
   labs(#x = "Exposure, and to which level of exposure the cohorts are shifted",
        x = "Exposure",
@@ -127,7 +131,7 @@ pPAR_laz <-  ggplot(plotdf_laz, aes(x=RFlabel_ref)) +
         legend.position="right",
         axis.text.y = element_text(size=, hjust = 1),
         axis.text.x = element_text(size=12)) +
-  guides(color=FALSE, shape=FALSE)
+  guides(shape=FALSE)
 pPAR_laz
 
 

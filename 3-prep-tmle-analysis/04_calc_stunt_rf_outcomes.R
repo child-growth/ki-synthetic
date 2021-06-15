@@ -28,7 +28,7 @@ d6 <- calc.ci.agecat(d, range = 6, birth="yes")
 
 
 d6 <- d6 %>% ungroup() %>% arrange(studyid,country,subjid, agedays) %>%
-  group_by(studyid,country,subjid, agecat) %>% 
+  group_by(syntype,studyid,country,subjid, agecat) %>% 
   mutate(minhaz=min(haz)) %>% 
   ungroup() 
 
@@ -36,7 +36,7 @@ d6 <- d6 %>% ungroup() %>% arrange(studyid,country,subjid, agedays) %>%
 #calculate any stunting from 0-6
 stunt_ci_0_6 = d6 %>% ungroup() %>%
   filter(agecat=="0-6 months") %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   #create variable with minhaz by age category, cumulatively
   mutate(agecat="0-6 months", minhaz=min(haz), ever_stunted=ifelse(minhaz< (-2),1,0), ever_sstunted=ifelse(minhaz< (-3),1,0), Nobs=n()) %>% slice(1) %>%
   mutate(N=n()) %>%
@@ -44,21 +44,21 @@ stunt_ci_0_6 = d6 %>% ungroup() %>%
 
 
 stunt_ci_6_24 = d6 %>% ungroup() %>% 
-  group_by(studyid,country,subjid) %>%
-  arrange(studyid,country,subjid, agedays) %>% 
+  group_by(syntype,studyid,country,subjid) %>%
+  arrange(syntype,studyid,country,subjid, agedays) %>% 
   mutate(anystunt06 = 1*(agecat=="0-6 months" & minhaz < -2),
          anystunt06 = anystunt06[1]) %>% 
   filter(agecat!="0-6 months" & !is.na(agecat) & anystunt06==0) %>%
   mutate(agecat="6-24 months", minhaz=min(haz), ever_stunted=ifelse(minhaz< -2,1,0), ever_sstunted=ifelse(minhaz< (-3),1,0), Nobs=n()) %>% slice(1) %>%
   mutate(N=n()) %>%
   ungroup() %>%
-  select(studyid,subjid, country,tr,agedays,haz, measurefreq, measid, agecat,minhaz, ever_stunted,Nobs, N, anystunt06)
+  select(syntype,studyid,subjid, country,tr,agedays,haz, measurefreq, measid, agecat,minhaz, ever_stunted,Nobs, N, anystunt06)
 
 
 #calculate any stunting from 0-24
 stunt_ci_0_24 = d6 %>% ungroup() %>%
   filter(!is.na(agecat)) %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   #create variable with minhaz by age category, cumulatively
   mutate(agecat="0-24 months", minhaz=min(haz), ever_stunted=ifelse(minhaz< -2,1,0), ever_sstunted=ifelse(minhaz< (-3),1,0), Nobs=n()) %>% slice(1) %>%
   mutate(N=n()) %>%
@@ -76,29 +76,29 @@ cuminc <- bind_rows(stunt_ci_0_6, stunt_ci_6_24, stunt_ci_0_24)
 
 
 stunt_ci_0_6_no_birth = d6 %>% ungroup() %>% 
-  arrange(studyid,country,subjid, agedays) %>% 
+  arrange(syntype,studyid,country,subjid, agedays) %>% 
   filter(agecat=="0-6 months" & !is.na(agecat)) %>%
-  group_by(studyid,country,subjid) %>%
-  arrange(studyid,country,subjid, agedays) %>% 
+  group_by(syntype,studyid,country,subjid) %>%
+  arrange(syntype,studyid,country,subjid, agedays) %>% 
   #mark if children were born stunted and drop
   mutate(start_stunt= as.numeric(first(haz) < -2)) %>%
   filter(start_stunt==0) %>% #drop children born wasted
   mutate(agecat="0-6 months (no birth st.)", minhaz=min(haz), ever_stunted=ifelse(minhaz< -2,1,0), ever_sstunted=ifelse(minhaz< (-3),1,0), Nobs=n()) %>% slice(1) %>%
   mutate(N=n()) %>%
   ungroup() %>%
-  select(studyid,subjid, country,tr,agedays,haz, measurefreq, measid, agecat,minhaz, ever_stunted,Nobs,N)
+  select(syntype,studyid,subjid, country,tr,agedays,haz, measurefreq, measid, agecat,minhaz, ever_stunted,Nobs,N)
 
 stunt_ci_0_24_no_birth = d6 %>% ungroup() %>% 
   filter(!is.na(agecat)) %>%
-  group_by(studyid,country,subjid) %>%
-  arrange(studyid,country,subjid, agedays) %>% 
+  group_by(syntype,studyid,country,subjid) %>%
+  arrange(syntype,studyid,country,subjid, agedays) %>% 
   #mark if children were born stunted and drop
   mutate(start_stunt= as.numeric(first(haz) < -2)) %>% 
   filter(start_stunt==0) %>% #drop children born wasted
   mutate(agecat="0-24 months (no birth st.)", minhaz=min(haz), ever_stunted=ifelse(minhaz< -2,1,0), ever_sstunted=ifelse(minhaz< (-3),1,0), Nobs=n()) %>% slice(1) %>%
   mutate(N=n()) %>%
   ungroup() %>%
-  select(studyid,subjid, country,tr,agedays,haz, measurefreq, measid, agecat,minhaz, ever_stunted,Nobs,N)
+  select(syntype,studyid,subjid, country,tr,agedays,haz, measurefreq, measid, agecat,minhaz, ever_stunted,Nobs,N)
 
 cuminc_nobirth <- rbind(stunt_ci_0_6_no_birth, stunt_ci_0_24_no_birth)
 
@@ -125,7 +125,7 @@ dprev <- calc.prev.agecat(d)
 # take mean of multiple measurements within age window
 dmn <- dprev %>%
   filter(!is.na(agecat)) %>%
-  group_by(studyid,country,subjid,agecat) %>%
+  group_by(syntype,studyid,country,subjid,agecat) %>%
   summarise(haz=mean(haz)) %>%
   mutate(stunted=ifelse(haz< -2, 1,0),sstunted=ifelse(haz< -3, 1,0))
 
@@ -133,13 +133,13 @@ dmn <- dprev %>%
 # export
 prev = dmn %>% 
   filter(agecat=="Birth" | agecat=="6 months" | agecat=="24 months") %>%
-  select(studyid,subjid,country,agecat,
+  select(syntype,studyid,subjid,country,agecat,
          stunted, sstunted)
 
 # save mean Z scores at each age
 meanHAZ = dmn %>% 
   filter(agecat=="Birth" | agecat=="6 months" | agecat=="24 months") %>%
-  select(studyid,subjid,country,agecat,
+  select(syntype,studyid,subjid,country,agecat,
          haz)
 
 
@@ -172,7 +172,7 @@ d = d %>%
 
 # check age categories
 d %>%
-  group_by(agecat) %>%
+  group_by(syntype,agecat) %>%
   summarise(n=sum(!is.na(agedays)),
             min=min(agedays/30.4167),
             mean=mean(agedays/30.4167,na.rm=TRUE),
@@ -181,7 +181,7 @@ d %>%
 # subset to stunted between birth and 3 months
 stunt.03 <- d %>%
   filter(agecat=="Birth" | agecat=="3 months") %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   mutate(measid=seq_along(subjid))  %>%
   mutate(stunted=ifelse(haz< -2,1,0),
          lagstunted=lag(stunted),
@@ -195,7 +195,7 @@ stunt.03 <- d %>%
 rec.24 <- d %>%
   filter(agecat=="24 months") %>%
   # identify last two measurements prior to 24 months
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   mutate(rank=min_rank(-agedays)) %>%
   filter(rank<= 2) %>%
   # flag kids with 2 measurements not stunted
@@ -206,51 +206,51 @@ rec.24 <- d %>%
   mutate(rec24=ifelse(maxrec==2,1,0)) %>%
   select(-c(maxrec))
 
-rev <- full_join(stunt.03, rec.24,by=c("studyid","country","subjid")) %>%
+rev <- full_join(stunt.03, rec.24,by=c("syntype","studyid","country","subjid")) %>%
   mutate(s03rec24=ifelse(stunted03==1 & rec24==1,1,0)) %>%
-  select(studyid, country,subjid, s03rec24)
+  select(syntype,studyid, country,subjid, s03rec24)
 
-#--------------------------------------
-# Format and subset the growth velocity dataset
-#--------------------------------------
-vel <- readRDS(file=paste0(ghapdata_dir,"velocity_longfmt_rf.rds"))
-
-#Drop yearly studies
-vel <- vel[!vel$studyid %in% c(
-  "WASH-Bangladesh",       
-  "WASH-Kenya",  
-  "iLiNS-DOSE",     
-  "iLiNS-DYAD-M", 
-  "iLiNS-DYAD-G",
-  "AgaKhanUniv",           
-  "Burkina Faso Zn",    
-  "VITAMIN-A",  
-  "Vitamin-B12",
-  "Serrinha-VitA",   
-  "EU",        
-  "ZnMort"),]
-
-vel <- vel[!(vel$studyid=="COHORTS" & vel$country=="BRAZIL"),] #Drop because yearly 
-vel <- vel[!(vel$studyid=="COHORTS" & vel$country=="SOUTH AFRICA"),] #Drop because yearly 
-
-class(vel$subjid)
-
-#Get only HAZ change from growth velocity dataset, and format names
-vel_haz <- vel %>% filter(ycat=="haz") %>% subset(., select=c(studyid, country, subjid, y_rate, diffcat)) %>%
-  rename(agecat = diffcat)
-
-#Get only height in cm change from growth velocity dataset, and format names
-vel_lencm <- vel %>% filter(ycat=="lencm") %>% subset(., select=c(studyid, country, subjid, y_rate, diffcat)) %>%
-  rename(agecat = diffcat)
-
-
-#Get only HAZ change from growth velocity dataset, and format names
-vel_waz <- vel %>% filter(ycat=="waz") %>% subset(., select=c(studyid, country, subjid, y_rate, diffcat)) %>%
-  rename(agecat = diffcat)
-
-#Get only height in cm change from growth velocity dataset, and format names
-vel_wtkg <- vel %>% filter(ycat=="wtkg") %>% subset(., select=c(studyid, country, subjid, y_rate, diffcat)) %>%
-  rename(agecat = diffcat)
+# #--------------------------------------
+# # Format and subset the growth velocity dataset
+# #--------------------------------------
+# vel <- readRDS(file=paste0(ghapdata_dir,"velocity_longfmt_rf.rds"))
+# 
+# #Drop yearly studies
+# vel <- vel[!vel$studyid %in% c(
+#   "WASH-Bangladesh",       
+#   "WASH-Kenya",  
+#   "iLiNS-DOSE",     
+#   "iLiNS-DYAD-M", 
+#   "iLiNS-DYAD-G",
+#   "AgaKhanUniv",           
+#   "Burkina Faso Zn",    
+#   "VITAMIN-A",  
+#   "Vitamin-B12",
+#   "Serrinha-VitA",   
+#   "EU",        
+#   "ZnMort"),]
+# 
+# vel <- vel[!(vel$studyid=="COHORTS" & vel$country=="BRAZIL"),] #Drop because yearly 
+# vel <- vel[!(vel$studyid=="COHORTS" & vel$country=="SOUTH AFRICA"),] #Drop because yearly 
+# 
+# class(vel$subjid)
+# 
+# #Get only HAZ change from growth velocity dataset, and format names
+# vel_haz <- vel %>% filter(ycat=="haz") %>% subset(., select=c(syntype,studyid, country, subjid, y_rate, diffcat)) %>%
+#   rename(agecat = diffcat)
+# 
+# #Get only height in cm change from growth velocity dataset, and format names
+# vel_lencm <- vel %>% filter(ycat=="lencm") %>% subset(., select=c(syntype,studyid, country, subjid, y_rate, diffcat)) %>%
+#   rename(agecat = diffcat)
+# 
+# 
+# #Get only HAZ change from growth velocity dataset, and format names
+# vel_waz <- vel %>% filter(ycat=="waz") %>% subset(., select=c(syntype,studyid, country, subjid, y_rate, diffcat)) %>%
+#   rename(agecat = diffcat)
+# 
+# #Get only height in cm change from growth velocity dataset, and format names
+# vel_wtkg <- vel %>% filter(ycat=="wtkg") %>% subset(., select=c(syntype,studyid, country, subjid, y_rate, diffcat)) %>%
+#   rename(agecat = diffcat)
 
 
 #--------------------------------------
@@ -263,5 +263,5 @@ save(meanHAZ, file="/data/KI/synthetic-data/st_meanZ_outcomes.RData")
 save(cuminc, file="/data/KI/synthetic-data/st_cuminc_outcomes.rdata")
 save(cuminc_nobirth, file="/data/KI/synthetic-data/st_cuminc_outcomes_nobirth.rdata")
 save(rev, file="/data/KI/synthetic-data/st_rec_outcomes.RData")
-save(vel_haz, vel_lencm, file="/data/KI/synthetic-data/st_vel_outcomes.RData")
-save(vel_waz, vel_wtkg, file="/data/KI/synthetic-data/waz_vel_outcomes.RData")
+# save(vel_haz, vel_lencm, file="/data/KI/synthetic-data/st_vel_outcomes.RData")
+# save(vel_waz, vel_wtkg, file="/data/KI/synthetic-data/waz_vel_outcomes.RData")

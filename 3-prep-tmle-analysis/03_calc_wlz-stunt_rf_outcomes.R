@@ -30,11 +30,11 @@ vel <- vel %>% filter(measurefreq=="monthly")
 
 
 #Get only HAZ change from growth velocity dataset, and format names
-vel_haz <- vel %>% filter(ycat=="haz") %>% subset(., select=c(studyid, country, subjid, y_rate, diffcat)) %>%
+vel_haz <- vel %>% filter(ycat=="haz") %>% subset(., select=c(syntype,studyid, country, subjid, y_rate, diffcat)) %>%
   rename(agecat = diffcat)
 
 #Get only length velocity from growth velocity dataset, and format names
-vel_lencm <- vel %>% filter(ycat=="lencm") %>% subset(., select=c(studyid, country, subjid, y_rate, diffcat)) %>%
+vel_lencm <- vel %>% filter(ycat=="lencm") %>% subset(., select=c(syntype,studyid, country, subjid, y_rate, diffcat)) %>%
   rename(agecat = diffcat)
 
 
@@ -65,8 +65,8 @@ table(d$agecat)
 
 
 #Quartile WHZ and HAZ
-d_whzcat <- d %>% group_by(subjid, agecat) %>% mutate(meanWHZ = mean(whz)) %>% slice(1) %>% arrange(subjid,agecat, agedays) %>%
-  group_by(agecat) %>% mutate(agelevel=as.numeric(agecat),WHZ_quart = (ntile(meanWHZ, 4))) %>% 
+d_whzcat <- d %>% group_by(syntype,subjid, agecat) %>% mutate(meanWHZ = mean(whz)) %>% slice(1) %>% arrange(subjid,agecat, agedays) %>%
+  group_by(syntype,agecat) %>% mutate(agelevel=as.numeric(agecat),WHZ_quart = (ntile(meanWHZ, 4))) %>% 
   subset(., select = -c(haz, whz, agedays, measurefreq)) %>% ungroup() %>%
   mutate(lag_agelevel= lag(agelevel), lag_WHZ_quart=lag(WHZ_quart)) %>%
   filter(!is.na(lag_WHZ_quart)) %>%
@@ -77,8 +77,8 @@ d_whzcat <- d %>% group_by(subjid, agecat) %>% mutate(meanWHZ = mean(whz)) %>% s
 table(d_whzcat$agecat, d_whzcat$WHZ_quart)
 
 
-d_hazcat <- d %>% group_by(subjid, agecat) %>% mutate(meanHAZ = mean(haz)) %>% slice(1) %>% arrange(subjid,agecat, agedays) %>%
-  group_by(agecat) %>% mutate(agelevel=as.numeric(agecat),HAZ_quart = (ntile(meanHAZ, 4))) %>% 
+d_hazcat <- d %>% group_by(syntype,subjid, agecat) %>% mutate(meanHAZ = mean(haz)) %>% slice(1) %>% arrange(subjid,agecat, agedays) %>%
+  group_by(syntype,agecat) %>% mutate(agelevel=as.numeric(agecat),HAZ_quart = (ntile(meanHAZ, 4))) %>% 
   subset(., select = -c(haz, whz, agedays, measurefreq)) %>% ungroup() %>%
   mutate(lag_agelevel= lag(agelevel), lag_HAZ_quart=lag(HAZ_quart)) %>%
   filter(!is.na(lag_HAZ_quart)) %>%
@@ -108,7 +108,7 @@ for(i in 2:length(agecat_vec)){
   lag_agecat <-agecat_vec[i-1]
   
   temp = d %>% ungroup() %>% 
-    group_by(studyid,country,subjid) %>%
+    group_by(syntype,studyid,country,subjid) %>%
     arrange(studyid,country,subjid, agedays) %>% 
     mutate(stunt=1*haz< (-2), numstunt=cumsum(stunt), 
            anystunt_prior = 1*(agecat==lag_agecat & numstunt>0)) %>%
@@ -157,7 +157,7 @@ table(dprev$agecat)
 #  Get the observation closest to prevalence times
 dprev <- dprev %>%
   filter(!is.na(agecat)) %>%
-  group_by(studyid,country,subjid,agecat) %>%
+  group_by(syntype,studyid,country,subjid,agecat) %>%
   filter(!is.na(haz)) %>%
   filter(abs(agedays-agelevel*30.4167)==min(abs(agedays-agelevel*30.4167))) %>%
   mutate(N=n())

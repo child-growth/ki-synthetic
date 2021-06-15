@@ -18,18 +18,18 @@ cov <- cov %>% subset(., select= -c(pers_wast, enwast, anywast06))
 #Load wasting measures
 load(paste0(ghapdata_dir,"mort_exposures.RData"))
 
-stunt_ci_0_6 <- stunt_ci_0_6 %>% subset(., select=c(studyid,country,subjid,ever_stunted06, ever_sstunted06)) 
-stunt_ci_0_24 <- stunt_ci_0_24 %>% subset(., select=c(studyid,country,subjid,ever_stunted024, ever_sstunted024))
-wast_ci_0_6 <- wast_ci_0_6 %>% subset(., select=c(studyid,country,subjid,ever_wasted06, ever_swasted06, pers_wasted06)) 
-wast_ci_0_24 <- wast_ci_0_24 %>% subset(., select=c(studyid,country,subjid,ever_wasted024, ever_swasted024, pers_wasted024))
-wast_ci_0_6_no_birth <- wast_ci_0_6_no_birth %>% subset(., select=c(studyid,country,subjid,ever_wasted06_noBW, ever_swasted06_noBW)) 
-underweight_ci_0_6 <- underweight_ci_0_6 %>% subset(., select=c(studyid,country,subjid,ever_underweight06, ever_sunderweight06)) 
-underweight_ci_0_24 <- underweight_ci_0_24 %>% subset(., select=c(studyid,country,subjid,ever_underweight024, ever_sunderweight024))
-co_ci_0_6 <- co_ci_0_6 %>% subset(., select=c(studyid,country,subjid,ever_co06)) 
-co_ci_0_24 <- co_ci_0_24 %>% subset(., select=c(studyid,country,subjid,ever_co024))
+stunt_ci_0_6 <- stunt_ci_0_6 %>% subset(., select=c(syntype,studyid,country,subjid,ever_stunted06, ever_sstunted06)) 
+stunt_ci_0_24 <- stunt_ci_0_24 %>% subset(., select=c(syntype,studyid,country,subjid,ever_stunted024, ever_sstunted024))
+wast_ci_0_6 <- wast_ci_0_6 %>% subset(., select=c(syntype,studyid,country,subjid,ever_wasted06, ever_swasted06, pers_wasted06)) 
+wast_ci_0_24 <- wast_ci_0_24 %>% subset(., select=c(syntype,studyid,country,subjid,ever_wasted024, ever_swasted024, pers_wasted024))
+wast_ci_0_6_no_birth <- wast_ci_0_6_no_birth %>% subset(., select=c(syntype,studyid,country,subjid,ever_wasted06_noBW, ever_swasted06_noBW)) 
+underweight_ci_0_6 <- underweight_ci_0_6 %>% subset(., select=c(syntype,studyid,country,subjid,ever_underweight06, ever_sunderweight06)) 
+underweight_ci_0_24 <- underweight_ci_0_24 %>% subset(., select=c(syntype,studyid,country,subjid,ever_underweight024, ever_sunderweight024))
+co_ci_0_6 <- co_ci_0_6 %>% subset(., select=c(syntype,studyid,country,subjid,ever_co06)) 
+co_ci_0_24 <- co_ci_0_24 %>% subset(., select=c(syntype,studyid,country,subjid,ever_co024))
 
-# stunt_ci_0_6_no_birth <- stunt_ci_0_6_no_birth %>% subset(., select=c(studyid,country,subjid,ever_stunted06_noBW, ever_sstunted06_noBW)) 
-# underweight_ci_0_6_no_birth <- underweight_ci_0_6_no_birth %>% subset(., select=c(studyid,country,subjid,ever_underweighted06_noBW, ever_sunderweighted06_noBW)) 
+# stunt_ci_0_6_no_birth <- stunt_ci_0_6_no_birth %>% subset(., select=c(syntype,studyid,country,subjid,ever_stunted06_noBW, ever_sstunted06_noBW)) 
+# underweight_ci_0_6_no_birth <- underweight_ci_0_6_no_birth %>% subset(., select=c(syntype,studyid,country,subjid,ever_underweighted06_noBW, ever_sunderweighted06_noBW)) 
 
 
 #convert subjid to character for the merge with mortality dataset
@@ -49,14 +49,14 @@ co_ci_0_24$subjid <- as.character(co_ci_0_24$subjid)
 d<- wast_ci_0_6
 
 #Join in stunting measures
-d <- full_join(d, stunt_ci_0_6, by=c("studyid","country","subjid"))
+d <- full_join(d, stunt_ci_0_6, by=c("syntype","studyid","country","subjid"))
 dim(d)
 head(d)
 
 
 
 #Join in underweight measures
-d <- full_join(d, underweight_ci_0_6, by=c("studyid","country","subjid"))
+d <- full_join(d, underweight_ci_0_6, by=c("syntype","studyid","country","subjid"))
 dim(d)
 head(d)
 
@@ -64,13 +64,13 @@ head(d)
 
 
 #merge co-occurrence measures
-d <- full_join(d, co_ci_0_6, by=c("studyid","country", "subjid"))
+d <- full_join(d, co_ci_0_6, by=c("syntype","studyid","country", "subjid"))
 dim(d)
 
 #Merge in covariates
 cov <- cov %>% subset(., select = - c(dead, agedth, causedth))
 dim(d)
-df <- merge(as.data.frame(d), cov, by=c("studyid", "subjid", "country"), all.x = T, all.y = F)
+df <- merge(as.data.frame(d), cov, by=c("syntype","studyid","country", "subjid"), all.x = T, all.y = F)
 dim(df)
 head(df)
 
@@ -78,7 +78,7 @@ head(df)
 # Merge in mortality information
 dim(df)
 dim(mort)
-d <- left_join(df, mort, by=c("studyid",  "country", "subjid"))
+d <- left_join(df, mort, by=c("syntype","studyid","country", "subjid"))
 dim(d)
 
 #Check mortality variation for all exposures
@@ -194,12 +194,12 @@ pers_wast_6_24 <- pers_wast_6_24 %>% subset(., select = c( studyid, subjid, coun
 
 dim(co_prev18)
 dim(pers_wast_6_24)
-d <- full_join(co_prev18, pers_wast_6_24, by=c("studyid","country","subjid"))
+d <- full_join(co_prev18, pers_wast_6_24, by=c("syntype","studyid","country","subjid"))
 
 
 dim(d)
 dim(df)
-d <- full_join(d, df, by=c("studyid","country","subjid"))
+d <- full_join(d, df, by=c("syntype","studyid","country","subjid"))
 dim(d)
 
 
@@ -282,27 +282,27 @@ save(d, file=paste0(ghapdata_dir,"stuntwast_morbidity.Rdata"))
 d<- wast_ci_0_24
 
 #Join in stunting measures
-d <- full_join(d, stunt_ci_0_24, by=c("studyid","country","subjid"))
+d <- full_join(d, stunt_ci_0_24, by=c("syntype","studyid","country","subjid"))
 dim(d)
 head(d)
 
 #Join in underweight measures
-d <- full_join(d, underweight_ci_0_24, by=c("studyid","country","subjid"))
+d <- full_join(d, underweight_ci_0_24, by=c("syntype","studyid","country","subjid"))
 dim(d)
 head(d)
 
 #merge co-occurrence measures
-d <- full_join(d, co_ci_0_24, by=c("studyid","country", "subjid"))
+d <- full_join(d, co_ci_0_24, by=c("syntype","studyid","country", "subjid"))
 dim(d)
 
 #merge u6 no BW
-d <- full_join(d, wast_ci_0_6_no_birth, by=c("studyid","country", "subjid"))
+d <- full_join(d, wast_ci_0_6_no_birth, by=c("syntype","studyid","country", "subjid"))
 dim(d)
 
 
 #Merge in covariates
 dim(d)
-df <- merge(as.data.frame(d), cov, by=c("studyid", "subjid", "country"), all.x = T, all.y = F)
+df <- merge(as.data.frame(d), cov, by=c("syntype","studyid","country", "subjid"), all.x = T, all.y = F)
 dim(df)
 head(df)
 
@@ -310,7 +310,7 @@ head(df)
 # Merge in mortality information
 dim(df)
 dim(mort)
-d <- left_join(df, mort, by=c("studyid",  "country", "subjid"))
+d <- left_join(df, mort, by=c("syntype","studyid","country", "subjid"))
 dim(d)
 
 

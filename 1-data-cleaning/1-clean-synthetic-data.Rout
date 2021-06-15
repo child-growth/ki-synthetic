@@ -1,0 +1,566 @@
+
+R version 4.0.4 (2021-02-15) -- "Lost Library Book"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 
+> 
+> rm(list=ls())
+> source(paste0(here::here(), "/0-config.R"))
+── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+✔ ggplot2 3.3.2     ✔ purrr   0.3.4
+✔ tibble  3.1.0     ✔ dplyr   1.0.5
+✔ tidyr   1.1.1     ✔ stringr 1.4.0
+✔ readr   1.3.1     ✔ forcats 0.5.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+here() starts at /home/andrew.mertens/ki-synthetic
+
+Attaching package: ‘gridExtra’
+
+The following object is masked from ‘package:dplyr’:
+
+    combine
+
+
+Attaching package: ‘reshape2’
+
+The following object is masked from ‘package:tidyr’:
+
+    smiths
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loading 'metafor' package (version 2.4-0). For an overview 
+and introduction to the package please type: help(metafor).
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:reshape2’:
+
+    dcast, melt
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+The following object is masked from ‘package:purrr’:
+
+    transpose
+
+Loading required package: viridisLite
+
+Attaching package: ‘maps’
+
+The following object is masked from ‘package:purrr’:
+
+    map
+
+
+Attaching package: ‘assertthat’
+
+The following object is masked from ‘package:tibble’:
+
+    has_name
+
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+This is mgcv 1.8-31. For overview type 'help("mgcv-package")'.
+
+Attaching package: ‘lazyeval’
+
+The following objects are masked from ‘package:purrr’:
+
+    is_atomic, is_formula
+
+
+Attaching package: ‘rlang’
+
+The following objects are masked from ‘package:lazyeval’:
+
+    as_name, call_modify, call_standardise, expr_label, expr_text,
+    f_env, f_env<-, f_label, f_lhs, f_lhs<-, f_rhs, f_rhs<-, f_text,
+    is_atomic, is_call, is_formula, is_lang, is_pairlist, missing_arg
+
+The following object is masked from ‘package:assertthat’:
+
+    has_name
+
+The following object is masked from ‘package:data.table’:
+
+    :=
+
+The following objects are masked from ‘package:purrr’:
+
+    %@%, as_function, flatten, flatten_chr, flatten_dbl, flatten_int,
+    flatten_lgl, flatten_raw, invoke, list_along, modify, prepend,
+    splice
+
+
+Attaching package: ‘scales’
+
+The following object is masked from ‘package:viridis’:
+
+    viridis_pal
+
+The following object is masked from ‘package:purrr’:
+
+    discard
+
+The following object is masked from ‘package:readr’:
+
+    col_factor
+
+
+Attaching package: ‘foreach’
+
+The following objects are masked from ‘package:purrr’:
+
+    accumulate, when
+
+Loading required package: iterators
+Loading required package: parallel
+Loading required package: survival
+
+Attaching package: ‘survey’
+
+The following object is masked from ‘package:graphics’:
+
+    dotchart
+
+Loading required package: bit
+
+Attaching package: ‘bit’
+
+The following object is masked from ‘package:data.table’:
+
+    setattr
+
+The following object is masked from ‘package:base’:
+
+    xor
+
+Attaching package bit64
+package:bit64 (c) 2011-2017 Jens Oehlschlaegel
+creators: integer64 runif64 seq :
+coercion: as.integer64 as.vector as.logical as.integer as.double as.character as.bitstring
+logical operator: ! & | xor != == < <= >= >
+arithmetic operator: + - * / %/% %% ^
+math: sign abs sqrt log log2 log10
+math: floor ceiling trunc round
+querying: is.integer64 is.vector [is.atomic} [length] format print str
+values: is.na is.nan is.finite is.infinite
+aggregation: any all min max range sum prod
+cumulation: diff cummin cummax cumsum cumprod
+access: length<- [ [<- [[ [[<-
+combine: c rep cbind rbind as.data.frame
+WARNING don't use as subscripts
+WARNING semantics differ from integer
+for more help type ?bit64
+
+Attaching package: ‘bit64’
+
+The following objects are masked from ‘package:base’:
+
+    :, %in%, is.double, match, order, rank
+
+
+Attaching package: ‘zoo’
+
+The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+Warning messages:
+1: package ‘tidyverse’ was built under R version 4.0.5 
+2: package ‘rlang’ was built under R version 4.0.5 
+> 
+> 
+> #--------------------------------------------
+> # Read in synthetic data file
+> #--------------------------------------------
+> 
+> d1 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All BC Synthesized.rds")) %>% mutate(syntype="BC")
+> d1 <- d1 %>%
++   mutate(vagbrth=factor(vagbrth),
++          hdlvry=factor(hdlvry))
+> d2 <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds")) %>% mutate(syntype="QI")
+> d3 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized.rds"))  %>% mutate(syntype="FULL")
+> 
+> class(d1$single)
+[1] "integer"
+> class(d2$single)
+[1] "factor"
+> class(d3$single)
+[1] "integer"
+> 
+> colnames(d1)
+ [1] "cohortid"       "subjid"         "agedays"        "studyida"      
+ [5] "studyid"        "ctrycd"         "country"        "measurefreq"   
+ [9] "siteid"         "latitude"       "longitud"       "region"        
+[13] "clusterid"      "arm"            "sex"            "W_gagebrth"    
+[17] "gagebrth"       "vagbrth"        "hdlvry"         "W_birthwt"     
+[21] "birthwt"        "W_birthlen"     "birthlen"       "brthyr"        
+[25] "brthmon"        "brthweek"       "earlybf"        "predexfd6"     
+[29] "W_parity"       "parity"         "W_mage"         "mage"          
+[33] "W_mhtcm"        "mhtcm"          "W_mwtkg"        "mwtkg"         
+[37] "W_mbmi"         "mbmi"           "W_meducyrs"     "meducyrs"      
+[41] "single"         "W_fage"         "fage"           "W_fhtcm"       
+[45] "fhtcm"          "W_feducyrs"     "feducyrs"       "hhwealth_quart"
+[49] "hfoodsec"       "impsan"         "safeh2o"        "trth2o"        
+[53] "cleanck"        "impfloor"       "W_nrooms"       "nrooms"        
+[57] "W_nhh"          "nhh"            "W_nchldlt5"     "nchldlt5"      
+[61] "agemonths"      "lencm"          "htcm"           "wtkg"          
+[65] "haz"            "waz"            "whz"            "muaz"          
+[69] "exclude_desc"   "month"          "enstunt"        "enwast"        
+[73] "anywast06"      "pers_wast"      "W_perdiar6"     "perdiar6"      
+[77] "W_perdiar24"    "perdiar24"      "dead"           "agedth"        
+[81] "syntype"       
+> d1 <- d1 %>%
++   mutate(vagbrth=factor(vagbrth),
++          hdlvry=factor(hdlvry),
++          brthmon=factor(brthmon),
++          earlybf=factor(earlybf),
++          predexfd6=factor(predexfd6),
++          single=factor(single),
++          impsan=factor(impsan),
++          safeh2o=factor(safeh2o),
++          cleanck=factor(cleanck),
++          impfloor=factor(impfloor),
++          trth2o=factor(trth2o),
++          dead=factor(dead),
++          brthmon=factor(brthmon),
++          hdlvry=factor(hdlvry),
++          hdlvry=factor(hdlvry),
++          hdlvry=factor(hdlvry),
++          hdlvry=factor(hdlvry),
++          hdlvry=factor(hdlvry))
+> d3 <- d3 %>% mutate( brthmon=factor(brthmon),
++                      dead=factor(dead),
++                      single=factor(single))
+> 
+> 
+> d <- bind_rows(d1,d2,d3)
+> 
+> 
+> summary(d$haz)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+ -27.52   -1.99   -1.10   -1.08   -0.18   20.47  105086 
+> 
+> head(d)
+  cohortid            subjid agedays studyida                 studyid ctrycd
+1 BFZn-BFA syn-BFZn-BFA-4565     243     BFZn Burkina Faso Zinc trial    BFA
+2 BFZn-BFA syn-BFZn-BFA-4565     357     BFZn Burkina Faso Zinc trial    BFA
+3 BFZn-BFA syn-BFZn-BFA-4565     470     BFZn Burkina Faso Zinc trial    BFA
+4 BFZn-BFA syn-BFZn-BFA-4565     583     BFZn Burkina Faso Zinc trial    BFA
+5 BFZn-BFA syn-BFZn-BFA-6657     671     BFZn Burkina Faso Zinc trial    BFA
+6 BFZn-BFA syn-BFZn-BFA-6657     785     BFZn Burkina Faso Zinc trial    BFA
+       country measurefreq siteid latitude longitud region clusterid
+1 BURKINA FASO      yearly   ****    11.14    -4.93 Africa        NA
+2 BURKINA FASO      yearly   ****    11.14    -4.93 Africa        NA
+3 BURKINA FASO      yearly   ****    11.14    -4.93 Africa        NA
+4 BURKINA FASO      yearly   ****    11.14    -4.93 Africa        NA
+5 BURKINA FASO      yearly   ****    11.14    -4.93 Africa        NA
+6 BURKINA FASO      yearly   ****    11.14    -4.93 Africa        NA
+                                      arm    sex W_gagebrth gagebrth vagbrth
+1 Therapeutic Zinc: 20 mg/day for 10 days   Male         NA     <NA>    <NA>
+2 Therapeutic Zinc: 20 mg/day for 10 days   Male         NA     <NA>    <NA>
+3 Therapeutic Zinc: 20 mg/day for 10 days   Male         NA     <NA>    <NA>
+4 Therapeutic Zinc: 20 mg/day for 10 days   Male         NA     <NA>    <NA>
+5  Intermittent Zinc: 10 mg/d for 10 days Female         NA     <NA>    <NA>
+6  Intermittent Zinc: 10 mg/d for 10 days Female         NA     <NA>    <NA>
+  hdlvry W_birthwt birthwt W_birthlen birthlen brthyr brthmon brthweek earlybf
+1   <NA>        NA    <NA>         NA     <NA>   2010       4       14    <NA>
+2   <NA>        NA    <NA>         NA     <NA>   2010       4       14    <NA>
+3   <NA>        NA    <NA>         NA     <NA>   2010       4       14    <NA>
+4   <NA>        NA    <NA>         NA     <NA>   2010       4       14    <NA>
+5   <NA>        NA    <NA>         NA     <NA>   2009       5       19    <NA>
+6   <NA>        NA    <NA>         NA     <NA>   2009       5       19    <NA>
+  predexfd6 W_parity parity W_mage    mage W_mhtcm    mhtcm  W_mwtkg      mwtkg
+1      <NA>        1      1     18     <20   166.7 >=155 cm 65.54062    >=58 kg
+2      <NA>        1      1     18     <20   166.7 >=155 cm 65.54062    >=58 kg
+3      <NA>        1      1     18     <20   166.7 >=155 cm 65.54062    >=58 kg
+4      <NA>        1      1     18     <20   166.7 >=155 cm 65.54062    >=58 kg
+5      <NA>        4     3+     25 [20-30)   165.5 >=155 cm 54.43126 [52-58) kg
+6      <NA>        4     3+     25 [20-30)   165.5 >=155 cm 54.43126 [52-58) kg
+    W_mbmi          mbmi W_meducyrs meducyrs single W_fage fage W_fhtcm fhtcm
+1 23.58519 Normal weight          0      Low   <NA>     NA <NA>      NA  <NA>
+2 23.58519 Normal weight          0      Low   <NA>     NA <NA>      NA  <NA>
+3 23.58519 Normal weight          0      Low   <NA>     NA <NA>      NA  <NA>
+4 23.58519 Normal weight          0      Low   <NA>     NA <NA>      NA  <NA>
+5 19.87250 Normal weight          0      Low   <NA>     NA <NA>      NA  <NA>
+6 19.87250 Normal weight          0      Low   <NA>     NA <NA>      NA  <NA>
+  W_feducyrs feducyrs hhwealth_quart hfoodsec impsan safeh2o trth2o cleanck
+1         NA     <NA>           <NA>     <NA>      0       1   <NA>    <NA>
+2         NA     <NA>           <NA>     <NA>      0       1   <NA>    <NA>
+3         NA     <NA>           <NA>     <NA>      0       1   <NA>    <NA>
+4         NA     <NA>           <NA>     <NA>      0       1   <NA>    <NA>
+5         NA     <NA>           <NA>     <NA>      0       0   <NA>    <NA>
+6         NA     <NA>           <NA>     <NA>      0       0   <NA>    <NA>
+  impfloor W_nrooms nrooms W_nhh  nhh W_nchldlt5 nchldlt5 agemonths lencm htcm
+1     <NA>       NA   <NA>    NA <NA>         NA     <NA>  7.989032  69.8   NA
+2     <NA>       NA   <NA>    NA <NA>         NA     <NA> 11.736973  72.4   NA
+3     <NA>       NA   <NA>    NA <NA>         NA     <NA> 15.452038  75.0   NA
+4     <NA>       NA   <NA>    NA <NA>         NA     <NA> 19.167102  77.9   NA
+5     <NA>       NA   <NA>    NA <NA>         NA     <NA> 22.060250  81.2   NA
+6     <NA>       NA   <NA>    NA <NA>         NA     <NA> 25.808191  83.4   NA
+   wtkg   haz   waz   whz  muaz exclude_desc month enstunt enwast anywast06
+1  7.96 -0.33 -0.71 -0.63  0.00         <NA>    12       0      0      <NA>
+2  8.63 -1.29 -0.95 -0.44  0.06         <NA>     3       0      0      <NA>
+3  8.66 -1.80 -1.65 -1.14 -1.20         <NA>     7       0      0      <NA>
+4  9.45 -1.99 -1.49 -0.75 -0.99         <NA>    11       0      0      <NA>
+5  9.65 -1.11 -1.13 -0.77 -0.59         <NA>    12       0      0      <NA>
+6 10.13 -1.17 -1.29 -0.93 -0.51    Month 24+     3       0      0      <NA>
+  pers_wast W_perdiar6 perdiar6 W_perdiar24 perdiar24 dead agedth syntype
+1      <NA>         NA     <NA>          NA      <NA>    0     NA      BC
+2      <NA>         NA     <NA>          NA      <NA>    0     NA      BC
+3      <NA>         NA     <NA>          NA      <NA>    0     NA      BC
+4      <NA>         NA     <NA>          NA      <NA>    0     NA      BC
+5      <NA>         NA     <NA>          NA      <NA>    0     NA      BC
+6      <NA>         NA     <NA>          NA      <NA>    0     NA      BC
+> 
+> d$studyid <- gsub(" Trial","",d$studyid)
+> d$studyid <- gsub(" Study","",d$studyid)
+> unique(d$studyid)
+ [1] "Burkina Faso Zinc trial"                          
+ [2] "CMC Birth Cohort, Vellore"                        
+ [3] "CMIN"                                             
+ [4] "Optimal Infant Feeding"                           
+ [5] "CONTENT"                                          
+ [6] "INCAP Nutrition Supplementation Longitudinal"     
+ [7] "New Delhi Birth Cohort"                           
+ [8] "The Cebu Longitudinal Health and Nutrition Survey"
+ [9] "Biomarkers for EE"                                
+[10] "Food Suppl RCT"                                   
+[11] "Bovine Serum RCT"                                 
+[12] "Growth Monitoring"                                
+[13] "iLiNS-DYAD-M"                                     
+[14] "iLiNS-DOSE"                                       
+[15] "Vellore Crypto"                                   
+[16] "JiVitA-3"                                         
+[17] "JiVitA-4"                                         
+[18] "MRC Keneba"                                       
+[19] "Lungwena Child Nutrition RCT"                     
+[20] "iLiNS-Zinc"                                       
+[21] "MAL-ED"                                           
+[22] "NIH Birth Cohort"                                 
+[23] "NIH Cryptosporidium"                              
+[24] "PROBIT"                                           
+[25] "PROVIDE RCT"                                      
+[26] "Resp. Pathogens"                                  
+[27] "Tanzania Child 2"                                 
+[28] "Vitamin A"                                        
+[29] "ZVITAMBO"                                         
+> 
+>                                                                     
+>         
+> d <- d %>% mutate(
++   studyid = case_when(
++     studyid=="MRC Keneba" ~ "Keneba",
++     studyid=="PROBIT Study" ~ "PROBIT",
++     studyid=="INCAP Nutrition Supplementation Longitudinal" ~ "COHORTS",
++     studyid=="Vellore Crypto Study" ~ "IRC",
++     studyid=="Tanzania Child 2" ~ "TanzaniaChild2",
++     studyid=="Vitamin A Trial" ~ "Vitamin A",
++     studyid=="Food Suppl RCT " ~ "SAS-FoodSuppl",
++     studyid=="Optimal Infant Feeding" ~ "SAS-CompFeed",
++     studyid=="New Delhi Birth Cohort" ~ "COHORTS",
++     studyid=="NIH Cryptosporidium" ~ "NIH-Crypto",
++     studyid=="Vitamin A" ~ "Vitamin A",
++     studyid=="Burkina Faso Zinc trial" ~ "Burkina Faso Zn",
++     studyid=="The Cebu Longitudinal Health and Nutrition Survey" ~ "COHORTS",
++     studyid=="Lungwena Child Nutrition RCT" ~ "LCNI-5",
++     studyid=="PROVIDE RCT" ~ "PROVIDE",
++     studyid=="CMC Birth Cohort, Vellore" ~ "CMC-V-BCS-2002",
++     studyid=="Growth Monitoring" ~ "GMS-Nepal",
++     studyid=="Biomarkers for EE" ~ "EE",
++     studyid=="CONTENT" ~ "CONTENT",
++     studyid=="NIH Birth Cohort" ~ "NIH-Birth",
++     studyid=="Resp. Pathogens" ~ "ResPak",
++     studyid=="Bovine Serum RCT" ~ "Guatemala BSC",
++     studyid=="JiVitA-3 Trial" ~ "JiVitA-3",
++     studyid=="JiVitA-4 Trial" ~ "JiVitA-4",
++     studyid=="Food Suppl RCT" ~ "SAS-FoodSuppl",
++     studyid=="Optimal Infant Feeding" ~ "SAS-CompFeed",
++     studyid=="Lungwena Child Nutrition RCT" ~ "LCNI-5",
++     studyid==studyid ~ studyid
++   )
++ )
+> 
+> unique(d$studyid)
+ [1] "Burkina Faso Zn" "CMC-V-BCS-2002"  "CMIN"            "SAS-CompFeed"   
+ [5] "CONTENT"         "COHORTS"         "EE"              "SAS-FoodSuppl"  
+ [9] "Guatemala BSC"   "GMS-Nepal"       "iLiNS-DYAD-M"    "iLiNS-DOSE"     
+[13] "Vellore Crypto"  "JiVitA-3"        "JiVitA-4"        "Keneba"         
+[17] "LCNI-5"          "iLiNS-Zinc"      "MAL-ED"          "NIH-Birth"      
+[21] "NIH-Crypto"      "PROBIT"          "PROVIDE"         "ResPak"         
+[25] "TanzaniaChild2"  "Vitamin A"       "ZVITAMBO"       
+> table(d$studyid)
+
+Burkina Faso Zn  CMC-V-BCS-2002            CMIN         COHORTS         CONTENT 
+          53846           40223           15210          290195           23137 
+             EE       GMS-Nepal   Guatemala BSC      iLiNS-DOSE    iLiNS-DYAD-M 
+          25511           39225            7380           49216           29594 
+     iLiNS-Zinc        JiVitA-3        JiVitA-4          Keneba          LCNI-5 
+          22603          301187           88230          126284           15878 
+         MAL-ED       NIH-Birth      NIH-Crypto          PROBIT         PROVIDE 
+         132206           29277           29071          408357           41466 
+         ResPak    SAS-CompFeed   SAS-FoodSuppl  TanzaniaChild2  Vellore Crypto 
+           8896           21691            6605           92181           37302 
+      Vitamin A        ZVITAMBO 
+          98336          213992 
+> 
+> 
+> 
+> #code tr treatment variable
+> d$tr <- NA
+> 
+> d$tr[d$studyid=="Serrinha-VitA" & d$arm=="Placebo"] <- "Control"
+> d$tr[d$studyid=="Serrinha-VitA" & d$arm=="Vitamin A"] <- "VitA"
+> 
+> d$tr[(d$studyid=="WASH-Bangladesh" | d$studyid=="WASH-Kenya")] <- "Other"
+> d$tr[(d$studyid=="WASH-Bangladesh" | d$studyid=="WASH-Kenya") & (d$arm=="Control" | d$arm=="Passive Control")] <- "Control"
+> d$tr[(d$studyid=="WASH-Bangladesh" | d$studyid=="WASH-Kenya") & (d$arm=="Nutrition" | d$arm=="Nutrition + WSH")] <- "LNS"
+> 
+> d$tr[d$studyid=="AgaKhanUniv" & d$arm=="Control"] <- "Control"
+> d$tr[d$studyid=="AgaKhanUniv" & d$arm=="Intervention"] <- "Maternal"
+> 
+> d$tr[d$studyid=="EU" & d$arm=="Placebo"] <- "Control"
+> d$tr[d$studyid=="EU" & d$arm=="Zinc"] <- "Zinc"
+> 
+> d$tr[d$studyid=="VITAMIN-A" & d$arm=="Control"] <- "Control"
+> d$tr[d$studyid=="VITAMIN-A" & d$arm=="Vitamin A"] <- "VitA"
+> 
+> d$tr[d$studyid=="Vitamin-B12" ] <- "Other"
+> d$tr[d$studyid=="Vitamin-B12" & d$arm=="Placebo"] <- "Control"
+> 
+> d$tr[d$studyid=="ZnMort" & d$arm=="IFA"] <- "Control"
+> d$tr[d$studyid=="ZnMort" & d$arm=="Zinc+IFA"] <- "Zinc"
+> 
+> d$tr[d$studyid=="SAS-CompFeed" & d$arm=="Control"] <- "Control"
+> d$tr[d$studyid=="SAS-CompFeed" & (d$arm=="Intervention"|d$arm=="")] <- "Other"
+> 
+> d$tr[d$studyid=="SAS-FoodSuppl" ] <- "Other"
+> d$tr[d$studyid=="SAS-FoodSuppl" & d$arm=="No intervention"] <- "Control"
+> 
+> d$tr[d$studyid=="PROVIDE" ] <- "Other"
+> d$tr[d$studyid=="PROVIDE" & d$arm=="No Rotarix + No IPV (175)"] <- "Control"
+> 
+> d$tr[d$studyid=="TanzaniaChild2" & d$arm=="Control"] <- "Control"
+> d$tr[d$studyid=="TanzaniaChild2" & d$arm=="Multivitamin Alone"] <- "Other"
+> d$tr[d$studyid=="TanzaniaChild2" & (d$arm=="Zinc Alone" | d$arm=="Zinc + Multivitamin")] <- "Zinc"
+> 
+> d$tr[d$studyid=="Burkina Faso Zn" ] <- "Zinc"
+> d$tr[d$studyid=="Burkina Faso Zn" & d$arm=="Control (no Zinc)"] <- "Control"
+> 
+> d$tr[d$studyid=="Guatemala BSC" ] <- "Other"
+> d$tr[d$studyid=="Guatemala BSC" & (d$arm=="WPC"|d$arm=="MNT + WPC")] <- "Control"
+> 
+> d$tr[d$studyid=="iLiNS-Zinc" ] <- "LNS"
+> d$tr[d$studyid=="iLiNS-Zinc" & d$arm=="e.Control"] <- "Control"
+> 
+> 
+> d$tr[d$studyid=="PROBIT" ] <- "Maternal"
+> d$tr[d$studyid=="PROBIT" & d$arm=="Control group"] <- "Control"
+> 
+> d$tr[d$studyid=="ZVITAMBO" ] <- "VitA"
+> d$tr[d$studyid=="ZVITAMBO" & d$arm=="Placebo nippled + Placebo Oval"] <- "Control"
+> 
+> 
+> d$tr[d$studyid=="COHORTS" & d$arm=="Control"] <- "Control"
+> d$tr[d$studyid=="COHORTS" & d$arm=="Intervention"] <- "Other"
+> 
+> d$tr[d$studyid=="iLiNS-DOSE" & d$arm=="Control"] <- "Control"
+> d$tr[d$studyid=="iLiNS-DOSE" & d$arm!="Control"] <- "LNS"
+> 
+> d$tr[d$studyid=="iLiNS-DYAD-M" & d$arm=="Iron and folic acid supplementation"] <- "Control"
+> d$tr[d$studyid=="iLiNS-DYAD-M" & d$arm!="Iron and folic acid supplementation"] <- "Maternal"
+> 
+> 
+> iLiNS_DYADM_df <- d[d$studyid=="iLiNS-DYAD-M" & d$arm!="Multiple micronutrient supplementation", ]
+> iLiNS_DYADM_df$tr <- "Control"
+> iLiNS_DYADM_df$tr[iLiNS_DYADM_df$arm!="Iron and folic acid supplementation"] <- "LNS"
+> iLiNS_DYADM_df$studyid <- "iLiNS_DYADM_LNS"
+> 
+> d$tr[d$studyid=="LCNI-5"& d$arm=="Standard(Control)"] <- "Control"
+> d$tr[d$studyid=="LCNI-5"& (d$arm=="Milk FS"|d$arm=="Soy FS")] <- "LNS"
+> d$tr[d$studyid=="LCNI-5"& d$arm=="Likuni Phala"] <- "Other"
+> 
+> d$tr[d$studyid=="JiVitA-3" & d$arm=="Iron Folic Acid"] <- "Control"
+> d$tr[d$studyid=="JiVitA-3" & d$arm=="Multiple Micronutrients"] <- "Maternal"
+> 
+> d$tr[d$studyid=="JiVitA-4"] <- "Other"
+> d$tr[d$studyid=="JiVitA-4" & d$arm=="CFC"] <- "Control"
+> d$tr[d$studyid=="JiVitA-4" & d$arm=="Plumpy Doz"] <- "LNS"
+> 
+> d$tr[is.na(d$tr)] <- ""
+> 
+> table(d$studyid, d$tr)
+                 
+                         Control    LNS Maternal  Other   VitA   Zinc
+  Burkina Faso Zn      0    5910      0        0      0      0  47936
+  CMC-V-BCS-2002   40223       0      0        0      0      0      0
+  CMIN             15210       0      0        0      0      0      0
+  COHORTS         254823   19502      0        0  15870      0      0
+  CONTENT          23137       0      0        0      0      0      0
+  EE               25511       0      0        0      0      0      0
+  GMS-Nepal        39225       0      0        0      0      0      0
+  Guatemala BSC        0    3348      0        0   4032      0      0
+  iLiNS-DOSE           0    7536  41680        0      0      0      0
+  iLiNS-DYAD-M         0    9639      0    19955      0      0      0
+  iLiNS-Zinc           0    6536  16067        0      0      0      0
+  JiVitA-3             0  177036      0   124151      0      0      0
+  JiVitA-4             0   29345  21973        0  36912      0      0
+  Keneba          126284       0      0        0      0      0      0
+  LCNI-5               0    3906   7856        0   4116      0      0
+  MAL-ED          132206       0      0        0      0      0      0
+  NIH-Birth        29277       0      0        0      0      0      0
+  NIH-Crypto       29071       0      0        0      0      0      0
+  PROBIT               0  229128      0   179229      0      0      0
+  PROVIDE              0   11026      0        0  30440      0      0
+  ResPak            8896       0      0        0      0      0      0
+  SAS-CompFeed      6403    8524      0        0   6764      0      0
+  SAS-FoodSuppl        0    1507      0        0   5098      0      0
+  TanzaniaChild2       0   23808      0        0  23051      0  45322
+  Vellore Crypto   37302       0      0        0      0      0      0
+  Vitamin A        98336       0      0        0      0      0      0
+  ZVITAMBO             0   53835      0        0      0 160157      0
+> 
+> saveRDS(d, paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+ 75.204   3.552  78.746 

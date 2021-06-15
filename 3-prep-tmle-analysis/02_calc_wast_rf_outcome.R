@@ -28,7 +28,7 @@ d_noBW <- d_noBW %>% subset(., select= -c(tr))
 # monthly_whz <- monthly_whz %>% subset(., select=c(subjid,studyid,country,agecat,region, measurefreq, whz))
 # monthly_whz <- monthly_whz %>%
 #   filter(!is.na(agecat)) %>%
-#   group_by(studyid,country,subjid,agecat,measurefreq) %>%
+#   group_by(syntype,studyid,country,subjid,agecat,measurefreq) %>%
 #   summarise(whz=mean(whz))
 # save(monthly_whz, file="/home/andrew.mertens/data/KI/UCB-SuperLearner/Manuscript analysis data/monthly_whz.rdata")
 
@@ -45,7 +45,7 @@ dprev <- calc.prev.agecat(d)
 # take mean of multiple measurements within age window
 dmn <- dprev %>%
   filter(!is.na(agecat)) %>%
-  group_by(studyid,country,subjid,agecat) %>%
+  group_by(syntype,studyid,country,subjid,agecat) %>%
   summarise(whz=mean(whz)) %>%
   mutate(wasted=ifelse(whz< -2, 1,0),swasted=ifelse(whz< -3, 1,0))
 
@@ -75,7 +75,7 @@ d6 <- calc.ci.agecat(d, range = 6, birth="yes")
 #calculate any wasting from 0-6
 wast_ci_0_6 = d6 %>% ungroup() %>%
   filter(agecat=="0-6 months") %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   #create variable with minhaz by age category, cumulatively
   mutate(agecat="0-6 months", ever_wasted= 1*(sum(wast_inc, na.rm=T)>0), ever_swasted= 1*(sum(sevwast_inc, na.rm=T)>0), Nobs=n()) %>% slice(1) %>%
   mutate(N=n()) %>%
@@ -83,7 +83,7 @@ wast_ci_0_6 = d6 %>% ungroup() %>%
 
 # #calculate any wasting from 6-24
 wast_ci_6_24 = d6 %>% ungroup() %>% 
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   arrange(studyid,country,subjid, agedays) %>% 
   filter(agecat!="0-6 months") %>%
   mutate(agecat="6-24 months",  ever_wasted=1*(sum(wast_inc, na.rm=T)>0), ever_swasted= 1*(sum(sevwast_inc, na.rm=T)>0), Nobs=n()) %>% slice(1) %>%
@@ -93,7 +93,7 @@ wast_ci_6_24 = d6 %>% ungroup() %>%
 #calculate any wasting from 0-24
 wast_ci_0_24 = d6 %>% ungroup() %>%
   filter(!is.na(agecat)) %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   #create variable with minhaz by age category, cumulatively
   mutate(agecat="0-24 months", ever_wasted=1*(sum(wast_inc, na.rm=T)>0),  ever_swasted= 1*(sum(sevwast_inc, na.rm=T)>0), Nobs=n()) %>% slice(1) %>%
   mutate(N=n()) %>%
@@ -114,7 +114,7 @@ d6_nobirth <- calc.ci.agecat(d_noBW, range = 6, birth="yes")
 wast_ci_0_6_no_birth = d6_nobirth %>% ungroup() %>% 
   arrange(studyid,country,subjid, agedays) %>% 
   filter(agecat=="0-6 months" & !is.na(agecat)) %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   arrange(studyid,country,subjid, agedays) %>% 
   filter(wasting_episode!="Born Wasted") %>% #drop children born wasted
   mutate(agecat="0-6 months (no birth wast)", ever_wasted=1*(sum(wast_inc, na.rm=T)>0),  ever_swasted= 1*(sum(sevwast_inc, na.rm=T)>0), Nobs=n()) %>% slice(1) %>%
@@ -123,7 +123,7 @@ wast_ci_0_6_no_birth = d6_nobirth %>% ungroup() %>%
 
 wast_ci_0_24_no_birth = d6_nobirth %>% ungroup() %>% 
   filter(!is.na(agecat)) %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   arrange(studyid,country,subjid, agedays) %>% 
   filter(wasting_episode!="Born Wasted") %>% #drop children born wasted
   mutate(agecat="0-24 months (no birth wast)", ever_wasted=1*(sum(wast_inc, na.rm=T)>0),  ever_swasted= 1*(sum(sevwast_inc, na.rm=T)>0), Nobs=n()) %>% slice(1) %>%
@@ -146,7 +146,7 @@ table(cuminc_nobirth$ever_wasted[cuminc_nobirth$agecat=="0-24 months (no birth w
 
 pers_wast_0_6 <- d6 %>% 
   filter(agecat=="0-6 months") %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   arrange(studyid,country,subjid, agedays) %>% 
   mutate(N=n()) %>% filter(N>=4) %>%
   mutate(perc_wasting=mean(whz < (-2))) %>% slice(1) %>%
@@ -158,7 +158,7 @@ table(pers_wast_0_6$pers_wast)
 
 pers_wast_0_24 <- d6 %>% 
   filter(!is.na(agecat)) %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   arrange(studyid,country,subjid, agedays) %>% 
   mutate(N=n()) %>% filter(N>=4) %>%
   mutate(perc_wasting=mean(whz < (-2))) %>% slice(1) %>%
@@ -167,7 +167,7 @@ pers_wast_0_24 <- d6 %>%
 
 pers_wast_6_24 <- d6 %>% 
   filter(agecat!="6 months" & !is.na(agecat)) %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   arrange(studyid,country,subjid, agedays) %>% 
   mutate(N=n()) %>% filter(N>=4) %>%
   mutate(perc_wasting=mean(whz < (-2))) %>% slice(1) %>%
@@ -196,13 +196,13 @@ pers_wast <- bind_rows(pers_wast_0_6, pers_wast_6_24, pers_wast_0_24)
 #calculate any wasting from 0-6
 wast_rec_0_6 = d6 %>% ungroup() %>%
   filter(agecat=="0-6 months" & !is.na(wast_rec90d)) %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   #create variable with minhaz by age category, cumulatively
   mutate(agecat="0-6 months") %>% ungroup() 
 
 # #calculate any wasting from 6-24
 wast_rec_6_24 = d6 %>% ungroup() %>% 
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   arrange(studyid,country,subjid, agedays) %>% 
   filter(agecat!="0-6 months" & !is.na(wast_rec90d)) %>%
   mutate(agecat="6-24 months") %>% ungroup() 
@@ -210,7 +210,7 @@ wast_rec_6_24 = d6 %>% ungroup() %>%
 #calculate any wasting from 0-24
 wast_rec_0_24 = d6 %>% ungroup() %>%
   filter(!is.na(agecat) & !is.na(wast_rec90d)) %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   mutate(agecat="0-24 months") %>% ungroup() 
 
 rec <- bind_rows(wast_rec_0_6, wast_rec_6_24, wast_rec_0_24)

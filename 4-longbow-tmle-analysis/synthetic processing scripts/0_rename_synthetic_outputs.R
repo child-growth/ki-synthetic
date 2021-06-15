@@ -8,10 +8,17 @@ source(paste0(here::here(), "/0-project-functions/0_risk_factor_functions.R"))
 
 Zscores_BC <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-05-11.RDS")) %>% mutate(syntype="BC")
 Zscores_QI <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-06-03.RDS")) %>% mutate(syntype="QI")
-Zscores_full <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-06-03.RDS")) %>% mutate(syntype="FULL")
+Zscores_full <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-06-03.RDS")) %>% mutate(syntype="Full")
+Zscores_real <-readRDS("/data/KI/ki-manuscript-output/results/rf results/longbow results/results_cont.RDS") %>% mutate(syntype="Real")
 
 
-Zscores <- bind_rows(Zscores_BC, Zscores_full)
+Zscores <- bind_rows(Zscores_BC, Zscores_QI, Zscores_full, Zscores_real)
+
+#Drop new and old cohorts based on updates from peer reviews
+Zscores <- Zscores %>% group_by(studyid, country) %>% mutate(Ndatasets=length(unique(syntype)))
+table(Zscores$Ndatasets)
+Zscores <- Zscores %>% filter(Ndatasets==4)
+
 d <- Zscores %>% filter(intervention_variable!="perdiar24" & intervention_variable!="perdiar6" & !(intervention_variable=="fhtcm" & outcome_variable=="haz"))
 
 #drop EE gestational age
@@ -25,10 +32,10 @@ d2 <- d %>% filter(adjustment_set!="unadjusted")
 
 dim(d1)
 dim(d2)
-d1 <- d1 %>% distinct_at(., .vars=c("agecat", "studyid", "country", "strata_label", "intervention_variable", 
+d1 <- d1 %>% distinct_at(., .vars=c("agecat", "studyid", "country", "strata_label", "intervention_variable", "syntype",
                                     "outcome_variable","type","parameter","intervention_level",  "baseline_level"),
                          .keep_all=TRUE)
-d2 <- d2 %>% distinct_at(., .vars=c("agecat", "studyid", "country", "strata_label", "intervention_variable", 
+d2 <- d2 %>% distinct_at(., .vars=c("agecat", "studyid", "country", "strata_label", "intervention_variable", "syntype",
                                     "outcome_variable","type","parameter","intervention_level",  "baseline_level"),
                          .keep_all=TRUE)
 dim(d1)
@@ -76,6 +83,10 @@ d <- d %>% filter(!(intervention_variable %in% c("enstunt","trth2o","predfeed3",
 # 
 # d <- left_join(d, rare_strat, by = c("studyid", "country", "agecat", "outcome_variable", "intervention_variable")) %>% distinct(.)
 # d <- d %>% filter(is.na(min_n_cell) | min_n_cell>=5)
+
+d$n <- 1
+d$n_cell <- 1
+
 
 #Harmonize agecat names for variables excluding faltering at birth
 d$agecat <- as.character(d$agecat)

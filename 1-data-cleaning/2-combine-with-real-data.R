@@ -18,7 +18,7 @@ synfull <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 real <- readRDS("/data/KI/UCB-SuperLearner/Manuscript analysis data/ki-manuscript-dataset.rds")
 
 
-syn <- synfull %>% subset(., select=c(studyid, country, measurefreq, region, subjid, agedays, haz, waz, whz, sex, lencm,wtkg)) %>% mutate(dataset="Synthetic") 
+syn <- synfull %>% subset(., select=c(studyid, country, measurefreq, region, subjid, agedays, haz, waz, whz, sex, lencm,wtkg)) %>% rename(dataset=syntype) 
 real <- real %>% subset(., select=c(studyid, country, measurefreq, region, subjid, agedays, haz, waz, whz, sex, lencm,wtkg)) %>% mutate(dataset="Original")
 
 d <- bind_rows(syn, real)

@@ -51,8 +51,8 @@ load("st_meanZ_outcomes.RData")
 load("st_cuminc_outcomes.rdata")
 load("st_cuminc_outcomes_nobirth.rdata")
 load("st_rec_outcomes.RData")
-load("st_vel_outcomes.RData")
-load("waz_vel_outcomes.RData")
+# load("st_vel_outcomes.RData")
+# load("waz_vel_outcomes.RData")
 
 
 
@@ -62,10 +62,10 @@ prev$subjid <- as.character(prev$subjid)
 cuminc$subjid <- as.character(cuminc$subjid)
 cuminc_nobirth$subjid <- as.character(cuminc_nobirth$subjid)
 rev$subjid <- as.character(rev$subjid)
-vel_haz$subjid <- as.character(vel_haz$subjid)
-vel_lencm$subjid <- as.character(vel_lencm$subjid)
-vel_waz$subjid <- as.character(vel_waz$subjid)
-vel_wtkg$subjid <- as.character(vel_wtkg$subjid)
+# vel_haz$subjid <- as.character(vel_haz$subjid)
+# vel_lencm$subjid <- as.character(vel_lencm$subjid)
+# vel_waz$subjid <- as.character(vel_waz$subjid)
+# vel_wtkg$subjid <- as.character(vel_wtkg$subjid)
 meanHAZ$subjid <- as.character(meanHAZ$subjid)
 
 
@@ -78,8 +78,8 @@ meanHAZ$subjid <- as.character(meanHAZ$subjid)
 #merge in covariates
 cuminc <- cuminc %>% subset(., select = -c(tr))
 
-d <- left_join(cuminc, cov[, c("studyid", "subjid", "country", setdiff(colnames(cov),colnames(cuminc)))], 
-               by=c("studyid", "subjid", "country"))
+d <- left_join(cuminc, cov[, c("syntype","studyid", "subjid", "country", setdiff(colnames(cov),colnames(cuminc)))], 
+               by=c("syntype","studyid", "subjid", "country"))
 
 head(d)
 
@@ -118,8 +118,8 @@ save(d, Y, A,V, id,  file="st_cuminc_rf.Rdata")
 cuminc_nobirth <- cuminc_nobirth %>% subset(., select = -c(tr))
 cuminc_nobirth <- bind_rows(cuminc_nobirth, cuminc[cuminc$agecat=="6-24 months",])
 
-d <- left_join(cuminc_nobirth, cov[, c("studyid", "subjid", "country", setdiff(colnames(cov),colnames(cuminc_nobirth)))], 
-               by=c("studyid", "subjid", "country"))
+d <- left_join(cuminc_nobirth, cov[, c("syntype","studyid", "subjid", "country", setdiff(colnames(cov),colnames(cuminc_nobirth)))], 
+               by=c("syntype","studyid", "subjid", "country"))
 head(d)
 
 
@@ -156,7 +156,7 @@ save(d, Y, A,V, id,  file="st_cuminc_nobirth_rf.Rdata")
 
 
 #merge in covariates
-d <- left_join(prev, cov, by=c("studyid", "subjid", "country"))
+d <- left_join(prev, cov, by=c("syntype","studyid", "subjid", "country"))
 head(d)
 
 
@@ -185,7 +185,7 @@ save(d, Y, A,V, id,  file="st_prev_rf.Rdata")
 
 
 #merge in covariates
-d <- left_join(meanHAZ, cov, by=c("studyid", "subjid", "country"))
+d <- left_join(meanHAZ, cov, by=c("syntype","studyid", "subjid", "country"))
 head(d)
 
 
@@ -219,7 +219,7 @@ save(d, file="mediation_HAZ.Rdata")
 #------------------------------------
 
 #merge in covariates
-d <- left_join(rev, cov, by=c("studyid", "subjid", "country"))
+d <- left_join(rev, cov, by=c("syntype","studyid", "subjid", "country"))
 head(d)
 
 
@@ -241,61 +241,61 @@ save(d, Y, A,V, id, file="st_rec_rf.Rdata")
 
 
 
-#------------------------------------
-# Create growth velocity dataset
-#------------------------------------
-
-#HAZ
-
-#merge in covariates
-d <- left_join(vel_haz, cov, by=c("studyid", "subjid", "country"))
-head(d)
-
-
-#Vector of outcome names
-Y<-c("y_rate_haz")
-
-
-#Vector of covariate names
-W<-c("")
-
-#Subgroup variable
-V <- c("agecat")
-
-#clusterid ID variable
-id <- c("id")
-
-#Change outcome name to differentiate from lencm velocity outcome
-d <- d %>% rename(y_rate_haz=y_rate)
-
-save(d, Y, A,V, id, file="st_haz_vel_rf.Rdata")
-
-
-# Height in cm
-
-#merge in covariates
-d <- left_join(vel_lencm, cov, by=c("studyid", "subjid", "country"))
-head(d)
-
-
-#Vector of outcome names
-Y<-c("y_rate_len")
-
-
-#Vector of covariate names
-W<-c("")
-
-#Subgroup variable
-V <- c("agecat")
-
-#clusterid ID variable
-id <- c("id")
-
-d <- d %>% rename(y_rate_len=y_rate)
-
-
-save(d, Y, A,V, id, file="st_len_vel_rf.Rdata")
-
+# #------------------------------------
+# # Create growth velocity dataset
+# #------------------------------------
+# 
+# #HAZ
+# 
+# #merge in covariates
+# d <- left_join(vel_haz, cov, by=c("syntype","studyid", "subjid", "country"))
+# head(d)
+# 
+# 
+# #Vector of outcome names
+# Y<-c("y_rate_haz")
+# 
+# 
+# #Vector of covariate names
+# W<-c("")
+# 
+# #Subgroup variable
+# V <- c("agecat")
+# 
+# #clusterid ID variable
+# id <- c("id")
+# 
+# #Change outcome name to differentiate from lencm velocity outcome
+# d <- d %>% rename(y_rate_haz=y_rate)
+# 
+# save(d, Y, A,V, id, file="st_haz_vel_rf.Rdata")
+# 
+# 
+# # Height in cm
+# 
+# #merge in covariates
+# d <- left_join(vel_lencm, cov, by=c("syntype","studyid", "subjid", "country"))
+# head(d)
+# 
+# 
+# #Vector of outcome names
+# Y<-c("y_rate_len")
+# 
+# 
+# #Vector of covariate names
+# W<-c("")
+# 
+# #Subgroup variable
+# V <- c("agecat")
+# 
+# #clusterid ID variable
+# id <- c("id")
+# 
+# d <- d %>% rename(y_rate_len=y_rate)
+# 
+# 
+# save(d, Y, A,V, id, file="st_len_vel_rf.Rdata")
+# 
 
 
 
@@ -325,8 +325,8 @@ cuminc$subjid <- as.character(cuminc$subjid)
 cuminc_nobirth$subjid <- as.character(cuminc_nobirth$subjid)
 rec$subjid <- as.character(rec$subjid)
 pers_wast$subjid <- as.character(pers_wast$subjid)
-vel_waz$subjid <- as.character(vel_waz$subjid)
-vel_wtkg$subjid <- as.character(vel_wtkg$subjid)
+# vel_waz$subjid <- as.character(vel_waz$subjid)
+# vel_wtkg$subjid <- as.character(vel_wtkg$subjid)
 meanWHZ$subjid <- as.character(meanWHZ$subjid)
 
 
@@ -338,8 +338,8 @@ meanWHZ$subjid <- as.character(meanWHZ$subjid)
 #merge in covariates
 dim(cuminc)
 dim(cov)
-d <- left_join(cuminc, cov[, c("studyid", "subjid", "country", setdiff(colnames(cov),colnames(cuminc)))], 
-               by=c("studyid", "subjid", "country"))
+d <- left_join(cuminc, cov[, c("syntype","studyid", "subjid", "country", setdiff(colnames(cov),colnames(cuminc)))], 
+               by=c("syntype","studyid", "subjid", "country"))
 dim(d)
 
 
@@ -378,8 +378,8 @@ save(d, Y, A,V, id,  file="wast_cuminc_rf.Rdata")
 cuminc_nobirth <- bind_rows(cuminc_nobirth, cuminc[cuminc$agecat=="6-24 months",])
 
 dim(cuminc_nobirth)
-d <- left_join(cuminc_nobirth, cov[, c("studyid", "subjid", "country", setdiff(colnames(cov),colnames(cuminc_nobirth)))], 
-               by=c("studyid", "subjid", "country"))
+d <- left_join(cuminc_nobirth, cov[, c("syntype","studyid", "subjid", "country", setdiff(colnames(cov),colnames(cuminc_nobirth)))], 
+               by=c("syntype","studyid", "subjid", "country"))
 dim(d)
 
 
@@ -416,7 +416,7 @@ save(d, Y, A,V, id,  file="wast_cuminc_nobirth_rf.Rdata")
 
 #merge in covariates
 dim(prev)
-d <- left_join(prev, cov, by=c("studyid", "subjid", "country"))
+d <- left_join(prev, cov, by=c("syntype","studyid", "subjid", "country"))
 dim(d)
 
 
@@ -445,7 +445,7 @@ save(d, Y, A,V, id,  file="wast_prev_rf.Rdata")
 
 #merge in covariates
 dim(meanWHZ)
-d <- left_join(meanWHZ, cov, by=c("studyid", "subjid", "country"))
+d <- left_join(meanWHZ, cov, by=c("syntype","studyid", "subjid", "country"))
 dim(d)
 
 #Vector of outcome names
@@ -478,8 +478,8 @@ save(d, file="mediation_WHZ.Rdata")
 
 #merge in covariates
 dim(rec)
-d <- left_join(rec, cov[, c("studyid", "subjid", "country", setdiff(colnames(cov),colnames(rec)))], 
-               by=c("studyid", "subjid", "country"))
+d <- left_join(rec, cov[, c("syntype","studyid", "subjid", "country", setdiff(colnames(cov),colnames(rec)))], 
+               by=c("syntype","studyid", "subjid", "country"))
 dim(d)
 
 
@@ -505,8 +505,8 @@ save(d, Y, A,V, id,  file="wast_rec_rf.Rdata")
 
 #merge in covariates
 dim(pers_wast)
-d <- left_join(pers_wast, cov[, c("studyid", "subjid", "country", setdiff(colnames(cov),colnames(pers_wast)))], 
-               by=c("studyid", "subjid", "country"))
+d <- left_join(pers_wast, cov[, c("syntype","studyid", "subjid", "country", setdiff(colnames(cov),colnames(pers_wast)))], 
+               by=c("syntype","studyid", "subjid", "country"))
 
 
 dim(d)
@@ -534,60 +534,60 @@ save(d, Y, A,V, id, file="pers_wast_rf.Rdata")
 
 
 
-#------------------------------------
-# Create growth velocity dataset
-#------------------------------------
-
-#WAZ
-
-#merge in covariates
-d <- left_join(vel_waz, cov, by=c("studyid", "subjid", "country"))
-head(d)
-
-
-#Vector of outcome names
-Y<-c("y_rate_waz")
-
-
-#Vector of covariate names
-W<-c("")
-
-#Subgroup variable
-V <- c("agecat")
-
-#clusterid ID variable
-id <- c("id")
-
-#Change outcome name to differentiate from lencm velocity outcome
-d <- d %>% rename(y_rate_haz=y_rate)
-
-save(d, Y, A,V, id, file="wast_waz_vel_rf.Rdata")
-
-
-# Height in cm
-
-#merge in covariates
-d <- left_join(vel_wtkg, cov, by=c("studyid", "subjid", "country"))
-head(d)
-
-
-#Vector of outcome names
-Y<-c("y_rate_wtkg")
-
-
-#Vector of covariate names
-W<-c("")
-
-#Subgroup variable
-V <- c("agecat")
-
-#clusterid ID variable
-id <- c("id")
-
-d <- d %>% rename(y_rate_wtkg=y_rate)
-
-
-save(d, Y, A,V, id, file="wast_wtkg_vel_rf.Rdata")
+# #------------------------------------
+# # Create growth velocity dataset
+# #------------------------------------
+# 
+# #WAZ
+# 
+# #merge in covariates
+# d <- left_join(vel_waz, cov, by=c("syntype","studyid", "subjid", "country"))
+# head(d)
+# 
+# 
+# #Vector of outcome names
+# Y<-c("y_rate_waz")
+# 
+# 
+# #Vector of covariate names
+# W<-c("")
+# 
+# #Subgroup variable
+# V <- c("agecat")
+# 
+# #clusterid ID variable
+# id <- c("id")
+# 
+# #Change outcome name to differentiate from lencm velocity outcome
+# d <- d %>% rename(y_rate_haz=y_rate)
+# 
+# save(d, Y, A,V, id, file="wast_waz_vel_rf.Rdata")
+# 
+# 
+# # Height in cm
+# 
+# #merge in covariates
+# d <- left_join(vel_wtkg, cov, by=c("syntype","studyid", "subjid", "country"))
+# head(d)
+# 
+# 
+# #Vector of outcome names
+# Y<-c("y_rate_wtkg")
+# 
+# 
+# #Vector of covariate names
+# W<-c("")
+# 
+# #Subgroup variable
+# V <- c("agecat")
+# 
+# #clusterid ID variable
+# id <- c("id")
+# 
+# d <- d %>% rename(y_rate_wtkg=y_rate)
+# 
+# 
+# save(d, Y, A,V, id, file="wast_wtkg_vel_rf.Rdata")
 
 
 
@@ -601,8 +601,8 @@ load("co_cuminc.rdata")
 #merge in covariates
 dim(cuminc)
 dim(cov)
-d <- left_join(cuminc, cov[, c("studyid", "subjid", "country", setdiff(colnames(cov),colnames(cuminc)))], 
-               by=c("studyid", "subjid", "country"))
+d <- left_join(cuminc, cov[, c("syntype","studyid", "subjid", "country", setdiff(colnames(cov),colnames(cuminc)))], 
+               by=c("syntype","studyid", "subjid", "country"))
 
 dim(d)
 

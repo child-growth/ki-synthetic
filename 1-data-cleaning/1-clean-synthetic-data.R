@@ -8,9 +8,44 @@ source(paste0(here::here(), "/0-config.R"))
 # Read in synthetic data file
 #--------------------------------------------
 
-#d <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All BC Synthesized.rds"))
-#d <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds"))
-d <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized.rds"))
+d1 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All BC Synthesized.rds")) %>% mutate(syntype="BC")
+d1 <- d1 %>%
+  mutate(vagbrth=factor(vagbrth),
+         hdlvry=factor(hdlvry))
+d2 <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds")) %>% mutate(syntype="QI")
+d3 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized.rds"))  %>% mutate(syntype="FULL")
+
+class(d1$single)
+class(d2$single)
+class(d3$single)
+
+colnames(d1)
+d1 <- d1 %>%
+  mutate(vagbrth=factor(vagbrth),
+         hdlvry=factor(hdlvry),
+         brthmon=factor(brthmon),
+         earlybf=factor(earlybf),
+         predexfd6=factor(predexfd6),
+         single=factor(single),
+         impsan=factor(impsan),
+         safeh2o=factor(safeh2o),
+         cleanck=factor(cleanck),
+         impfloor=factor(impfloor),
+         trth2o=factor(trth2o),
+         dead=factor(dead),
+         brthmon=factor(brthmon),
+         hdlvry=factor(hdlvry),
+         hdlvry=factor(hdlvry),
+         hdlvry=factor(hdlvry),
+         hdlvry=factor(hdlvry),
+         hdlvry=factor(hdlvry))
+d3 <- d3 %>% mutate( brthmon=factor(brthmon),
+                     dead=factor(dead),
+                     single=factor(single))
+
+
+d <- bind_rows(d1,d2,d3)
+
 
 summary(d$haz)
 

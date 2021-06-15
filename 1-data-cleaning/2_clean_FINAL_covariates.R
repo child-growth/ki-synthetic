@@ -20,7 +20,7 @@ library(growthstandards)
 d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 head(d)
 
-d <- d %>% group_by(studyid, subjid) %>% 
+d <- d %>% group_by(studyid, subjid, syntype) %>% 
   arrange(studyid, subjid, agedays) %>% 
   #keep one observation per child
   slice(1) 
@@ -77,17 +77,30 @@ d$parity <- relevel(d$parity, ref="1")
 
 
 
+
+
 #---------------------------------------
 # Set reference levels
 #---------------------------------------
 
+#birthweight
+# Low birth weight: < 2500
+# healthy birth weight 2500-4200
 
 d$birthwt <- relevel(d$birthwt, ref="Normal or high birthweight")
+
+
+#birth length: 
+#No WHO categories:
+#Based on quantiles
+
 d$birthlen <- relevel(d$birthlen, ref=">=50 cm")
 
-table(paste0(d$studyid," ", d$country), d$hhwealth_quart)
+#wealth index: 
+#wealthiest quartile - Q4 is baseline
 d$hhwealth_quart <- gsub(" ","",d$hhwealth_quart)
-d$hhwealth_quart <- relevel(factor(d$hhwealth_quart), ref="WealthQ4")
+table(paste0(d$studyid," ", d$country), d$hhwealth_quart)
+d$hhwealth_quart <- factor(d$hhwealth_quart, levels=c("WealthQ4","WealthQ1","WealthQ2","WealthQ3"))
 
 # children < 5 in HH
 #not sure how this could be zero - can you double check this? 
@@ -146,28 +159,81 @@ d$feducyrs <- relevel(d$feducyrs, ref="High")
 #number of rooms
 d$nrooms <- relevel(d$nrooms, ref="4+")
 
-d$nchldlt5 <- relevel(d$nchldlt5, ref="1")
-d$meducyrs <- factor(d$meducyrs, levels = c("Low","Medium","High"))
-d$feducyrs <- factor(d$feducyrs, levels = c("Low","Medium","High"))
-
-table(d$tr)
-
-d$tr <- relevel(factor(d$tr), ref="Control")
-d$brthmon <- relevel(factor(d$brthmon), ref="1")
-
-d$vagbrth <- relevel(factor(d$vagbrth), ref="1")
-d$hdlvry <- relevel(factor(d$hdlvry), ref="1")
-d$single <- relevel(factor(d$single), ref="1")
-d$trth2o <- relevel(factor(d$trth2o), ref="1")
-d$cleanck <- relevel(factor(d$cleanck), ref="1")
-d$impfloor <- relevel(factor(d$impfloor), ref="1")
-d$earlybf <- relevel(factor(d$earlybf), ref="1")
+d$hfoodsec <- relevel(d$hfoodsec, ref="Food Secure")
 
 
+d$single <- relevel(d$single, ref="0")
+d$vagbrth <- relevel(d$vagbrth, ref="1")
+d$hdlvry <- relevel(d$hdlvry, ref="1")
+
+
+
+#Set remaining risk factors to factors
+d$brthmon <- factor(d$brthmon)
+d$month <- factor(d$month)
+d$single <- factor(d$single)
+d$vagbrth <- factor(d$vagbrth)
+d$hdlvry <- factor(d$hdlvry)
+d$hfoodsec <- factor(d$hfoodsec)
+d$enstunt <- factor(d$enstunt)
+d$sex <- factor(d$sex)
+d$meducyrs <- factor(d$meducyrs)
+
+#Check that all risk factor variables are set as factors
+d<-as.data.frame(d)
 for(i in 1:ncol(d)){
-  cat(colnames(d)[i],"\n")
-  print(class(d[[i]]))
+  cat(colnames(d)[i], ": ", class(d[,i]), "\n")
 }
+
+
+
+#Tabulate missingness
+for(i in 1:ncol(d)){
+  print(colnames(d)[i])
+  print(table(is.na(d[,i])))
+  print(levels(d[,i]))
+}
+
+
+
+#--------------------------------------------
+# Check for sparsity across RF levels
+#--------------------------------------------
+
+tabRF <- function(d, Avar){
+  tab <- table(paste0(d$studyid, " ",d$country), d[,Avar])
+  tab <- tab[rowSums(tab)!=0, ]
+  print(tab)
+}
+
+
+
+
+
+tabRF(d, "gagebrth")
+tabRF(d, "birthwt")
+tabRF(d, "birthlen")
+tabRF(d, "parity") 
+tabRF(d, "mage")
+tabRF(d, "mhtcm") 
+tabRF(d, "mwtkg") 
+tabRF(d, "mbmi") 
+tabRF(d, "fage")
+tabRF(d, "fhtcm")
+tabRF(d, "feducyrs")
+tabRF(d, "nrooms")
+tabRF(d, "nhh")
+tabRF(d, "nchldlt5")
+
+
+levels(d$meducyrs)
+levels(d$feducyrs)
+levels(d$vagbrth)
+levels(d$hfoodsec)
+levels(d$hdlvry)
+levels(d$single)
+levels(d$safeh20)
+
 
 #--------------------------------------------
 # Save dataset

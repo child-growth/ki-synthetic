@@ -22,11 +22,11 @@ d <- d %>% filter(outcome_variable!="dead" & outcome_variable!="co_occurence" & 
 #Subset agecat
 d <- droplevels(d)
 
-RMAest <- d %>% group_by(intervention_variable, agecat, intervention_level, baseline_level, outcome_variable) %>%
+RMAest <- d %>% group_by(intervention_variable, agecat, intervention_level, baseline_level, outcome_variable, syntype) %>%
   do(poolRR(.)) %>% as.data.frame()
 RMAest$region <- "Pooled"
 
-RMAest_region <- d %>% group_by(region, intervention_variable, agecat, intervention_level, baseline_level, outcome_variable) %>%
+RMAest_region <- d %>% group_by(region, intervention_variable, agecat, intervention_level, baseline_level, outcome_variable, syntype) %>%
   do(poolRR(.)) %>% as.data.frame()
 
 RMAest_raw <- rbind(RMAest, RMAest_region)

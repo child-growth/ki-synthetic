@@ -45,7 +45,7 @@ d %>% group_by(region) %>% summarize(mean(whz < -2)*100)
 # Subset to  just identifying and anthro data
 #--------------------------------------------
 
-d <- d %>% subset(., select=c(studyid, subjid, country, region, measurefreq, tr, sex, agedays, haz, whz, waz, muaz, latitude, longitud))
+d <- d %>% subset(., select=c(studyid, subjid, country, region, measurefreq, tr, sex, agedays, haz, whz, waz, muaz, latitude, longitud, syntype))
 
 #Check for duplicate agedays
 dup_age <- d %>% group_by(studyid, subjid, agedays) %>%
@@ -201,7 +201,7 @@ length(unique(paste0(mort_Ndf2$studyid,"_", mort_Ndf2$subjid,"_", mort_Ndf2$aged
 cc_tab1 <- d %>% ungroup() %>% filter(agedays < 24 * 30.4167) %>%
   filter(!is.na(whz) | !is.na(waz) | !is.na(haz)) %>% 
   filter(abs(whz) <= 5 | abs(haz) <= 6 | (waz >= (-6) & waz <= 5)) %>% 
-  distinct(studyid, subjid, agedays) %>%
+  distinct(studyid, subjid, agedays, syntype) %>%
   summarize(nobs=n(), nchild=length(unique(paste0(studyid, "_",subjid))))
 cc_tab1
 
@@ -209,7 +209,7 @@ cc_tab1
 cc_tab_u6 <- d %>% ungroup() %>% filter(agedays < 6 * 30.4167) %>%
   filter(!is.na(whz) | !is.na(waz) | !is.na(haz)) %>% 
   filter(abs(whz) <= 5 | abs(haz) <= 6 | (waz >= (-6) & waz <= 5)) %>% 
-  distinct(studyid, subjid, agedays) %>%
+  distinct(studyid, subjid, agedays, syntype) %>%
   summarize(nobs=n(), nchild=length(unique(paste0(studyid, "_",subjid))))
 cc_tab_u6
 

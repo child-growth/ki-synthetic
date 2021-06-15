@@ -15,7 +15,7 @@ Avars <- c( "sex",  "brthmon", "month", names(adjustment_sets))
 #---------------------------------------------
 
 
-specify_rf_analysis <- function(A, Y, file,  W=NULL, V= c("agecat","studyid","country"), id="id", adj_sets=adjustment_sets){
+specify_rf_analysis <- function(A, Y, file,  W=NULL, V= c("syntype","agecat","studyid","country"), id="id", adj_sets=adjustment_sets){
   
   analyses <- expand.grid(A=A,Y=Y, stringsAsFactors = FALSE, KEEP.OUT.ATTRS = FALSE)
   analyses$id <- id

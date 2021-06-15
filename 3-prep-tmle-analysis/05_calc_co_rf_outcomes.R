@@ -38,7 +38,7 @@ table(d6$co)
 #calculate any coing from 0-6
 co_ci_0_6 = d6 %>% ungroup() %>%
   filter(agecat=="0-6 months") %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   #create variable with minhaz by age category, cumulatively
   mutate(agecat="0-6 months", ever_co= 1*(sum(co, na.rm=T)>0), Nobs=n()) %>% slice(1) %>%
   mutate(N=n()) %>%
@@ -46,8 +46,8 @@ co_ci_0_6 = d6 %>% ungroup() %>%
 
 # #calculate any coing from 6-24
 co_ci_6_24 = d6 %>% ungroup() %>% 
-  group_by(studyid,country,subjid) %>%
-  arrange(studyid,country,subjid, agedays) %>% 
+  group_by(syntype,studyid,country,subjid) %>%
+  arrange(syntype,studyid,country,subjid, agedays) %>% 
   filter(agecat!="0-6 months") %>%
   mutate(agecat="6-24 months", ever_co= 1*(sum(co, na.rm=T)>0), Nobs=n()) %>% slice(1) %>%
   mutate(N=n()) %>%
@@ -56,7 +56,7 @@ co_ci_6_24 = d6 %>% ungroup() %>%
 #calculate any coing from 0-24
 co_ci_0_24 = d6 %>% ungroup() %>%
   filter(!is.na(agecat)) %>%
-  group_by(studyid,country,subjid) %>%
+  group_by(syntype,studyid,country,subjid) %>%
   #create variable with minhaz by age category, cumulatively
   mutate(agecat="0-24 months", ever_co= 1*(sum(co, na.rm=T)>0), Nobs=n()) %>% slice(1) %>%
   mutate(N=n()) %>%

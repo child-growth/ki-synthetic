@@ -49,11 +49,11 @@ pool.Zpar <- function(d){
   return(est)
 }
 
-RMAest <- d %>% group_by(intervention_variable, agecat, intervention_level, baseline_level, outcome_variable,n_cell,n) %>%
+RMAest <- d %>% group_by(intervention_variable, agecat, intervention_level, baseline_level, outcome_variable,n_cell,n, syntype) %>%
   do(pool.Zpar(.)) %>% as.data.frame()
 RMAest$region <- "Pooled"
 
-RMAest_region <- d %>% group_by(region, intervention_variable, agecat, intervention_level, baseline_level, outcome_variable,n_cell,n) %>%
+RMAest_region <- d %>% group_by(region, intervention_variable, agecat, intervention_level, baseline_level, outcome_variable,n_cell,n, syntype) %>%
   do(pool.Zpar(.)) %>% as.data.frame()
 
 RMAest_raw <- rbind(RMAest, RMAest_region)
