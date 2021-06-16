@@ -146,9 +146,9 @@ rflevels = unique(plotdf_wlz$RFlabel_ref)
 plotdf_wlz$RFlabel_ref=factor(plotdf_wlz$RFlabel_ref, levels = rflevels)
 
 
-pPAR_wlz <-  ggplot(plotdf_wlz, aes(x=RFlabel_ref)) + 
-  geom_point(aes(y=-PAR), color=main_color, size = 4) +
-  geom_linerange(aes(ymin=-CI1, ymax=-CI2), color=main_color) +
+pPAR_wlz <-  ggplot(plotdf_laz, aes(x=RFlabel_ref, group=syntype)) + 
+  geom_point(aes(y=-PAR, color=syntype), size = 4, position = position_dodge(0.5)) +
+  geom_linerange(aes(ymin=-CI1, ymax=-CI2, color=syntype), position = position_dodge(0.5)) +
   coord_flip(ylim=c(-0.2, 0.55)) +
   labs(x = "Exposure", y = "Attributable difference in WLZ") +
   geom_hline(yintercept = 0) +
@@ -158,7 +158,7 @@ pPAR_wlz <-  ggplot(plotdf_wlz, aes(x=RFlabel_ref)) +
         axis.text.x = element_text(size=12),
         plot.margin = unit(c(0, 0, 0, 0), "cm")) +
   guides(color=FALSE, shape=FALSE)
-
+pPAR_wlz
 
 ggsave(pPAR_laz, file=paste0(here::here(), "/figures/risk-factor/fig-laz-PAR.png"), height=10, width=8)
 ggsave(pPAR_wlz, file=paste0(here::here(), "/figures/risk-factor/fig-wlz-PAR.png"), height=10, width=8)
@@ -168,91 +168,73 @@ ggsave(pPAR_wlz, file=paste0(here::here(), "/figures/risk-factor/fig-wlz-PAR.png
 saveRDS(list(pPAR_laz, pPAR_wlz), file=paste0(here::here(), "/results/rf results/rf_Zpar_plot_objects.RDS"))
 
 
-pPAR_wlz2 <-  ggplot(plotdf_wlz, aes(x=RFlabel_ref)) + 
-  geom_point(aes(y=-PAR), color=main_color, size = 4) +
-  geom_linerange(aes(ymin=-CI1, ymax=-CI2), color=main_color) +
-  coord_flip(ylim=c(-0.05, 0.3)) +
-  labs(x = "Exposure", y = "Attributable difference in WLZ") +
-  geom_hline(yintercept = 0) +
-  theme(strip.background = element_blank(),
-        legend.position="right",
-        axis.text.y = element_text(size=10, hjust = 1),
-        axis.text.x = element_text(size=12),
-        plot.margin = unit(c(0, 0, 0, 0), "cm")) +
-  guides(color=FALSE, shape=FALSE)
 
-
-
-
-ggsave(pPAR_wlz2, file=paste0(here::here(), "/figures/risk-factor/fig-wlz-PAR_presentation.png"), height=6, width=8)
-
-
-#----------------------------------------------------------
-# Plot margin tables
-#----------------------------------------------------------
-
-#Create data underlying LAZ side table
-mtab_df_laz <- plotdf_laz %>% arrange(PAR) %>%
-  mutate(perc_ref= round((1-ref_prev)*100)) %>%
-  subset(., select = c(n, perc_ref))
-
-# add comma to N (aka print 23,045 instead of 23045)
-mtab_df_laz$n = format(mtab_df_laz$n ,big.mark=",", trim=TRUE)
-
-#Use tableGrob to create a plot with the appearrence of a table
-mtab_df_laz_tbl <- tableGrob(mtab_df_laz,
-                             row = NULL,
-                             cols = c("Total\nN", "% shifted\nto ref."),
-                             theme = ttheme_minimal(base_size = 9, padding = unit(c(0, 0), "mm")))
-
-mtab_df_laz_tbl$heights <- unit(c(0.055, rep(0.0275, nrow(mtab_df_laz_tbl) - 1)), "npc")
-mtab_df_laz_tbl$widths <- unit(c(0.25,0.35), "npc")
-mtab_df_laz_tbl <- gtable_add_grob(mtab_df_laz_tbl,
-                                   grobs = segmentsGrob( # line across the bottom
-                                     x0 = unit(0,"npc"),
-                                     y0 = unit(0,"npc"),
-                                     x1 = unit(1,"npc"),
-                                     y1 = unit(0,"npc"),
-                                     gp = gpar(lwd = 2.0)),
-                                   t = 1, b = 1, l = 1, r = 2)
-
-#grid.arrange(mtab_df_laz_tbl)
-
-
-
-#Repeat for WLZ
-mtab_df_wlz <- plotdf_wlz %>% arrange(PAR) %>%
-  mutate(perc_ref= round((1-ref_prev)*100)) %>%
-  subset(., select = c(n, perc_ref))
-
-mtab_df_wlz$n = format(mtab_df_wlz$n ,big.mark=",", trim=TRUE)
-
-# mytheme <- gridExtra::ttheme_minimal(
-#   base_size = 9, padding = unit(c(0, 0), "mm"),
-#   core = list(padding=unit(c(0, 4), "mm"))
-# )
-
-mtab_df_wlz_tbl <- tableGrob(mtab_df_wlz, 
-                             rows = NULL,
-                             cols = c("Total\nN", "% shifted\nto ref."),
-                             theme = ttheme_minimal(base_size = 9, padding = unit(c(0, 0), "mm")))
-
-
-mtab_df_wlz_tbl$heights <- unit(c(0.055, rep(0.03075, nrow(mtab_df_wlz_tbl) - 1)), "npc")
-#mtab_df_wlz_tbl$widths <- unit(rep(0.25, ncol(mtab_df_wlz_tbl)), "npc")
-mtab_df_wlz_tbl$widths <- unit(c(0.25,0.35), "npc")
-
-mtab_df_wlz_tbl <- gtable_add_grob(mtab_df_wlz_tbl,
-                                   grobs = segmentsGrob( # line across the bottom
-                                     x0 = unit(0,"npc"),
-                                     y0 = unit(0,"npc"),
-                                     x1 = unit(1,"npc"),
-                                     y1 = unit(0,"npc"),
-                                     gp = gpar(lwd = 2.0)),
-                                   t = 1, b = 1, l = 1, r = 2)
-
-#save the plots seperately 
-saveRDS(list(mtab_df_laz_tbl, mtab_df_wlz_tbl), file=paste0(here::here(), "/results/rf results/rf_Zpar_margin_plot_objects.RDS"))
+# #----------------------------------------------------------
+# # Plot margin tables
+# #----------------------------------------------------------
+# 
+# #Create data underlying LAZ side table
+# mtab_df_laz <- plotdf_laz %>% arrange(PAR) %>%
+#   mutate(perc_ref= round((1-ref_prev)*100)) %>%
+#   subset(., select = c(n, perc_ref))
+# 
+# # add comma to N (aka print 23,045 instead of 23045)
+# mtab_df_laz$n = format(mtab_df_laz$n ,big.mark=",", trim=TRUE)
+# 
+# #Use tableGrob to create a plot with the appearrence of a table
+# mtab_df_laz_tbl <- tableGrob(mtab_df_laz,
+#                              row = NULL,
+#                              cols = c("Total\nN", "% shifted\nto ref."),
+#                              theme = ttheme_minimal(base_size = 9, padding = unit(c(0, 0), "mm")))
+# 
+# mtab_df_laz_tbl$heights <- unit(c(0.055, rep(0.0275, nrow(mtab_df_laz_tbl) - 1)), "npc")
+# mtab_df_laz_tbl$widths <- unit(c(0.25,0.35), "npc")
+# mtab_df_laz_tbl <- gtable_add_grob(mtab_df_laz_tbl,
+#                                    grobs = segmentsGrob( # line across the bottom
+#                                      x0 = unit(0,"npc"),
+#                                      y0 = unit(0,"npc"),
+#                                      x1 = unit(1,"npc"),
+#                                      y1 = unit(0,"npc"),
+#                                      gp = gpar(lwd = 2.0)),
+#                                    t = 1, b = 1, l = 1, r = 2)
+# 
+# #grid.arrange(mtab_df_laz_tbl)
+# 
+# 
+# 
+# #Repeat for WLZ
+# mtab_df_wlz <- plotdf_wlz %>% arrange(PAR) %>%
+#   mutate(perc_ref= round((1-ref_prev)*100)) %>%
+#   subset(., select = c(n, perc_ref))
+# 
+# mtab_df_wlz$n = format(mtab_df_wlz$n ,big.mark=",", trim=TRUE)
+# 
+# # mytheme <- gridExtra::ttheme_minimal(
+# #   base_size = 9, padding = unit(c(0, 0), "mm"),
+# #   core = list(padding=unit(c(0, 4), "mm"))
+# # )
+# 
+# mtab_df_wlz_tbl <- tableGrob(mtab_df_wlz, 
+#                              rows = NULL,
+#                              cols = c("Total\nN", "% shifted\nto ref."),
+#                              theme = ttheme_minimal(base_size = 9, padding = unit(c(0, 0), "mm")))
+# 
+# 
+# mtab_df_wlz_tbl$heights <- unit(c(0.055, rep(0.03075, nrow(mtab_df_wlz_tbl) - 1)), "npc")
+# #mtab_df_wlz_tbl$widths <- unit(rep(0.25, ncol(mtab_df_wlz_tbl)), "npc")
+# mtab_df_wlz_tbl$widths <- unit(c(0.25,0.35), "npc")
+# 
+# mtab_df_wlz_tbl <- gtable_add_grob(mtab_df_wlz_tbl,
+#                                    grobs = segmentsGrob( # line across the bottom
+#                                      x0 = unit(0,"npc"),
+#                                      y0 = unit(0,"npc"),
+#                                      x1 = unit(1,"npc"),
+#                                      y1 = unit(0,"npc"),
+#                                      gp = gpar(lwd = 2.0)),
+#                                    t = 1, b = 1, l = 1, r = 2)
+# 
+# #save the plots seperately 
+# saveRDS(list(mtab_df_laz_tbl, mtab_df_wlz_tbl), file=paste0(here::here(), "/results/rf results/rf_Zpar_margin_plot_objects.RDS"))
 
 
 

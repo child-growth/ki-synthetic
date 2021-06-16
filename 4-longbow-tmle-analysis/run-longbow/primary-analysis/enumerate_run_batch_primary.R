@@ -24,8 +24,9 @@ writeLines(jsonlite::toJSON(enumerated_analyses[[2]]),"single_primary_analysis.j
 writeLines(jsonlite::toJSON(enumerated_analyses),"primary_bin_analyses.json")
 
 #check data
-load("/data/KI/UCB-SuperLearner/Manuscript analysis data/st_cuminc_rf_primary.rdata")
+load("/data/KI/synthetic-data/st_cuminc_rf_primary.rdata")
 head(d)
+table(d$syntype)
 
 # 2. run batch
 configure_cluster(here("0-project-functions","cluster_credentials.json"))

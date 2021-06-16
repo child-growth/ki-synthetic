@@ -11,7 +11,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 ```{r, include="F"}
-fig_dir="C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/"
+fig_dir="home/andrew.mertens/ki-synthetic/figures/"
+
+pPAR <- readRDS("/home/andrew.mertens/ki-synthetic/results/rf results/rf_Zpar_plot_objects.RDS")
 
 load("C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/wasting/fig-comparisons.Rdata")
 WLZ_plot <- Z_plot
@@ -125,4 +127,14 @@ stunt_ci_plot$plot
 wast_ci_plot$plot
 wast_ci_africa_plot$plot
 ```
+
+## Comparison of pooled targeted learning estimates
+
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+pPAR[[1]]
+pPAR[[2]]
+```
+
 

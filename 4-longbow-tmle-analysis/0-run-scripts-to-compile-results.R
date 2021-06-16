@@ -8,7 +8,7 @@ source(paste0(here::here(), "/0-config.R"))
 # source(here("4-longbow-tmle-analysis/combine_results_Ns_sub.R"))
 #source(here("4-longbow-tmle-analysis/create_shiny_df.R"))
 
-source(here("4-longbow-tmle-analysis/synthetic processing scripts/0_rename_synthetic_outputs.R"))
+source(here("4-longbow-tmle-analysis/0_rename_synthetic_outputs.R"))
 
 #Results meta-analysis pooling
 source(here("4-longbow-tmle-analysis/pool_Zscore_PAR.R"))
