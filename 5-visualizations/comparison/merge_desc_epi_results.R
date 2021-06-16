@@ -14,8 +14,18 @@ expand_scale = function(mult = 0, add = 0) {
 #Plot themes
 theme_set(theme_ki())
 
-syn <- readRDS(paste0(here(),"/results/desc_data_cleaned.rds")) %>% mutate(dataset="Synthetic") %>% filter(analysis=="Primary")
-real <- readRDS("C:/Users/andre/Documents/HBGDki/ki-longitudinal-manuscripts/results/desc_data_cleaned.rds") %>% mutate(dataset="Original")%>% filter(analysis=="Primary")
+syn <- readRDS(paste0(here(),"/results/desc_data_cleaned.rds")) %>% filter(analysis=="Primary")
+real <- readRDS(paste0(ghapdata_dir,"real_desc_data_cleaned.rds")) %>% mutate(syntype="Real")%>% filter(analysis=="Primary")
+
+#TEMP!
+#Note I flipped two synthetic dataset labels. Fix here:
+syn$syntype <- as.character(syn$syntype)
+table(syn$syntype)
+syn$syntype[syn$syntype=="QI"] <- "TEMP"
+syn$syntype[syn$syntype=="FULL"] <- "QI"
+syn$syntype[syn$syntype=="TEMP"] <- "FULL"
+table(syn$syntype)
+
 
 d <- bind_rows(syn, real)
 #Harmonize study names
@@ -27,18 +37,18 @@ d$cohort <- gsub("TANZANIA","Tanzania",d$cohort)
 d$region[d$cohort %in% c("TanzaniaChild2-Tanzania","MAL-ED-Tanzania")] <- "Africa"
 
 
-table(d$cohort, d$dataset)
+table(d$cohort, d$syntype)
 
 
 
-
-head(syn)
-
-dim(syn)
-diff <- left_join(syn, real, by=c("disease","age_range","birth","severe","measure","cohort","region","agecat","analysis","country"))
-dim(diff)
-
-head(diff)
+# 
+# head(syn)
+# 
+# dim(syn)
+# diff <- left_join(syn, real, by=c("disease","age_range","birth","severe","measure","cohort","region","agecat","analysis","country"))
+# dim(diff)
+# 
+# head(diff)
 
 
 
@@ -73,4 +83,3 @@ d = d %>% mutate(
 
 
 saveRDS(d, paste0(here(),"/results/desc_data_comp_df.rds"))
-saveRDS(d, paste0(here(),"/results/desc_data_comp_df_BC.rds"))

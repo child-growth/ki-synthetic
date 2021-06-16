@@ -57,6 +57,7 @@ unique(par$RFlabel_ref)
 df <- par %>% subset(., select = c(outcome_variable, intervention_variable, PAR, CI1, CI2, RFlabel, RFlabel_ref,  RFtype, n_cell, n, syntype)) %>% 
   filter(!is.na(PAR)) %>% mutate(measure="PAR")
 
+df <- df %>% mutate(syntype=factor(syntype, levels=c("Real","QI","BC","FULL")))
 
 
 #----------------------------------------------------------
@@ -131,6 +132,8 @@ pPAR_laz <-  ggplot(plotdf_laz, aes(x=RFlabel_ref, group=syntype)) +
         legend.position="right",
         axis.text.y = element_text(size=, hjust = 1),
         axis.text.x = element_text(size=12)) +
+  scale_fill_manual(values=cbbPalette[-1]) +
+  scale_color_manual(values=cbbPalette[-1]) +
   guides(shape=FALSE)
 pPAR_laz
 
@@ -157,7 +160,9 @@ pPAR_wlz <-  ggplot(plotdf_laz, aes(x=RFlabel_ref, group=syntype)) +
         axis.text.y = element_text(size=10, hjust = 1),
         axis.text.x = element_text(size=12),
         plot.margin = unit(c(0, 0, 0, 0), "cm")) +
-  guides(color=FALSE, shape=FALSE)
+  scale_fill_manual(values=cbbPalette[-1]) +
+  scale_color_manual(values=cbbPalette[-1]) +
+  guides( shape=FALSE)
 pPAR_wlz
 
 ggsave(pPAR_laz, file=paste0(here::here(), "/figures/risk-factor/fig-laz-PAR.png"), height=10, width=8)

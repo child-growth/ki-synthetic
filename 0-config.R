@@ -125,3 +125,6 @@ source(paste0(project_functions_dir, "/0_risk_factor_functions.R"))
 # Set theme
 source(paste0(here::here(), "/5-visualizations/0-plot-themes.R"))
 theme_set(theme_ki())
+
+cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
