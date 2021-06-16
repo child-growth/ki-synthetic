@@ -68,8 +68,8 @@ ki_cohort_plot <- function(d, Disease, Measure, Birth, Severe, Age_range,
   }
   
   p <- ggplot(df,aes(y=est,x=agecat, group=dataset)) +
-    geom_errorbar(aes(color=dataset, ymin=lb, ymax=ub), position = position_dodge(0.4), width = 0) +
-    geom_point(aes(fill=dataset, shape=dataset, color=dataset), position = position_dodge(0.4), size = 2) +
+    geom_errorbar(aes(color=dataset, ymin=lb, ymax=ub), position = position_dodge(0.6), width = 0) +
+    geom_point(aes(fill=dataset, shape=dataset, color=dataset), position = position_dodge(0.6), size = 2) +
     scale_color_manual(values=tableau11, drop=TRUE, limits = levels(df$measure)) +
     xlab(xlabel)+
     ylab(ylabel) +
@@ -154,8 +154,8 @@ ki_desc_plot <- function(d, Disease, Measure, Birth, Severe, Age_range,
   }
   
   p <- ggplot(df,aes(y=est,x=agecat, group=dataset)) +
-    geom_errorbar(aes(color=dataset, ymin=lb, ymax=ub), position = position_dodge(0.4), width = 0) +
-    geom_point(aes(fill=dataset, shape=dataset, color=dataset), position = position_dodge(0.4), size = 2) +
+    geom_errorbar(aes(color=dataset, ymin=lb, ymax=ub), position = position_dodge(0.6), width = 0) +
+    geom_point(aes(fill=dataset, shape=dataset, color=dataset), position = position_dodge(0.6), size = 2) +
     scale_color_manual(values=tableau11, drop=TRUE, limits = levels(df$measure)) +
     xlab(xlabel)+
     ylab(ylabel) +

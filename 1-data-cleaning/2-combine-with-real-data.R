@@ -18,8 +18,8 @@ synfull <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 real <- readRDS("/data/KI/UCB-SuperLearner/Manuscript analysis data/ki-manuscript-dataset.rds")
 
 
-syn <- synfull %>% subset(., select=c(studyid, country, measurefreq, region, subjid, agedays, haz, waz, whz, sex, lencm,wtkg)) %>% rename(dataset=syntype) 
-real <- real %>% subset(., select=c(studyid, country, measurefreq, region, subjid, agedays, haz, waz, whz, sex, lencm,wtkg)) %>% mutate(dataset="Original")
+syn <- synfull %>% subset(., select=c(studyid, country, measurefreq, region, subjid, agedays, haz, waz, whz, sex, lencm,wtkg,syntype)) 
+real <- real %>% subset(., select=c(studyid, country, measurefreq, region, subjid, agedays, haz, waz, whz, sex, lencm,wtkg)) %>% mutate(syntype="Real")
 
 d <- bind_rows(syn, real)
 
@@ -28,64 +28,69 @@ d$studyid <- gsub("MRC Keneba","Keneba", d$studyid)
 
 d <- d %>% mutate(cohort=paste0(studyid,"-",country)) %>% filter(studyid=="MAL-ED"|studyid=="Keneba", agedays < 730)
 
+d <- d %>% mutate(syntype=factor(syntype, levels=c("Real","QI","BC","FULL")))
 
 
-table(d$cohort, d$dataset)
+table(d$cohort, d$syntype)
 
-p <- ggplot(d, aes(x=agedays, y=whz, group=dataset, color=dataset)) + 
-  geom_smooth() +
-  facet_wrap(~cohort, scales="free") + theme(legend.position = "right")
-p
+p <- ggplot(d, aes(x=agedays, y=whz, group=syntype, color=syntype, fill=syntype, linetype=syntype)) + 
+  geom_smooth(alpha=0.5) +
+  facet_wrap(~cohort, scales="free") + theme(legend.position = "right") +
+  scale_fill_manual(values=cbbPalette[-1]) +
+  scale_color_manual(values=cbbPalette[-1]) 
 
-d %>% group_by(dataset) %>% filter(!is.na(whz)) %>% summarize(mean(whz), sd(whz), num_wast=sum(whz < (-2)))
+
+d %>% group_by(syntype) %>% filter(!is.na(whz)) %>% summarize(mean(whz), sd(whz), num_wast=sum(whz < (-2)))
 
 
 df <- d %>% mutate(wast = 1*(whz < (-2))) %>% filter(!is.na(wast))
 
 df2 <- df %>% filter(wast==1)
-table(df2$cohort, df2$dataset)
+table(df2$cohort, df2$syntype)
 
-p2 <- ggplot(df, aes(x=agedays, y=wast, group=dataset, color=dataset)) + 
+p2 <- ggplot(df, aes(x=agedays, y=wast, group=syntype, color=syntype)) + 
   geom_smooth(method = 'loess', se = F) +
-  facet_wrap(~cohort, scales="free") + theme(legend.position = "right")
-p2
+  facet_wrap(~cohort, scales="free") + theme(legend.position = "right")+
+  scale_fill_manual(values=cbbPalette[-1]) +
+  scale_color_manual(values=cbbPalette[-1]) 
 
 
-#compare synthetic versus real versus recalculated Z-scores
-library(growthstandards)
-library(zscorer)
-library(anthro)
 
-
-head(synfull)
-syn_recalc <- synfull %>% subset(., select=c(studyid, country, measurefreq, region, agedays, sex, lencm,wtkg, haz, waz, whz)) %>% 
-  mutate(dataset="Recalculated") %>% rename(haz_real=haz, waz_real=waz, whz_real=whz)
-syn_recalc$haz <- who_lenhtcm2zscore(syn_recalc$agedays, syn_recalc$lencm, sex = syn_recalc$sex)
-syn_recalc$waz <- who_wtkg2zscore(syn_recalc$agedays, syn_recalc$wtkg, sex = syn_recalc$sex)
-syn_recalc$whz <- who_value2zscore(x=syn_recalc$lencm, y=syn_recalc$wtkg, x_var = "lencm",  y_var = "wtkg", sex = syn_recalc$sex)
-# syn_recalc$haz[abs(syn_recalc$haz) > 6] <- NA
-# syn_recalc$waz[syn_recalc$waz > -6 & syn_recalc$waz < 5] <- NA
-# syn_recalc$whz[abs(syn_recalc$whz) > 5] <- NA
-head(syn_recalc)
-
-df <- bind_rows(syn, real, syn_recalc)
-df$country <- gsub("TANZANIA, UNITED REPUBLIC OF","TANZANIA", df$country)
-df$studyid <- gsub("MRC Keneba","Keneba", df$studyid)
-df <- df %>% mutate(cohort=paste0(studyid,"-",country)) %>% filter(studyid=="MAL-ED"|studyid=="Keneba", agedays < 730)
-
-p <- ggplot(df, aes(x=agedays, y=whz, group=dataset, color=dataset)) + 
-  geom_smooth() +
-  facet_wrap(~cohort, scales="free") + theme(legend.position = "right")
-p
-
-saveRDS(p, file=paste0(fig_dir, "plot-objects/fig-WLZ-comp.RDS"))
-
-p <- ggplot(df, aes(x=agedays, y=haz, group=dataset, color=dataset)) + 
-  geom_smooth() +
-  facet_wrap(~cohort, scales="free") + theme(legend.position = "right")
-p
-
-saveRDS(p, file=paste0(fig_dir, "plot-objects/fig-LAZ-comp.RDS"))
+# #compare synthetic versus real versus recalculated Z-scores
+# library(growthstandards)
+# library(zscorer)
+# library(anthro)
+# 
+# 
+# head(synfull)
+# syn_recalc <- synfull %>% subset(., select=c(studyid, country, measurefreq, region, agedays, sex, lencm,wtkg, haz, waz, whz)) %>% 
+#   mutate(dataset="Recalculated") %>% rename(haz_real=haz, waz_real=waz, whz_real=whz)
+# syn_recalc$haz <- who_lenhtcm2zscore(syn_recalc$agedays, syn_recalc$lencm, sex = syn_recalc$sex)
+# syn_recalc$waz <- who_wtkg2zscore(syn_recalc$agedays, syn_recalc$wtkg, sex = syn_recalc$sex)
+# syn_recalc$whz <- who_value2zscore(x=syn_recalc$lencm, y=syn_recalc$wtkg, x_var = "lencm",  y_var = "wtkg", sex = syn_recalc$sex)
+# # syn_recalc$haz[abs(syn_recalc$haz) > 6] <- NA
+# # syn_recalc$waz[syn_recalc$waz > -6 & syn_recalc$waz < 5] <- NA
+# # syn_recalc$whz[abs(syn_recalc$whz) > 5] <- NA
+# head(syn_recalc)
+# 
+# df <- bind_rows(syn, real, syn_recalc)
+# df$country <- gsub("TANZANIA, UNITED REPUBLIC OF","TANZANIA", df$country)
+# df$studyid <- gsub("MRC Keneba","Keneba", df$studyid)
+# df <- df %>% mutate(cohort=paste0(studyid,"-",country)) %>% filter(studyid=="MAL-ED"|studyid=="Keneba", agedays < 730)
+# 
+# p <- ggplot(df, aes(x=agedays, y=whz, group=dataset, color=dataset)) + 
+#   geom_smooth() +
+#   facet_wrap(~cohort, scales="free") + theme(legend.position = "right")
+# p
+# 
+# saveRDS(p, file=paste0(fig_dir, "plot-objects/fig-WLZ-comp.RDS"))
+# 
+# p <- ggplot(df, aes(x=agedays, y=haz, group=dataset, color=dataset)) + 
+#   geom_smooth() +
+#   facet_wrap(~cohort, scales="free") + theme(legend.position = "right")
+# p
+# 
+# saveRDS(p, file=paste0(fig_dir, "plot-objects/fig-LAZ-comp.RDS"))
 
 
 # 

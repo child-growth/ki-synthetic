@@ -14,6 +14,8 @@ knitr::opts_chunk$set(echo = FALSE)
 fig_dir="home/andrew.mertens/ki-synthetic/figures/"
 
 pPAR <- readRDS("/home/andrew.mertens/ki-synthetic/results/rf results/rf_Zpar_plot_objects.RDS")
+pATE <- readRDS(paste0(here::here(), "/results/rf results/ate_diff_object.RDS"))
+
 
 load("C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/wasting/fig-comparisons.Rdata")
 WLZ_plot <- Z_plot
@@ -50,14 +52,14 @@ WLZ_plot
 ```
 
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
-
-phaz
-pwhz
-
-```
-
-__Note:__ `Recalculated` are Z-scores calculated using the growthstandard() R package from the synthetic height, weight, and age variables, versus the `Synthetic` Z-scores, which are the directly-synthesized Z-scores. 
+<!-- # ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"} -->
+<!-- #  -->
+<!-- # phaz -->
+<!-- # pwhz -->
+<!-- #  -->
+<!-- # ``` -->
+<!-- #  -->
+<!-- # __Note:__ `Recalculated` are Z-scores calculated using the growthstandard() R package from the synthetic height, weight, and age variables, versus the `Synthetic` Z-scores, which are the directly-synthesized Z-scores.  -->
 
 
 ## Stunting  prevalence
@@ -135,6 +137,16 @@ wast_ci_africa_plot$plot
 
 pPAR[[1]]
 pPAR[[2]]
+```
+
+
+## Comparison of pooled targeted learning estimates
+
+Note "BC" estimates match the real-data estimates almost exactly and are not plotted
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+pATE
 ```
 
 

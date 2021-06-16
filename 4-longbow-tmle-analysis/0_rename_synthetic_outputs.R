@@ -12,6 +12,14 @@ source(paste0(here::here(), "/0-project-functions/0_risk_factor_functions.R"))
 Zscores_syn <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-06-16.RDS")) 
 Zscores_real <-readRDS("/data/KI/ki-manuscript-output/results/rf results/longbow results/results_cont.RDS") %>% mutate(syntype="Real")
 
+#Note I flipped two synthetic dataset labels. Fix here:
+Zscores_syn$syntype <- as.character(Zscores_syn$syntype)
+table(Zscores_syn$syntype)
+Zscores_syn$syntype[Zscores_syn$syntype=="QI"] <- "TEMP"
+Zscores_syn$syntype[Zscores_syn$syntype=="FULL"] <- "QI"
+Zscores_syn$syntype[Zscores_syn$syntype=="TEMP"] <- "FULL"
+table(Zscores_syn$syntype)
+
 Zscores <- bind_rows(Zscores_syn, Zscores_real)
 
 #Drop new and old cohorts based on updates from peer reviews

@@ -12,8 +12,8 @@ d1 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All BC Synthesize
 d1 <- d1 %>%
   mutate(vagbrth=factor(vagbrth),
          hdlvry=factor(hdlvry))
-d2 <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds")) %>% mutate(syntype="QI")
-d3 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized.rds"))  %>% mutate(syntype="FULL")
+d2 <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds")) %>% mutate(syntype="FULL")
+d3 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized.rds"))  %>% mutate(syntype="QI")
 
 class(d1$single)
 class(d2$single)

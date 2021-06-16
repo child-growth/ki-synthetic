@@ -3,7 +3,7 @@ rm(list=ls())
 source(paste0(here::here(), "/0-config.R"))
 
 #Load data
-d <- readRDS(paste0(here(),"/results/desc_data_comp_df.rds"))
+d <- readRDS(paste0(here(),"/results/desc_data_comp_df.rds")) %>% mutate(dataset=factor(syntype, levels=c("Real","QI","BC","FULL")))
 
 
 #Subset to primary analysis
