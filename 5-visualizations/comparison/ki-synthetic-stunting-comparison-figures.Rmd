@@ -7,6 +7,9 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+
 library(tidyverse)
 
 theme_ki <- function() {
@@ -58,8 +61,26 @@ phaz <- readRDS(file=paste0(fig_dir, "plot-objects/fig-LAZ-comp.RDS"))
 
 ```
 
+## Dataset descriptions
 
-## Mean Z-scores
+The report compares estimates from 3 synthetic datasets with the raw KI values. The synthetic datasets are labeled:
+
+  *  QI: Partially synthetic dataset with just quasi-identifiers synthesized
+  *  BC: Partially synthetic dataset with quasi-identifiers and baseline characteristics synthesized, but not child age/anthropometry
+  *  Full: Fully synthesized dataset using updated deep learning model. Each cohort is generated through a model either trained exclusively on that cohort, or on a group of sufficiently similar cohorts, depending on the number of individuals in the cohort.
+  
+```{r, echo=FALSE}
+
+synfull <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
+  
+```
+
+## Descriptive epidemiology comparisons of Z-scores and age-specific wasting and stunting prevalences/incidences
+
+
+Anthropometry estimates match exactly between the real data and the QI/BC datasets, but while mean Z-scores from the fully synthetic data mostly match, the prevalences and incidences of wasting and stunting are lower.
+
+### Mean Z-scores
 
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
@@ -81,7 +102,7 @@ WLZ_plot
 <!-- # __Note:__ `Recalculated` are Z-scores calculated using the growthstandard() R package from the synthetic height, weight, and age variables, versus the `Synthetic` Z-scores, which are the directly-synthesized Z-scores.  -->
 
 
-## Stunting  prevalence
+### Stunting  prevalence
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
@@ -93,7 +114,9 @@ stunt_plot$plot
 
 ```
 
-## Wasting prevalence
+Note slight difference in stunting prevalence between real and QI/BC data. These should match exactly so I'm digging deeper to see if there is a slight different in code (most likely) or an actual difference in the underlying data affecting the prevalence estimates.
+
+### Wasting prevalence
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
@@ -104,7 +127,7 @@ wast_plot$plot
 
 ```
 
-## Severe stunting prevalence
+### Severe stunting prevalence
 
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
@@ -115,7 +138,7 @@ sevstunt_plot$plot
 
 ```
 
-## Severe  wasting prevalence
+### Severe  wasting prevalence
 
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
@@ -125,7 +148,7 @@ sevwast_plot$plot
 
 ```
 
-## Stunting  cumulative incidence
+### Stunting  cumulative incidence
 
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
@@ -137,7 +160,7 @@ stunt_ci_plot$plot
 ```
 
 
-## Wasting cumulative incidence
+### Wasting cumulative incidence
 
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
@@ -150,9 +173,9 @@ wast_ci_africa_plot$plot
 ```
 
 
-# Covariate-adjusted, SuperLearner-based estimates
+## Covariate-adjusted, SuperLearner-based estimates
 
-## Comparison of pooled targeted learning estimates
+### Comparison of pooled targeted learning estimates
 
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
@@ -162,7 +185,7 @@ pPAR[[2]]
 ```
 
 
-## Comparison of difference in cohort-specific targeted learning estimates
+### Comparison of difference in cohort-specific targeted learning estimates
 
 Note "BC" estimates match the real-data estimates almost exactly and are not plotted
 
@@ -172,9 +195,9 @@ pATE
 ```
 
 
-# Unadjusted, linear regression estimates
+## Unadjusted, linear regression estimates
 
-## Comparison of pooled targeted learning estimates
+### Comparison of pooled targeted learning estimates
 
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
@@ -184,7 +207,7 @@ pPAR_unadj[[2]]
 ```
 
 
-## Comparison of difference in cohort-specific targeted learning estimates
+### Comparison of difference in cohort-specific targeted learning estimates
 
 Note "BC" estimates match the real-data estimates almost exactly and are not plotted
 
