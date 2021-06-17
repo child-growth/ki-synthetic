@@ -63,7 +63,7 @@ Z_plot <- ggplot(df,aes(y=est,x=agecat, group=region)) +
                     name = 'Region') +
   scale_color_manual(values=tableau11, drop=TRUE, limits = levels(df$measure),
                      name = 'Region') +
-  facet_wrap(~dataset) +
+  facet_wrap(~dataset, ncol=2) +
   xlab("Child age, months")+
   ylab("Weight-for-length Z-score") +
   ggtitle("") +

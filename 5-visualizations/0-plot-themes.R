@@ -180,7 +180,7 @@ ki_desc_plot <- function(d, Disease, Measure, Birth, Severe, Age_range,
     p <- p + facet_wrap(~cohort) +
       theme(strip.text = element_text(size=strip.text.size, margin = margin(t = 0)))
   }else {
-    p <- p + facet_grid(~region) +
+    p <- p + facet_wrap(~region, ncol=2) +
       theme(strip.text = element_text(size=14, margin = margin(t = 0))) 
   }
   

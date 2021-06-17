@@ -32,6 +32,8 @@ fig_dir="C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/"
 
 pPAR <- readRDS("C:/Users/andre/Documents/HBGDki/ki-synthetic/results/rf results/rf_Zpar_plot_objects.RDS")
 pATE <- readRDS(paste0(here::here(), "/results/rf results/ate_diff_object.RDS"))
+pPAR_unadj <- readRDS("C:/Users/andre/Documents/HBGDki/ki-synthetic/results/rf results/rf_Zpar_unadj_plot_objects.RDS")
+pATE_unadj <- readRDS(paste0(here::here(), "/results/rf results/ate_diff_object_unadj.RDS"))
 
 
 load("C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/wasting/fig-comparisons.Rdata")
@@ -147,6 +149,9 @@ wast_ci_plot$plot
 wast_ci_africa_plot$plot
 ```
 
+
+# Covariate-adjusted, SuperLearner-based estimates
+
 ## Comparison of pooled targeted learning estimates
 
 
@@ -157,13 +162,35 @@ pPAR[[2]]
 ```
 
 
-## Comparison of pooled targeted learning estimates
+## Comparison of difference in cohort-specific targeted learning estimates
 
 Note "BC" estimates match the real-data estimates almost exactly and are not plotted
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
 pATE
+```
+
+
+# Unadjusted, linear regression estimates
+
+## Comparison of pooled targeted learning estimates
+
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+pPAR_unadj[[1]]
+pPAR_unadj[[2]]
+```
+
+
+## Comparison of difference in cohort-specific targeted learning estimates
+
+Note "BC" estimates match the real-data estimates almost exactly and are not plotted
+
+```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+
+pATE_unadj
 ```
 
 
