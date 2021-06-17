@@ -20,6 +20,9 @@ library(growthstandards)
 d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 head(d)
 
+real_cov <- readRDS("/data/KI/UCB-SuperLearner/Manuscript analysis data/FINAL_clean_covariates.rds")
+saveRDS(real_cov, here("data/real_cov.rds"))
+
 d <- d %>% group_by(studyid, subjid, syntype) %>% 
   arrange(studyid, subjid, agedays) %>% 
   #keep one observation per child
