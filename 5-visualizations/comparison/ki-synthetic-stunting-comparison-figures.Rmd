@@ -11,6 +11,8 @@ knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
 
 library(tidyverse)
+library(here)
+library(knitr)
 
 theme_ki <- function() {
   theme_bw() %+replace%
@@ -69,21 +71,29 @@ The report compares estimates from 3 synthetic datasets with the raw KI values. 
   *  BC: Partially synthetic dataset with quasi-identifiers and baseline characteristics synthesized, but not child age/anthropometry
   *  Full: Fully synthesized dataset using updated deep learning model. Each cohort is generated through a model either trained exclusively on that cohort, or on a group of sufficiently similar cohorts, depending on the number of individuals in the cohort.
   
-```{r, echo=FALSE}
 
-synfull <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
-  
-```
 
 ## Descriptive epidemiology comparisons of Z-scores and age-specific wasting and stunting prevalences/incidences
 
 
-Anthropometry estimates match exactly between the real data and the QI/BC datasets, but while mean Z-scores from the fully synthetic data mostly match, the prevalences and incidences of wasting and stunting are lower.
+Anthropometry estimates match exactly between the real data and the QI/BC datasets, but while mean Z-scores from the fully synthetic data match overall (and mostly match by age), the prevalences and incidences of wasting and stunting are lower because the standard deviation of Z-scores in the full synthetic data is lower than the real. 
+
+
+```{r, echo=FALSE}
+
+synfull <- readRDS(here("data/ki-synthetic-dataset.rds"))
+  tab<- synfull %>% group_by(syntype) %>%
+    summarize(`Mean HAZ`=round(mean(haz, na.rm=T),2), `Mean WHZ`=round(mean(whz, na.rm=T),2), `SD HAZ`=round(sd(haz, na.rm=T),2), `SD WHZ`=round(sd(whz, na.rm=T),2))
+    
+knitr::kable(tab)
+  
+```
+
 
 ### Mean Z-scores
 
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
 LAZ_plot
 WLZ_plot
@@ -92,7 +102,7 @@ WLZ_plot
 ```
 
 
-<!-- # ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"} -->
+<!-- # ```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"} -->
 <!-- #  -->
 <!-- # phaz -->
 <!-- # pwhz -->
@@ -104,7 +114,7 @@ WLZ_plot
 
 ### Stunting  prevalence
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
 #Stunting
 stunt_plot$plot
@@ -118,7 +128,7 @@ Note slight difference in stunting prevalence between real and QI/BC data. These
 
 ### Wasting prevalence
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
 
 #Wasting
@@ -130,7 +140,7 @@ wast_plot$plot
 ### Severe stunting prevalence
 
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 #Stunting
 sevstunt_plot$plot
 
@@ -141,7 +151,7 @@ sevstunt_plot$plot
 ### Severe  wasting prevalence
 
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
 #Wasting
 sevwast_plot$plot
@@ -151,7 +161,7 @@ sevwast_plot$plot
 ### Stunting  cumulative incidence
 
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
 #Stunting
 stunt_ci_plot$plot
@@ -163,17 +173,27 @@ stunt_ci_plot$plot
 ### Wasting cumulative incidence
 
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
-
-
-#Wasting
 wast_ci_plot$plot
-wast_ci_africa_plot$plot
 ```
 
 
+### Example cohort-specific estimates of wasting cumulative incidenc eby age
+
+
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
+
+wast_ci_africa_plot$plot
+
+```
+
+The fully synthesized data matches much more closely in some cohorts than others.
+
+
 ## Covariate-adjusted, SuperLearner-based estimates
+
+Below are comparisons of the most challenging resutls to replicate with synthetic data
 
 ### Comparison of pooled targeted learning estimates
 

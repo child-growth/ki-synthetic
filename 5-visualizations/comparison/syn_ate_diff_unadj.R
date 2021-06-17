@@ -18,6 +18,7 @@ ate$syntype <- factor(ate$syntype)
 ate$syntype <- relevel(ate$syntype, ref="Real")
 levels(ate$syntype)
 df <- ate %>% group_by( intervention_variable,agecat, intervention_level, baseline_level, outcome_variable, region ) %>%
+  arrange(syntype) %>%
   mutate(diff=ATE-first(ATE)) %>% filter(syntype!="Real") 
 head(df)
 
@@ -27,7 +28,7 @@ df %>% group_by(syntype) %>%
 df <- df %>% mutate(syntype=factor(syntype, levels=c("Real","QI","BC","FULL")))
 
 medians <- df %>% group_by(syntype) %>% summarize(med=median(diff))
-
+medians
 
 p <- ggplot(df, aes(x=diff, fill=syntype, group=syntype)) +
   geom_density() + facet_wrap(~syntype, ncol=1) + 
@@ -37,7 +38,7 @@ p <- ggplot(df, aes(x=diff, fill=syntype, group=syntype)) +
   scale_fill_manual(values=cbbPalette[-1]) +
   scale_color_manual(values=cbbPalette[-1]) +
   coord_cartesian(xlim=c(-0.5, 0.5))
-
+p
 
 
 saveRDS(p, file=paste0(here::here(), "/results/rf results/ate_diff_object_unadj.RDS"))
