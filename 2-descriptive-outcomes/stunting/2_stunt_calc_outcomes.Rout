@@ -17,6 +17,8 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
+[Previously saved workspace restored]
+
 > ##########################################
 > # ki longitudinal manuscripts
 > # stunting analysis
@@ -553,7 +555,7 @@ package ‘tidyverse’ was built under R version 4.0.5
 > 
 > 
 > stunt_outcomes = d %>% group_by(syntype) %>%
-+   do(calc_outcomes(data = d, calc_method = "REML", output_file_suffix = ""))
++   do(calc_outcomes(data = ., calc_method = "REML", output_file_suffix = ""))
 `summarise()` has grouped output by 'studyid', 'country', 'subjid'. You can override using the `.groups` argument.
 `summarise()` has grouped output by 'studyid', 'country'. You can override using the `.groups` argument.
 `summarise()` has grouped output by 'studyid', 'country', 'subjid'. You can override using the `.groups` argument.
@@ -1021,4 +1023,4 @@ There were 50 or more warnings (use warnings() to see the first 50)
 > 
 > proc.time()
     user   system  elapsed 
-7141.231   48.138 7189.326 
+2680.901   13.730 2694.566 
