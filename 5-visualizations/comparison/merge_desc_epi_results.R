@@ -17,14 +17,25 @@ theme_set(theme_ki())
 syn <- readRDS(paste0(here(),"/results/desc_data_cleaned.rds")) %>% filter(analysis=="Primary")
 real <- readRDS(paste0(ghapdata_dir,"real_desc_data_cleaned.rds")) %>% mutate(syntype="Real")%>% filter(analysis=="Primary")
 
-#TEMP!
-#Note I flipped two synthetic dataset labels. Fix here:
-syn$syntype <- as.character(syn$syntype)
-table(syn$syntype)
-syn$syntype[syn$syntype=="QI"] <- "TEMP"
-syn$syntype[syn$syntype=="FULL"] <- "QI"
-syn$syntype[syn$syntype=="TEMP"] <- "FULL"
-table(syn$syntype)
+head(syn)
+
+df <- syn %>% filter(disease=="Stunting",age_range=="3 months", severe=="no", measure=="Prevalence", cohort=="pooled", region=="Overall", agecat=="3 months", analysis=="Primary")
+head(df)
+df <- real %>% filter(disease=="Stunting",age_range=="3 months", severe=="no", measure=="Prevalence", cohort=="pooled", region=="Overall", agecat=="3 months", analysis=="Primary")
+head(df)
+df <- syn %>% filter(disease=="Wasting",age_range=="3 months", severe=="no", measure=="Prevalence", cohort=="pooled", region=="Overall", agecat=="3 months", analysis=="Primary")
+head(df)
+df <- real %>% filter(disease=="Wasting",age_range=="3 months", severe=="no", measure=="Prevalence", cohort=="pooled", region=="Overall", agecat=="3 months", analysis=="Primary")
+head(df)
+
+# #TEMP!
+# #Note I flipped two synthetic dataset labels. Fix here:
+# syn$syntype <- as.character(syn$syntype)
+# table(syn$syntype)
+# syn$syntype[syn$syntype=="QI"] <- "TEMP"
+# syn$syntype[syn$syntype=="FULL"] <- "QI"
+# syn$syntype[syn$syntype=="TEMP"] <- "FULL"
+# table(syn$syntype)
 
 
 d <- bind_rows(syn, real)

@@ -363,7 +363,7 @@ calc_outcomes = function(data, calc_method, output_file_suffix){
 
 
 stunt_outcomes = d %>% group_by(syntype) %>%
-  do(calc_outcomes(data = d, calc_method = "REML", output_file_suffix = ""))
+  do(calc_outcomes(data = ., calc_method = "REML", output_file_suffix = ""))
 saveRDS(stunt_outcomes, file = paste0(res_dir,"shiny_desc_data_stunting_objects.RDS"))
 
 # stunt_outcomes_monthly = calc_outcomes(data = monthly_d, calc_method = "REML", output_file_suffix = "_monthly24")
