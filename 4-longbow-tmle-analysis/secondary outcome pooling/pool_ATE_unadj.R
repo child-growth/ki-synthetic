@@ -13,7 +13,7 @@ dfull <- readRDS(paste0(here::here(),"/results/rf results/full_RF_unadj_results.
 d <- dfull %>% filter(type=="ATE")
 
 #Drop reference levels
-d <- d %>% filter(intervention_level != d$baseline_level)
+d <- d %>% filter(intervention_level != baseline_level)
 
 
 RMAest <- d %>% group_by(intervention_variable, agecat, intervention_level, baseline_level, outcome_variable, syntype) %>%

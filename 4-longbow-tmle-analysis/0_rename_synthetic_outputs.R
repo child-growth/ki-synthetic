@@ -9,8 +9,13 @@ source(paste0(here::here(), "/0-project-functions/0_risk_factor_functions.R"))
 # Zscores_BC <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-05-11.RDS")) %>% mutate(syntype="BC")
 # Zscores_QI <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-06-03.RDS")) %>% mutate(syntype="QI")
 # Zscores_full <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-06-03.RDS")) %>% mutate(syntype="Full")
-Zscores_syn <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-06-16.RDS")) 
-Zscores_real <-readRDS("/data/KI/ki-manuscript-output/results/rf results/longbow results/results_cont.RDS") %>% mutate(syntype="Real")
+Zscores_syn <- readRDS(here("/results/rf results/raw longbow results/results_cont_2021-06-16.RDS")) 
+Zscores_real <- readRDS("/data/KI/ki-manuscript-output/results/rf results/longbow results/results_cont.RDS") %>% mutate(syntype="Real")
+
+Zscores_syn_unadj <- readRDS( "/home/andrew.mertens/ki-synthetic/results/rf results/raw longbow results/results_cont_unadj_2021-06-17.RDS") 
+Zscores_real_unadj <- readRDS("/data/KI/ki-manuscript-output/results/rf results/longbow results/results_cont_unadj.RDS") %>% mutate(syntype="Real")
+
+
 
 #Note I flipped two synthetic dataset labels. Fix here:
 Zscores_syn$syntype <- as.character(Zscores_syn$syntype)
@@ -20,7 +25,7 @@ Zscores_syn$syntype[Zscores_syn$syntype=="FULL"] <- "QI"
 Zscores_syn$syntype[Zscores_syn$syntype=="TEMP"] <- "FULL"
 table(Zscores_syn$syntype)
 
-Zscores <- bind_rows(Zscores_syn, Zscores_real)
+Zscores <- bind_rows(Zscores_syn, Zscores_real, Zscores_syn_unadj, Zscores_real_unadj)
 
 #Drop new and old cohorts based on updates from peer reviews
 Zscores <- Zscores %>% group_by(studyid, country) %>% mutate(Ndatasets=length(unique(syntype)), has_real=max(syntype=="Real"))
