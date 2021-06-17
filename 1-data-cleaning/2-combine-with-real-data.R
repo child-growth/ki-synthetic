@@ -20,6 +20,7 @@ real <- readRDS("/data/KI/UCB-SuperLearner/Manuscript analysis data/ki-manuscrip
 
 syn <- synfull %>% subset(., select=c(studyid, country, measurefreq, region, subjid, agedays, haz, waz, whz, sex, lencm,wtkg,syntype)) 
 real <- real %>% subset(., select=c(studyid, country, measurefreq, region, subjid, agedays, haz, waz, whz, sex, lencm,wtkg)) %>% mutate(syntype="Real")
+table(syn$syntype)
 
 d <- bind_rows(syn, real)
 
@@ -38,7 +39,7 @@ p <- ggplot(d, aes(x=agedays, y=whz, group=syntype, color=syntype, fill=syntype,
   facet_wrap(~cohort, scales="free") + theme(legend.position = "right") +
   scale_fill_manual(values=cbbPalette[-1]) +
   scale_color_manual(values=cbbPalette[-1]) 
-
+p
 
 d %>% group_by(syntype) %>% filter(!is.na(whz)) %>% summarize(mean(whz), sd(whz), num_wast=sum(whz < (-2)))
 
