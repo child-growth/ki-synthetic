@@ -37,11 +37,8 @@ writeLines(jsonlite::toJSON(enumerated_analyses),"unadj_cont_analyses.json")
 # 2. run batch
 configure_cluster(here("0-project-functions","cluster_credentials.json"))
 
-rmd_filename <- here("4-longbow-tmle-analysis/run-longbow/longbow_RiskFactors.Rmd")
-inputs <- "single_cont_analysis.json"
+rmd_filename <- here("4-longbow-tmle-analysis/run-longbow/longbow_RiskFactors_unadj.Rmd")
 
-#run test/provisioning job
-#run_on_longbow(rmd_filename, inputs, provision = TRUE)
 
 # send the batch to longbow (with provisioning disabled)
 batch_inputs <- "unadj_cont_analyses.json"

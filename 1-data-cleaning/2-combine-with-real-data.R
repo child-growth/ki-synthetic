@@ -34,6 +34,14 @@ d <- d %>% mutate(syntype=factor(syntype, levels=c("Real","QI","BC","FULL")))
 
 table(d$cohort, d$syntype)
 
+p <- ggplot(d, aes(x=agedays, y=haz, group=syntype, color=syntype, fill=syntype, linetype=syntype)) + 
+  geom_smooth(alpha=0.5) +
+  facet_wrap(~cohort, scales="free") + theme(legend.position = "right") +
+  scale_fill_manual(values=cbbPalette[-1]) +
+  scale_color_manual(values=cbbPalette[-1]) 
+p
+
+
 p <- ggplot(d, aes(x=agedays, y=whz, group=syntype, color=syntype, fill=syntype, linetype=syntype)) + 
   geom_smooth(alpha=0.5) +
   facet_wrap(~cohort, scales="free") + theme(legend.position = "right") +

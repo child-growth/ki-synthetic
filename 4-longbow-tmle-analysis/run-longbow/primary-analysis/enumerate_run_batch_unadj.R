@@ -6,7 +6,6 @@ source(paste0(here::here(), "/0-config.R"))
 .libPaths( "~/rlibs" )
 library(data.table)
 library(longbowtools)
-library(jsonlite)
 library(progress)
 library(longbowRiskFactors)
 
@@ -14,7 +13,7 @@ library(longbowRiskFactors)
 # 1. enumerate analysis
 setwd(here("4-longbow-tmle-analysis","run-longbow","primary-analysis"))
 inputs <- "inputs_template.json"
-default_params <- fromJSON(inputs)
+default_params <- jsonlite::fromJSON(inputs)
 
 
 load(here("4-longbow-tmle-analysis","analysis specification","unadjusted_binary_analyses.rdata"))
@@ -23,8 +22,8 @@ enumerated_analyses <- lapply(seq_len(nrow(analyses)), specify_longbow)
 
 
 
-writeLines(toJSON(enumerated_analyses[[1]]),"single_bin_analysis.json")
-writeLines(toJSON(enumerated_analyses),"all_bin_analyses.json")
+writeLines(jsonlite::toJSON(enumerated_analyses[[1]]),"single_bin_analysis.json")
+writeLines(jsonlite::toJSON(enumerated_analyses),"all_bin_analyses.json")
 
 
 
@@ -32,7 +31,7 @@ writeLines(toJSON(enumerated_analyses),"all_bin_analyses.json")
 
 configure_cluster(here("0-project-functions","cluster_credentials.json"))
 
-rmd_filename <- here("4-longbow-tmle-analysis/run-longbow/longbow_RiskFactors.Rmd")
+rmd_filename <- here("4-longbow-tmle-analysis/run-longbow/longbow_RiskFactors_unadj.Rmd")
 # inputs <- "inputs_template.json"
 inputs <- "single_bin_analysis.json"
 
