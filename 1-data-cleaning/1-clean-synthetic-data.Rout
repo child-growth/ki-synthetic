@@ -17,6 +17,8 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
+[Previously saved workspace restored]
+
 > 
 > 
 > rm(list=ls())
@@ -101,29 +103,6 @@ The following objects are masked from ‘package:purrr’:
     is_atomic, is_formula
 
 
-Attaching package: ‘rlang’
-
-The following objects are masked from ‘package:lazyeval’:
-
-    as_name, call_modify, call_standardise, expr_label, expr_text,
-    f_env, f_env<-, f_label, f_lhs, f_lhs<-, f_rhs, f_rhs<-, f_text,
-    is_atomic, is_call, is_formula, is_lang, is_pairlist, missing_arg
-
-The following object is masked from ‘package:assertthat’:
-
-    has_name
-
-The following object is masked from ‘package:data.table’:
-
-    :=
-
-The following objects are masked from ‘package:purrr’:
-
-    %@%, as_function, flatten, flatten_chr, flatten_dbl, flatten_int,
-    flatten_lgl, flatten_raw, invoke, list_along, modify, prepend,
-    splice
-
-
 Attaching package: ‘scales’
 
 The following object is masked from ‘package:viridis’:
@@ -198,9 +177,8 @@ The following objects are masked from ‘package:base’:
 
     as.Date, as.Date.numeric
 
-Warning messages:
-1: package ‘tidyverse’ was built under R version 4.0.5 
-2: package ‘rlang’ was built under R version 4.0.5 
+Warning message:
+package ‘tidyverse’ was built under R version 4.0.5 
 > 
 > 
 > #--------------------------------------------
@@ -211,8 +189,8 @@ Warning messages:
 > d1 <- d1 %>%
 +   mutate(vagbrth=factor(vagbrth),
 +          hdlvry=factor(hdlvry))
-> d2 <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds")) %>% mutate(syntype="QI")
-> d3 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized.rds"))  %>% mutate(syntype="FULL")
+> d2 <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds")) %>% mutate(syntype="FULL")
+> d3 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized.rds"))  %>% mutate(syntype="QI")
 > 
 > class(d1$single)
 [1] "integer"
@@ -563,4 +541,4 @@ Burkina Faso Zn  CMC-V-BCS-2002            CMIN         COHORTS         CONTENT
 > 
 > proc.time()
    user  system elapsed 
- 75.204   3.552  78.746 
+ 78.031   2.989  80.995 

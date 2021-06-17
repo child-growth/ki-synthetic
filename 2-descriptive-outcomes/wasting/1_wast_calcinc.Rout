@@ -17,6 +17,8 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
+[Previously saved workspace restored]
+
 > 
 > 
 > 
@@ -371,4 +373,4 @@ _----------------------------------
 > 
 > proc.time()
     user   system  elapsed 
-3843.326   19.084 3862.357 
+3990.913   29.782 4020.630 
