@@ -56,7 +56,6 @@ stunt_ci_plot <- ci_plot
 stunt_prev_cohort <- prev_plot
 
 
-
 pwhz <- readRDS(file=paste0(fig_dir, "plot-objects/fig-WLZ-comp.RDS"))
 phaz <- readRDS(file=paste0(fig_dir, "plot-objects/fig-LAZ-comp.RDS"))
 
@@ -193,7 +192,7 @@ The fully synthesized data matches much more closely in some cohorts than others
 
 ## Covariate-adjusted, SuperLearner-based estimates
 
-Below are comparisons of the most challenging resutls to replicate with synthetic data
+Below are comparisons of the most challenging results to replicate with synthetic data: pooled population attributable risks of different baseline covariates on Z-scores at 24 months, estimated using targeted maximum likelihood estimation fit with SuperLearner ensemble machine learning models. 
 
 ### Comparison of pooled targeted learning estimates
 
@@ -204,16 +203,17 @@ pPAR[[1]]
 pPAR[[2]]
 ```
 
+The synthetic data population-attributable risks are generally lower than the real estimates.  The fully-synthetic data most closely matches the real-data estimates, but some of the confidence intervals are much higher. We would have made similar inferences for almost all risk factors using the fully synthetic data, but would have concluded that some important risk factors (like maternal weight and education and household wealth are not strongly associated with poor child growth).
+
 
 ### Comparison of difference in cohort-specific targeted learning estimates
-
-Note "BC" estimates match the real-data estimates almost exactly and are not plotted
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
 pATE
 ```
 
+When comparing all cohort-specific average-treatment effects (rather than just pooled population-attribuable risks of Z-scores at 24 months), the QI datasets match the real-data estimates most closely. 
 
 ## Unadjusted, linear regression estimates
 
@@ -226,14 +226,17 @@ pPAR_unadj[[1]]
 pPAR_unadj[[2]]
 ```
 
+Similar to the adjusted, SuperLearner estimates, the fully-synthetic data most closely matches the real-data estimates, but the synthetic data population-attributable risks are generally lower. 
 
 ### Comparison of difference in cohort-specific targeted learning estimates
 
-Note "BC" estimates match the real-data estimates almost exactly and are not plotted
+The median difference between the fully synthetic and real data is near-zero, and overall, the bias is smaller from the fully synthetic data compared to the QI/BC data.
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
 pATE_unadj
 ```
+
+
 
 
