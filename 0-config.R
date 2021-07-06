@@ -40,8 +40,8 @@ library(xtable)
 
 # for parallel computing 
 # (will need to configure in each script)
-library(foreach)
-library(doParallel)
+#library(foreach)
+#library(doParallel)
 library(survey)
 # install.packages("bit64")
 library(bit64)

@@ -1,7 +1,7 @@
 ---
 title: "Synthetic comparison figures"
 author: "Andrew Mertens"
-date: "6/16/2021"
+date: "7/05/2021"
 output: html_document
 ---
 
@@ -11,6 +11,8 @@ knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
 
 library(tidyverse)
+library(here)
+library(knitr)
 
 theme_ki <- function() {
   theme_bw() %+replace%
@@ -32,27 +34,28 @@ theme_set(theme_ki())
 
 ```{r, include="F"}
 fig_dir="C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/"
+fig_dir="/home/andrew.mertens/ki-synthetic/figures/"
+BV_dir="/home/andrew.mertens/ki-synthetic/"
 
-pPAR <- readRDS("C:/Users/andre/Documents/HBGDki/ki-synthetic/results/rf results/rf_Zpar_plot_objects.RDS")
-pATE <- readRDS(paste0(here::here(), "/results/rf results/ate_diff_object.RDS"))
-pPAR_unadj <- readRDS("C:/Users/andre/Documents/HBGDki/ki-synthetic/results/rf results/rf_Zpar_unadj_plot_objects.RDS")
-pATE_unadj <- readRDS(paste0(here::here(), "/results/rf results/ate_diff_object_unadj.RDS"))
+pPAR <- readRDS(paste0(BV_dir,"/results/rf results/rf_Zpar_plot_objects.RDS"))
+pATE <- readRDS(paste0(BV_dir, "/results/rf results/ate_diff_object.RDS"))
+pPAR_unadj <- readRDS(paste0(BV_dir,"/results/rf results/rf_Zpar_unadj_plot_objects.RDS"))
+pATE_unadj <- readRDS(paste0(BV_dir, "/results/rf results/ate_diff_object_unadj.RDS"))
 
 
-load("C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/wasting/fig-comparisons.Rdata")
+load(paste0(BV_dir,"/figures/wasting/fig-comparisons.Rdata"))
 WLZ_plot <- Z_plot
 wast_plot <-prev_plot
 wast_ci_plot <-ci_plot
 wast_ci_africa_plot <-ci_plot_Africa
 #sevwast_plot
 
-load("C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/stunting/fig-comparisons.Rdata")
+load(paste0(BV_dir,"/figures/stunting/fig-comparisons.Rdata"))
 LAZ_plot <- Z_plot
 stunt_plot <- prev_plot_pooled
 sevstunt_plot <- prev_plot_sev
 stunt_ci_plot <- ci_plot
 stunt_prev_cohort <- prev_plot
-
 
 
 pwhz <- readRDS(file=paste0(fig_dir, "plot-objects/fig-WLZ-comp.RDS"))
@@ -69,21 +72,29 @@ The report compares estimates from 3 synthetic datasets with the raw KI values. 
   *  BC: Partially synthetic dataset with quasi-identifiers and baseline characteristics synthesized, but not child age/anthropometry
   *  Full: Fully synthesized dataset using updated deep learning model. Each cohort is generated through a model either trained exclusively on that cohort, or on a group of sufficiently similar cohorts, depending on the number of individuals in the cohort.
   
-```{r, echo=FALSE}
 
-synfull <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
-  
-```
 
 ## Descriptive epidemiology comparisons of Z-scores and age-specific wasting and stunting prevalences/incidences
 
 
-Anthropometry estimates match exactly between the real data and the QI/BC datasets, but while mean Z-scores from the fully synthetic data mostly match, the prevalences and incidences of wasting and stunting are lower.
+Anthropometry estimates match exactly between the real data and the QI/BC datasets, but while mean Z-scores from the fully synthetic data match overall (and mostly match by age), the prevalences and incidences of wasting and stunting are lower because the standard deviation of Z-scores in the full synthetic data is lower than the real. 
+
+
+```{r, echo=FALSE}
+
+synfull <- readRDS(here("data/ki-synthetic-dataset.rds"))
+  tab<- synfull %>% group_by(syntype) %>%
+    summarize(`Mean HAZ`=round(mean(haz, na.rm=T),2), `Mean WHZ`=round(mean(whz, na.rm=T),2), `SD HAZ`=round(sd(haz, na.rm=T),2), `SD WHZ`=round(sd(whz, na.rm=T),2))
+    
+knitr::kable(tab)
+  
+```
+
 
 ### Mean Z-scores
 
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
 LAZ_plot
 WLZ_plot
@@ -92,7 +103,7 @@ WLZ_plot
 ```
 
 
-<!-- # ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"} -->
+<!-- # ```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"} -->
 <!-- #  -->
 <!-- # phaz -->
 <!-- # pwhz -->
@@ -104,7 +115,7 @@ WLZ_plot
 
 ### Stunting  prevalence
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
 #Stunting
 stunt_plot$plot
@@ -118,7 +129,7 @@ Note slight difference in stunting prevalence between real and QI/BC data. These
 
 ### Wasting prevalence
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
 
 #Wasting
@@ -130,7 +141,7 @@ wast_plot$plot
 ### Severe stunting prevalence
 
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 #Stunting
 sevstunt_plot$plot
 
@@ -141,7 +152,7 @@ sevstunt_plot$plot
 ### Severe  wasting prevalence
 
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
 #Wasting
 sevwast_plot$plot
@@ -151,7 +162,7 @@ sevwast_plot$plot
 ### Stunting  cumulative incidence
 
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
 #Stunting
 stunt_ci_plot$plot
@@ -163,17 +174,27 @@ stunt_ci_plot$plot
 ### Wasting cumulative incidence
 
 
-```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
 
-
-
-#Wasting
 wast_ci_plot$plot
-wast_ci_africa_plot$plot
 ```
 
 
+### Example cohort-specific estimates of wasting cumulative incidenc eby age
+
+
+```{r, echo=FALSE, fig.height = 6, fig.width = 8, fig.align = "center"}
+
+wast_ci_africa_plot$plot
+
+```
+
+The fully synthesized data matches much more closely in some cohorts than others.
+
+
 ## Covariate-adjusted, SuperLearner-based estimates
+
+Below are comparisons of the most challenging results to replicate with synthetic data: pooled population attributable risks of different baseline covariates on Z-scores at 24 months, estimated using targeted maximum likelihood estimation fit with SuperLearner ensemble machine learning models. 
 
 ### Comparison of pooled targeted learning estimates
 
@@ -184,16 +205,17 @@ pPAR[[1]]
 pPAR[[2]]
 ```
 
+The synthetic data population-attributable risks are generally lower than the real estimates.  The fully-synthetic data most closely matches the real-data estimates, but some of the confidence intervals are much higher. We would have made similar inferences for almost all risk factors using the fully synthetic data, but would have concluded that some important risk factors (like maternal weight and education and household wealth are not strongly associated with poor child growth).
+
 
 ### Comparison of difference in cohort-specific targeted learning estimates
-
-Note "BC" estimates match the real-data estimates almost exactly and are not plotted
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
 pATE
 ```
 
+When comparing all cohort-specific average-treatment effects (rather than just pooled population-attribuable risks of Z-scores at 24 months), the QI datasets match the real-data estimates most closely. 
 
 ## Unadjusted, linear regression estimates
 
@@ -206,14 +228,17 @@ pPAR_unadj[[1]]
 pPAR_unadj[[2]]
 ```
 
+Similar to the adjusted, SuperLearner estimates, the fully-synthetic data most closely matches the real-data estimates, but the synthetic data population-attributable risks are generally lower. 
 
 ### Comparison of difference in cohort-specific targeted learning estimates
 
-Note "BC" estimates match the real-data estimates almost exactly and are not plotted
+The median difference between the fully synthetic and real data is near-zero, and overall, the bias is smaller from the fully synthetic data compared to the QI/BC data.
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
 pATE_unadj
 ```
+
+
 
 

@@ -1,0 +1,4042 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Data Comparison</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+/* SPDX-Copyright: Copyright (c) Capital One Services, LLC */
+/* SPDX-License-Identifier: Apache-2.0 */
+/* Copyright 2017 Capital One Services, LLC */
+/*
+/* Licensed under the Apache License, Version 2.0 (the "License"); */
+/* you may not use this file except in compliance with the License. */ 
+/*
+/* You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 */
+/*
+/* Unless required by applicable law or agreed to in writing, software distributed */
+/* under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS */
+/* OF ANY KIND, either express or implied. */
+/* */
+/* See the License for the specific language governing permissions and limitations under the License. */
+
+
+/* Set the table element */
+  table {
+    overflow: auto;
+    width: auto;
+    display: block;
+    font-family: sans-serif;
+  }
+
+/* Table headers */
+th {
+  color: white;
+  background-color: rgb(121, 122, 123);
+  text-align: center;
+  font-weight: normal;
+  padding: 8px 7px;
+}
+
+/* Table cell */
+td {
+  padding: 4px 4px;
+  background-color: rgb(239, 240, 241);
+  color: rgb(111, 110, 109);
+  font-family: sans-serif;
+  font-size: 13px;
+}
+
+/* Backgroun */
+body {
+  max-width: 800px;
+  font-family: sans-serif;
+  background-color: white;
+  font-size: 12px;
+  margin: auto;
+  padding: 4px;
+  line-height: 20px;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+<h1>Data Comparison</h1>
+
+<p>Date comparison run: 2021-06-17 11:45:43<br/>
+Comparison run on R version 4.0.5 (2021-03-31)<br/>
+With dataCompareR version 0.1.3  </p>
+
+<h1>Meta Summary</h1>
+
+<table><thead>
+<tr>
+<th align="left">Dataset Name</th>
+<th align="left">Number of Rows</th>
+<th align="left">Number of Columns</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">real_cov</td>
+<td align="left">99630</td>
+<td align="left">69</td>
+</tr>
+<tr>
+<td align="left">covFULL</td>
+<td align="left">77418</td>
+<td align="left">79</td>
+</tr>
+</tbody></table>
+
+<h1>Variable Summary</h1>
+
+<p>Number of columns in common: 60<br/>
+Number of columns only in real_cov: 9<br/>
+Number of columns only in covFULL: 19<br/>
+Number of columns with a type mismatch: 7<br/>
+No match key used, comparison is by row</p>
+
+<p>Columns only in real_cov: DATEDEL, EXCLFEED3, EXCLFEED36, EXCLFEED6, PREDFEED3, PREDFEED36, PREDFEED6, SAFEH20, SES<br/>
+Columns only in covFULL: AGEDAYS, AGEDTH, AGEMONTHS, BRTHWEEK, BRTHYR, CLUSTERID, COHORTID, CTRYCD, DEAD, EXCLUDE_DESC, HTCM, LATITUDE, LENCM, LONGITUD, SAFEH2O, SITEID, STUDYIDA, SYNTYPE, WTKG<br/>
+Columns in both : ANYWAST06, ARM, BIRTHLEN, BIRTHWT, BRTHMON, CLEANCK, COUNTRY, EARLYBF, ENSTUNT, ENWAST, FAGE, FEDUCYRS, FHTCM, GAGEBRTH, HDLVRY, HFOODSEC, HHWEALTH_QUART, ID, IMPFLOOR, IMPSAN, MAGE, MBMI, MEASUREFREQ, MEDUCYRS, MHTCM, MONTH, MWTKG, NCHLDLT5, NHH, NROOMS, PARITY, PERDIAR24, PERDIAR6, PERS_WAST, PREDEXFD6, REGION, SEX, SINGLE, STUDYID, SUBJID, TR, TRTH2O, VAGBRTH, W_BIRTHLEN, W_BIRTHWT, W_FAGE, W_FEDUCYRS, W_FHTCM, W_GAGEBRTH, W_MAGE, W_MBMI, W_MEDUCYRS, W_MHTCM, W_MWTKG, W_NCHLDLT5, W_NHH, W_NROOMS, W_PARITY, W_PERDIAR24, W_PERDIAR6  </p>
+
+<h1>Listing of Common Columns with Different Data Types</h1>
+
+<table><thead>
+<tr>
+<th align="left">Column Name</th>
+<th align="left">Column Type (in real_cov)</th>
+<th align="left">Column Type (in covFULL)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">ID</td>
+<td align="left">double</td>
+<td align="left">character</td>
+</tr>
+<tr>
+<td align="left">W_FAGE</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">W_FEDUCYRS</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">W_GAGEBRTH</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">W_MEDUCYRS</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">W_NHH</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">W_NROOMS</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+</tr>
+</tbody></table>
+
+<h1>Row Summary</h1>
+
+<p>Total number of rows read from real_cov: 99630<br/>
+Total number of rows read from covFULL: 77418<br/>
+Number of rows in common: 77418<br/>
+Number of rows dropped from real_cov: 22212<br/>
+Number of rows dropped from  covFULL: 0  </p>
+
+<h1>Data Values Comparison Summary</h1>
+
+<p>Number of columns compared with ALL rows equal: 0<br/>
+Number of columns compared with SOME rows unequal: 60<br/>
+Number of columns with missing value differences: 11  </p>
+
+<p>Summary of columns with some rows unequal: </p>
+
+<table><thead>
+<tr>
+<th align="left">Column</th>
+<th align="left">Type (in real_cov)</th>
+<th align="left">Type (in covFULL)</th>
+<th align="right"># differences</th>
+<th align="left">Max difference</th>
+<th align="right"># NAs</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">ANYWAST06</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">16586</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">ARM</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">68735</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">BIRTHLEN</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">51306</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">BIRTHWT</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">38429</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">BRTHMON</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">71930</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">CLEANCK</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">13758</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">COUNTRY</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">53336</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">EARLYBF</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">35174</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">ENSTUNT</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">34216</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">ENWAST</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">35288</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">FAGE</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">36084</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">FEDUCYRS</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">49741</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">FHTCM</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">21595</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">GAGEBRTH</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">53278</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">HDLVRY</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">19711</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">HFOODSEC</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">30694</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">HHWEALTH_QUART</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">40274</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">ID</td>
+<td align="left">double</td>
+<td align="left">character</td>
+<td align="right">77418</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">IMPFLOOR</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">26065</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">IMPSAN</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">39964</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">MAGE</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">49585</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">MBMI</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">43748</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">MEASUREFREQ</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">27573</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">MEDUCYRS</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">55351</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">MHTCM</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">49661</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">MONTH</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">71975</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">MWTKG</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">48053</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">NCHLDLT5</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">28410</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">NHH</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">6941</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">NROOMS</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">41124</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">PARITY</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">54295</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">PERDIAR24</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">20832</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">PERDIAR6</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">10753</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">PERS_WAST</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">15261</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">PREDEXFD6</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">29482</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">REGION</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">48128</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">SEX</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">38805</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">SINGLE</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">27890</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">STUDYID</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">56676</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">SUBJID</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">77418</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">TR</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">60122</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">TRTH2O</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">4273</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">VAGBRTH</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">31110</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">W_BIRTHLEN</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">64245</td>
+<td align="left">26</td>
+<td align="right">30046</td>
+</tr>
+<tr>
+<td align="left">W_BIRTHWT</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">67287</td>
+<td align="left">4250</td>
+<td align="right">25782</td>
+</tr>
+<tr>
+<td align="left">W_FAGE</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="right">77418</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">W_FEDUCYRS</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="right">77418</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">W_FHTCM</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">22450</td>
+<td align="left">44</td>
+<td align="right">21058</td>
+</tr>
+<tr>
+<td align="left">W_GAGEBRTH</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="right">77418</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">W_MAGE</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">73243</td>
+<td align="left">43</td>
+<td align="right">13882</td>
+</tr>
+<tr>
+<td align="left">W_MBMI</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">69024</td>
+<td align="left">141.966653771475</td>
+<td align="right">32140</td>
+</tr>
+<tr>
+<td align="left">W_MEDUCYRS</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="right">77418</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">W_MHTCM</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">71181</td>
+<td align="left">87.6</td>
+<td align="right">25040</td>
+</tr>
+<tr>
+<td align="left">W_MWTKG</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">69174</td>
+<td align="left">109.39989154</td>
+<td align="right">30874</td>
+</tr>
+<tr>
+<td align="left">W_NCHLDLT5</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">28827</td>
+<td align="left">9</td>
+<td align="right">19364</td>
+</tr>
+<tr>
+<td align="left">W_NHH</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="right">77418</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">W_NROOMS</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="right">77418</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">W_PARITY</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">57270</td>
+<td align="left">11</td>
+<td align="right">37900</td>
+</tr>
+<tr>
+<td align="left">W_PERDIAR24</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">20825</td>
+<td align="left">0.37093023255814</td>
+<td align="right">20252</td>
+</tr>
+<tr>
+<td align="left">W_PERDIAR6</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">10753</td>
+<td align="left"></td>
+<td align="right">10753</td>
+</tr>
+</tbody></table>
+
+<h1>Unequal column details</h1>
+
+<h4>Column -  ANYWAST06</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">ANYWAST06 (real_cov)</th>
+<th align="left">ANYWAST06 (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  ARM</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">ARM (real_cov)</th>
+<th align="left">ARM (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left"></td>
+<td align="left">Control group</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">d.LNS-TabZn5</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Iron Folic Acid</td>
+<td align="left">Soy FS</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Multiple Micronutrients</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Experimental group</td>
+<td align="left">Placebo nippled + 400,000 IU Oval</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  BIRTHLEN</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">BIRTHLEN (real_cov)</th>
+<th align="left">BIRTHLEN (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">[48-50) cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">[48-50) cm</td>
+<td align="left">&gt;=50 cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">[48-50) cm</td>
+<td align="left">&lt;48 cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">&lt;48 cm</td>
+<td align="left">&gt;=50 cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">[48-50) cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  BIRTHWT</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">BIRTHWT (real_cov)</th>
+<th align="left">BIRTHWT (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">Low birthweight</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">Normal or high birthweight</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Low birthweight</td>
+<td align="left">Normal or high birthweight</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Normal or high birthweight</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Normal or high birthweight</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  BRTHMON</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">BRTHMON (real_cov)</th>
+<th align="left">BRTHMON (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">11</td>
+<td align="left">8</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">12</td>
+<td align="left">8</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">10</td>
+<td align="left">3</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">6</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  CLEANCK</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">CLEANCK (real_cov)</th>
+<th align="left">CLEANCK (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  COUNTRY</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">COUNTRY (real_cov)</th>
+<th align="left">COUNTRY (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">BANGLADESH</td>
+<td align="left">GAMBIA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">BANGLADESH</td>
+<td align="left">GAMBIA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">BANGLADESH</td>
+<td align="left">GAMBIA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">BELARUS</td>
+<td align="left">ZIMBABWE</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">BANGLADESH</td>
+<td align="left">BELARUS</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  EARLYBF</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">EARLYBF (real_cov)</th>
+<th align="left">EARLYBF (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  ENSTUNT</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">ENSTUNT (real_cov)</th>
+<th align="left">ENSTUNT (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  ENWAST</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">ENWAST (real_cov)</th>
+<th align="left">ENWAST (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  FAGE</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">FAGE (real_cov)</th>
+<th align="left">FAGE (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">[32-38)</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">&gt;=38</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">&lt;32</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">&lt;32</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">[32-38)</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  FEDUCYRS</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">FEDUCYRS (real_cov)</th>
+<th align="left">FEDUCYRS (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Low</td>
+<td align="left">Medium</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">High</td>
+<td align="left">Medium</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Low</td>
+<td align="left">High</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">Low</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">High</td>
+<td align="left">Medium</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  FHTCM</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">FHTCM (real_cov)</th>
+<th align="left">FHTCM (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">&gt;=167 cm</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">&gt;=167 cm</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">&gt;=167 cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">&gt;=167 cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">&gt;=167 cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  GAGEBRTH</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">GAGEBRTH (real_cov)</th>
+<th align="left">GAGEBRTH (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Early term</td>
+<td align="left">Full or late term</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">Full or late term</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">Early term</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Preterm</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">Preterm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  HDLVRY</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">HDLVRY (real_cov)</th>
+<th align="left">HDLVRY (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  HFOODSEC</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">HFOODSEC (real_cov)</th>
+<th align="left">HFOODSEC (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">Food Secure</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">Food Secure</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Mildly Food Insecure</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Food Secure</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Food Secure</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  HHWEALTH_QUART</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">HHWEALTH_QUART (real_cov)</th>
+<th align="left">HHWEALTH_QUART (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">WealthQ2</td>
+<td align="left">WealthQ3</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">WealthQ3</td>
+<td align="left">WealthQ1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">WealthQ1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">WealthQ4</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">WealthQ4</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  ID</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">ID (real_cov)</th>
+<th align="left">ID (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">20369</td>
+<td align="left">ILND-MWI-8976</td>
+<td align="left">double</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">16721</td>
+<td align="left">BFZn-BFA-3300</td>
+<td align="left">double</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">15546</td>
+<td align="left">PRBT-BLR-7773</td>
+<td align="left">double</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">7533</td>
+<td align="left">MLED-ZAF-7344</td>
+<td align="left">double</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">29677</td>
+<td align="left">CMC-IND-213</td>
+<td align="left">double</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  IMPFLOOR</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">IMPFLOOR (real_cov)</th>
+<th align="left">IMPFLOOR (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  IMPSAN</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">IMPSAN (real_cov)</th>
+<th align="left">IMPSAN (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  MAGE</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">MAGE (real_cov)</th>
+<th align="left">MAGE (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">[20-30)</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">&lt;20</td>
+<td align="left">[20-30)</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">&lt;20</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">[20-30)</td>
+<td align="left">&gt;=30</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">[20-30)</td>
+<td align="left">&gt;=30</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  MBMI</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">MBMI (real_cov)</th>
+<th align="left">MBMI (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Normal weight</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Normal weight</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">Normal weight</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Underweight</td>
+<td align="left">Normal weight</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">Normal weight</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  MEASUREFREQ</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">MEASUREFREQ (real_cov)</th>
+<th align="left">MEASUREFREQ (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">quarterly</td>
+<td align="left">monthly</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">quarterly</td>
+<td align="left">monthly</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">quarterly</td>
+<td align="left">monthly</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">quarterly</td>
+<td align="left">yearly</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">yearly</td>
+<td align="left">quarterly</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  MEDUCYRS</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">MEDUCYRS (real_cov)</th>
+<th align="left">MEDUCYRS (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">High</td>
+<td align="left">Medium</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Medium</td>
+<td align="left">High</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Low</td>
+<td align="left">Medium</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Low</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Medium</td>
+<td align="left">High</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  MHTCM</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">MHTCM (real_cov)</th>
+<th align="left">MHTCM (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">&gt;=155 cm</td>
+<td align="left">[151-155) cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">[151-155) cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">&gt;=155 cm</td>
+<td align="left">[151-155) cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">&lt;151 cm</td>
+<td align="left">[151-155) cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">[151-155) cm</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  MONTH</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">MONTH (real_cov)</th>
+<th align="left">MONTH (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">9</td>
+<td align="left">5</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">4</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">11</td>
+<td align="left">NaN</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">2</td>
+<td align="left">12</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">5</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  MWTKG</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">MWTKG (real_cov)</th>
+<th align="left">MWTKG (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">&lt;52 kg</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">&gt;=58 kg</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">&gt;=58 kg</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">&gt;=58 kg</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">&gt;=58 kg</td>
+<td align="left">[52-58) kg</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  NCHLDLT5</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">NCHLDLT5 (real_cov)</th>
+<th align="left">NCHLDLT5 (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">2+</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">1</td>
+<td align="left">2+</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">2+</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  NHH</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">NHH (real_cov)</th>
+<th align="left">NHH (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">3 or less</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">4-5</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">6-7</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">3 or less</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">6-7</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  NROOMS</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">NROOMS (real_cov)</th>
+<th align="left">NROOMS (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">2</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">2</td>
+<td align="left">4+</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  PARITY</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">PARITY (real_cov)</th>
+<th align="left">PARITY (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">3+</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  PERDIAR24</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">PERDIAR24 (real_cov)</th>
+<th align="left">PERDIAR24 (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">[0%, 2%]</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">&gt;5%</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">(0%, 5%]</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">&gt;2%</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">&gt;2%</td>
+<td align="left">&gt;5%</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  PERDIAR6</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">PERDIAR6 (real_cov)</th>
+<th align="left">PERDIAR6 (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">0%</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">&gt;2%</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">&gt;5%</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">[0%, 2%]</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">&gt;2%</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  PERS_WAST</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">PERS_WAST (real_cov)</th>
+<th align="left">PERS_WAST (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  PREDEXFD6</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">PREDEXFD6 (real_cov)</th>
+<th align="left">PREDEXFD6 (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  REGION</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">REGION (real_cov)</th>
+<th align="left">REGION (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">South Asia</td>
+<td align="left">Africa</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Africa</td>
+<td align="left">South Asia</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">South Asia</td>
+<td align="left">Africa</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">South Asia</td>
+<td align="left">Latin America</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Europe</td>
+<td align="left">South Asia</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  SEX</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">SEX (real_cov)</th>
+<th align="left">SEX (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Male</td>
+<td align="left">Female</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Female</td>
+<td align="left">Male</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Male</td>
+<td align="left">Female</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Male</td>
+<td align="left">Female</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Male</td>
+<td align="left">Female</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  SINGLE</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">SINGLE (real_cov)</th>
+<th align="left">SINGLE (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  STUDYID</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">STUDYID (real_cov)</th>
+<th align="left">STUDYID (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">JiVitA-3</td>
+<td align="left">NIH-Birth</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">PROBIT</td>
+<td align="left">Vitamin A</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Keneba</td>
+<td align="left">PROBIT</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">JiVitA-4</td>
+<td align="left">PROBIT</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">JiVitA-4</td>
+<td align="left">PROBIT</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  SUBJID</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">SUBJID (real_cov)</th>
+<th align="left">SUBJID (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">160067</td>
+<td align="left">ZVIT-ZWE-11611</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">17442</td>
+<td align="left">JVT3-BGD-7577</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">678</td>
+<td align="left">CORT-PHL-9827</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">27915</td>
+<td align="left">NBrt-BGD-29385</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">291054</td>
+<td align="left">ZVIT-ZWE-7182</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  TR</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">TR (real_cov)</th>
+<th align="left">TR (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Control</td>
+<td align="left"></td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Maternal</td>
+<td align="left">Control</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">Control</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Maternal</td>
+<td align="left"></td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Control</td>
+<td align="left"></td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  TRTH2O</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">TRTH2O (real_cov)</th>
+<th align="left">TRTH2O (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  VAGBRTH</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">VAGBRTH (real_cov)</th>
+<th align="left">VAGBRTH (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">0</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_BIRTHLEN</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_BIRTHLEN (real_cov)</th>
+<th align="right">W_BIRTHLEN (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">NA</td>
+<td align="right">49.5</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">54.0</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">50.0</td>
+<td align="right">49.0</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">1.0</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">50.7</td>
+<td align="right">47.9</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">2.8</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">52.0</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_BIRTHWT</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_BIRTHWT (real_cov)</th>
+<th align="right">W_BIRTHWT (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">3600</td>
+<td align="right">2920.0</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">680.0</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">NA</td>
+<td align="right">2910.0</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">2620</td>
+<td align="right">3187.5</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-567.5</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">2870</td>
+<td align="right">2490.0</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">380.0</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">2240</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_FAGE</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_FAGE (real_cov)</th>
+<th align="right">W_FAGE (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">23</td>
+<td align="right">NA</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">NA</td>
+<td align="right">44</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">NA</td>
+<td align="right">28</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">NA</td>
+<td align="right">36</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_FEDUCYRS</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_FEDUCYRS (real_cov)</th>
+<th align="right">W_FEDUCYRS (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">0</td>
+<td align="right">11</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">12</td>
+<td align="right">12</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">12</td>
+<td align="right">16</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">10</td>
+<td align="right">12</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">0</td>
+<td align="right">12</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_FHTCM</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_FHTCM (real_cov)</th>
+<th align="right">W_FHTCM (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">161</td>
+<td align="right">170</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-9</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">NA</td>
+<td align="right">159</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">175</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">NA</td>
+<td align="right">176</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">NA</td>
+<td align="right">178</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_GAGEBRTH</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_GAGEBRTH (real_cov)</th>
+<th align="right">W_GAGEBRTH (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">227</td>
+<td align="right">266</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">281</td>
+<td align="right">259</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">NA</td>
+<td align="right">269</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">280</td>
+<td align="right">NA</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">265</td>
+<td align="right">NA</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_MAGE</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_MAGE (real_cov)</th>
+<th align="right">W_MAGE (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">30</td>
+<td align="right">19</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">11</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">22</td>
+<td align="right">18</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">35</td>
+<td align="right">21</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">14</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">34</td>
+<td align="right">25</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">9</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">20</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_MBMI</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_MBMI (real_cov)</th>
+<th align="right">W_MBMI (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">20.89000</td>
+<td align="right">26.13000</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-5.240000</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">22.56944</td>
+<td align="right">24.04186</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-1.472413</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">NA</td>
+<td align="right">26.02620</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">21.28220</td>
+<td align="right">19.13000</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">2.152200</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">21.59541</td>
+<td align="right">22.82340</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-1.227993</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_MEDUCYRS</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_MEDUCYRS (real_cov)</th>
+<th align="right">W_MEDUCYRS (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">0</td>
+<td align="right">13</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">10</td>
+<td align="right">16</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">8</td>
+<td align="right">13</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_MHTCM</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_MHTCM (real_cov)</th>
+<th align="right">W_MHTCM (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">NA</td>
+<td align="right">152.3</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">150.0</td>
+<td align="right">159.0</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-9.0</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">151.9</td>
+<td align="right">162.0</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-10.1</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">164.0</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">165.0</td>
+<td align="right">154.2</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">10.8</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_MWTKG</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_MWTKG (real_cov)</th>
+<th align="right">W_MWTKG (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">57.0</td>
+<td align="right">53.7</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">3.3</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">NA</td>
+<td align="right">52.8</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">39.7</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">46.7</td>
+<td align="right">53.0</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-6.3</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">NA</td>
+<td align="right">57.9</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_NCHLDLT5</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_NCHLDLT5 (real_cov)</th>
+<th align="right">W_NCHLDLT5 (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_NHH</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_NHH (real_cov)</th>
+<th align="right">W_NHH (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">NA</td>
+<td align="right">5</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_NROOMS</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_NROOMS (real_cov)</th>
+<th align="right">W_NROOMS (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">4</td>
+<td align="right">NA</td>
+<td align="left">integer</td>
+<td align="left">double</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_PARITY</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_PARITY (real_cov)</th>
+<th align="right">W_PARITY (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">NA</td>
+<td align="right">3</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_PERDIAR24</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_PERDIAR24 (real_cov)</th>
+<th align="right">W_PERDIAR24 (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">0.0283286</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">0.0000000</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">NA</td>
+<td align="right">0.0123288</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">0.0054795</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">NA</td>
+<td align="right">0.0523416</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  W_PERDIAR6</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">W_PERDIAR6 (real_cov)</th>
+<th align="right">W_PERDIAR6 (covFULL)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covFULL)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">NA</td>
+<td align="right">0.0714286</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">NA</td>
+<td align="right">0.0277778</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">0</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">NA</td>
+<td align="right">0.0274725</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">NA</td>
+<td align="right">0.0000000</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+</tbody></table>
+
+</body>
+
+</html>

@@ -20,7 +20,7 @@ params:
       uri: 'https://raw.githubusercontent.com/HBGD-UCB/longbowRiskFactors/master/inst/sample_data/birthwt_data.rdata'
   nodes:
     value:
-      strata: ['study_id', 'mrace']
+      strata: ['studyid', 'country', 'agecat']
       id: ['subjid']
       W: ['apgar1', 'apgar5', 'gagebrth', 'mage', 'meducyrs', 'sexn']
       A: ['parity_cat']
@@ -58,6 +58,7 @@ library(sl3)
 library(tmle3)
 library(data.table)
 library(stringr)
+
 data <- get_tl_data()
 nodes <- get_tl_nodes()
 library(future)
@@ -65,14 +66,14 @@ tl_params <- get_tl_params()
 
 message(nodes)
 message(tl_params)
-if(tl_params$parallelize){
+#if(tl_params$parallelize){
   
   workers=availableCores()/2
   plan(multicore, workers=workers)
-} else {
+#} else {
   workers = 1
   plan(sequential)
-}
+#}
 
 if(length(nodes$W)==0){
   nodes$W=NULL
@@ -103,12 +104,15 @@ char_to_factor(data)
 if(length(nodes$W)>0){
 qlib <- make_learner_stack("Lrnr_mean",
                              "Lrnr_glm_fast",
-                             "Lrnr_glmnet",
-                             "Lrnr_gam",
-                             list("Lrnr_xgboost", nthread=1))
+                             "Lrnr_glmnet"#,
+                              #"Lrnr_gam"#,
+                             # list("Lrnr_xgboost", nthread=1)
+                           )
   glib <- make_learner_stack("Lrnr_mean",
-                             "Lrnr_glmnet",
-                             list("Lrnr_xgboost", nthread=1))
+                             "Lrnr_glm_fast"#,
+                             #"Lrnr_glmnet"#,
+                             #list("Lrnr_xgboost", nthread=1)
+                             )
 
 
 
@@ -129,11 +133,11 @@ learner_list <- list(Y=Q_learner, A=g_learner)
 ```
 
 ## Methods
-## Outcome Variable
+#### Outcome Variable
 
 **Outcome Variable:** `r nodes$Y`
 
-## Predictor Variables
+#### Predictor Variables
 
 **Intervention Variable:** `r nodes$A`
 
@@ -158,7 +162,11 @@ for(strata_variable in nodes$strata){
   cat(sprintf("* %s\n",strata_variable))
 }
 
+
+
 strata <- collapse_strata(data, nodes)
+
+
 
 ```
 
@@ -169,7 +177,7 @@ kable(obs_counts)
 
 if(params$output_directory!=""){
   counts_file <- file.path(params$output_directory, "obs_counts.rdata")
-  
+
   save(obs_counts, file=counts_file)
 }
 
@@ -201,11 +209,11 @@ if(nrow(dropped_strata)>0){
   # get strata labels for dropped_strata
   dropped_labels <- strata[dropped_strata, strata_label, on=eval(nodes$strata)]
   dropped_labels <- dropped_labels[!is.na(dropped_labels)]
-  
+
   for(stratum in dropped_labels){
     cat(sprintf("* %s\n",stratum))
   }
-  
+
   #actually drop these strata
   data <- data[!(strata_label%in%dropped_labels)]
   strata <- strata[!(strata_label%in%dropped_labels)]
@@ -232,7 +240,7 @@ formatted_results <- format_results(results, data, nodes)
 ```{r save_results}
 if(params$output_directory!=""){
   results_file <- file.path(params$output_directory, "results.rdata")
-  
+
   save(formatted_results, file=results_file)
 }
 ```

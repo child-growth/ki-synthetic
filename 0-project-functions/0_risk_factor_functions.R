@@ -1,21 +1,91 @@
 
+
+#-----------------------------------------------------------------------------------------
+# local TMLE function
+#-----------------------------------------------------------------------------------------
+
+
+run_ki_tmle <- function(enumerated_analyses, results_folder, overwrite=TRUE,
+                        rmd_filename = here("4-longbow-tmle-analysis/run-longbow/longbow_RiskFactors.Rmd")){
+  
+  Sys.getenv("RSTUDIO_PANDOC")
+  Sys.setenv(RSTUDIO_PANDOC="/usr/lib/rstudio-server/bin/pandoc")
+  rmarkdown::pandoc_available()
+  rmarkdown::pandoc_version()
+  
+  
+  base_directory = paste0(ghapdata_dir,"/tmle/",results_folder,"/")
+  for(i in 1:length(enumerated_analyses)){
+    cat(i," out of ",length(enumerated_analyses),"\n")
+    output_directory = paste0(base_directory,
+                              enumerated_analyses[[i]]$nodes$A,"_",
+                              enumerated_analyses[[i]]$nodes$Y)
+    enumerated_analyses[[i]]$output_directory <- output_directory
+    cat(i,"; ", enumerated_analyses[[i]]$nodes$A,"; ", enumerated_analyses[[i]]$nodes$Y,"; res exists: ",file.exists(paste0(output_directory,"/results.rdata")),"\n")
+    
+    if(overwrite==TRUE | !file.exists(paste0(output_directory,"/results.rdata"))){
+      time_run <- "fail"
+      try(time_run<-system.time(rmarkdown::render(rmd_filename,
+                                                  params = (enumerated_analyses[[i]]),
+                                                  output_file = file.path( output_directory, "/REPORT.html"),
+                                                  output_dir = output_directory,
+                                                  quiet=TRUE,
+                                                  output_format = rmarkdown::html_document(self_contained = TRUE,
+                                                                                           keep_md = F),
+                                                  knit_root_dir = output_directory)))
+      cat("\nruntime: ",time_run,"\n")
+    }
+  }
+  
+  # # load and concatenate the rdata from the jobs
+  results <- load_batch_results("results.rdata", results_folder = base_directory)
+  obs_counts <- load_batch_results("obs_counts.rdata", results_folder = base_directory)
+  
+  print(head(results))
+  
+  # save concatenated results
+  filename1 <- paste(paste('results',results_folder,Sys.Date( ),sep='_'),'RDS',sep='.')
+  filename2 <- paste(paste('results',results_folder,'obs_counts',Sys.Date( ),sep='_'),'RDS',sep='.')
+  saveRDS(results, file=paste0(res_dir,"rf results/raw longbow results/",filename1))
+  saveRDS(obs_counts, file=paste0(res_dir,"rf results/raw longbow results/",filename2))
+  
+  cat("\nAll done!\n")
+}
+
+
 #-----------------------------------------------------------------------------------------
 # Longbow prep function
 #-----------------------------------------------------------------------------------------
 
+# specify_longbow <- function(j, analyses_df=analyses, params=default_params){
+#   params$data$uri <- ghapdata_dir
+#   params$data$type <- "web"
+#   params$data$repository_path <- NULL
+#   
+#   analysis <- analyses_df[j,]
+#   analysis_params <- params
+#   analysis_nodes <- as.list(analysis)[c("W","A","Y","strata","id")]
+#   analysis_nodes$W <- gsub("W_bmi", "W_mbmi", analysis_nodes$W[[1]])
+#   analysis_params$nodes <- analysis_nodes
+#   analysis_params$data$uri <- paste0(analysis_params$data$uri, analysis$file)
+#   return(analysis_params)
+# }
+
 specify_longbow <- function(j, analyses_df=analyses, params=default_params){
   params$data$uri <- ghapdata_dir
-  params$data$type <- "web"
   params$data$repository_path <- NULL
   
   analysis <- analyses_df[j,]
   analysis_params <- params
   analysis_nodes <- as.list(analysis)[c("W","A","Y","strata","id")]
   analysis_nodes$W <- gsub("W_bmi", "W_mbmi", analysis_nodes$W[[1]])
+  analysis_nodes$strata <- analysis$strata[[1]]
   analysis_params$nodes <- analysis_nodes
   analysis_params$data$uri <- paste0(analysis_params$data$uri, analysis$file)
+  analysis_params$script_params$parallelize <- TRUE
   return(analysis_params)
 }
+
 
 #-----------------------------------------------------------------------------------------
 # Plotting functions

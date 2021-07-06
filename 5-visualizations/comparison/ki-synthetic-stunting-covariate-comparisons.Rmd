@@ -1,0 +1,79 @@
+---
+title: "Synthetic comparison figures"
+author: "Andrew Mertens"
+date: "6/16/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+
+library(tidyverse)
+library(here)
+library(knitr)
+
+theme_ki <- function() {
+  theme_bw() %+replace%
+    theme(
+      strip.background = element_blank(),
+      #legend.position="none",
+      plot.title = element_text(size = 16, face = "bold"),
+      strip.text = element_text(size=14),
+      axis.title = element_text(size=12),
+      axis.text.y = element_text(size=10),
+      axis.text.x = element_text(size=10, angle = 0, hjust = 0.5, vjust=.1)
+    )
+}
+
+theme_set(theme_ki())
+
+```
+
+
+```{r, include="F"}
+fig_dir="C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/"
+
+load(paste0(fig_dir, "cov-comparisons.Rdata"))
+
+
+```
+
+## Dataset descriptions
+
+The report compares estimates from 3 synthetic datasets with the raw KI values. The synthetic datasets are labeled:
+
+  *  QI: Partially synthetic dataset with just quasi-identifiers synthesized
+  *  BC: Partially synthetic dataset with quasi-identifiers and baseline characteristics synthesized, but not child age/anthropometry
+  *  Full: Fully synthesized dataset using updated deep learning model. Each cohort is generated through a model either trained exclusively on that cohort, or on a group of sufficiently similar cohorts, depending on the number of individuals in the cohort.
+  
+
+
+## Covariate comparisons
+
+### Real versus QI
+
+
+```{r, echo=FALSE}
+
+summary(QI_comp)
+
+```
+
+### Real versus BC
+
+```{r, echo=FALSE}
+
+summary(BC_comp)
+
+```
+
+### Real versus Fully synthesized
+
+```{r, echo=FALSE}
+
+summary(FULL_comp)
+
+```
+

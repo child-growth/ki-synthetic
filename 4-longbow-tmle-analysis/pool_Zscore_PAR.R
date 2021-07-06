@@ -15,6 +15,7 @@ dfull <- readRDS(paste0(here::here(),"/results/rf results/full_RF_results.rds"))
 head(dfull)
 
 
+table(dfull$syntype)
 unique(dfull$type)
 d <- dfull %>% filter(type=="PAR")
 
@@ -26,6 +27,7 @@ d <- d %>% filter(outcome_variable=="y_rate_haz"|outcome_variable=="y_rate_len"|
 d %>% filter(type=="PAR",agecat=="24 months",outcome_variable=="haz", intervention_variable=="perdiar24")
 
 d <- droplevels(d)
+table(d$syntype)
 
 
 
