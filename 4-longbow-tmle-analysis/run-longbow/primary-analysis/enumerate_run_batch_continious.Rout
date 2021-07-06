@@ -252,7 +252,7 @@ The following object is masked from 'package:survival':
 character(0)monthhazc("syntype", "agecat", "studyid", "country")id
 TRUETRUEFALSENA
 
-runtime:  4.499 0.191 6.602 1.742 0.167 
+runtime:  4.382 0.183 6.165 1.737 0.125 
 4  out of  82 
 4 ;  gagebrth ;  haz ; res exists:  TRUE 
 5  out of  82 
@@ -272,14 +272,349 @@ runtime:  4.499 0.191 6.602 1.742 0.167
 12  out of  82 
 12 ;  fage ;  haz ; res exists:  TRUE 
 13  out of  82 
-13 ;  mhtcm ;  haz ; res exists:  FALSE 
-c("arm", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "W_fhtcm", "single", "W_nrooms", "trth2o", "cleanck", "impfloor", "impsan")mhtcmhazc("syntype", "agecat", "studyid", "country")id
+13 ;  mhtcm ;  haz ; res exists:  TRUE 
+14  out of  82 
+14 ;  mwtkg ;  haz ; res exists:  TRUE 
+15  out of  82 
+15 ;  mbmi ;  haz ; res exists:  FALSE 
+c("arm", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "W_fhtcm", "single", "W_nrooms", "W_nhh", "W_nchldlt5", "brthmon", "W_parity", "trth2o", "cleanck", "impfloor", "impsan")mbmihazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: FULL, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+
+runtime:  493.478 1.855 488.786 0.748 0.118 
+16  out of  82 
+16 ;  single ;  haz ; res exists:  FALSE 
+c("arm", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "W_mhtcm", "W_mwtkg", "W_mbmi", "W_fhtcm", "W_nrooms", "W_nhh", "W_nchldlt5", "trth2o", "cleanck", "impfloor", "impsan")singlehazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: BC, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: FULL, agecat: 24 months, studyid: TanzaniaChild2, country: TANZANIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: QI, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: real, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: real, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+
+runtime:  395.263 1.214 390.871 0.648 0.083 
+17  out of  82 
+17 ;  fhtcm ;  haz ; res exists:  FALSE 
+c("arm", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "W_mhtcm", "W_mwtkg", "W_mbmi", "single", "W_nrooms", "trth2o", "cleanck", "impfloor", "impsan")fhtcmhazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: BC, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: FULL, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: QI, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: real, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: real, agecat: 24 months, studyid: PROBIT, country: BELARUS
+
+runtime:  133.079 0.406 131.549 0.658 0.073 
+18  out of  82 
+18 ;  nrooms ;  haz ; res exists:  FALSE 
+c("arm", "sex", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "W_mhtcm", "W_mwtkg", "W_mbmi", "W_fhtcm", "single", "W_nhh", "W_nchldlt5", "W_parity", "trth2o", "cleanck", "impfloor", "impsan")nroomshazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: BC, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: FULL, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: QI, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: real, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+
+runtime:  696.939 8.29 696.311 0.949 0.127 
+19  out of  82 
+19 ;  nhh ;  haz ; res exists:  FALSE 
+c("arm", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "W_mhtcm", "W_mwtkg", "W_mbmi", "W_fhtcm", "single", "W_nrooms", "W_parity", "trth2o", "cleanck", "impfloor", "impsan")nhhhazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: FULL, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+
+runtime:  192.071 0.495 193.016 0.529 0.087 
+20  out of  82 
+20 ;  nchldlt5 ;  haz ; res exists:  FALSE 
+c("arm", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "W_mhtcm", "W_mwtkg", "W_mbmi", "W_fhtcm", "single", "W_nrooms", "W_parity", "trth2o", "cleanck", "impfloor", "impsan")nchldlt5hazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: iLiNS-Zinc, country: BURKINA FASO
+tmle for:	syntype: FULL, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: FULL, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: TanzaniaChild2, country: TANZANIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+
+runtime:  282.664 1.096 279.252 0.471 0.084 
+21  out of  82 
+21 ;  hhwealth_quart ;  haz ; res exists:  FALSE 
+c("arm", "sex", "W_mage", "W_fage", "meducyrs", "feducyrs", "W_gagebrth", "W_birthwt", "W_birthlen", "single", "W_nhh", "W_nchldlt5", "W_parity")hhwealth_quarthazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: BC, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: BC, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: FULL, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: FULL, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: TanzaniaChild2, country: TANZANIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: QI, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: QI, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: real, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: real, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+
+runtime:  933.166 2.455 927.82 1.132 0.134 
+22  out of  82 
+22 ;  parity ;  haz ; res exists:  FALSE 
+c("arm", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "W_mhtcm", "W_mwtkg", "W_mbmi", "W_fhtcm", "vagbrth", "hdlvry", "single", "W_nrooms", "trth2o", "cleanck", "impfloor", "impsan")parityhazc("syntype", "agecat", "studyid", "country")id
 TRUETRUEFALSENA
 tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: INDIA
 tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
 tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: BC, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
 tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
 tmle for:	syntype: BC, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: FULL, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: FULL, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: TanzaniaChild2, country: TANZANIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: QI, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: real, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+
+runtime:  541.046 9.475 542.091 0.656 0.093 
+23  out of  82 
+23 ;  meducyrs ;  haz ; res exists:  FALSE 
+c("arm", "W_mage", "W_fage", "feducyrs", "hhwealth_quart", "W_mhtcm", "W_mwtkg", "W_mbmi", "W_fhtcm", "W_gagebrth", "W_birthwt", "W_birthlen", "single", "W_nrooms", "W_nhh", "W_nchldlt5", "trth2o", "cleanck", "impfloor", "impsan")meducyrshazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: BC, agecat: 24 months, studyid: EE, country: PAKISTAN
+tmle for:	syntype: BC, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
 tmle for:	syntype: BC, agecat: 24 months, studyid: LCNI-5, country: MALAWI
 tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: INDIA
 tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
@@ -292,27 +627,35 @@ tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Birth, country: BANGLADES
 tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
 tmle for:	syntype: BC, agecat: 24 months, studyid: PROBIT, country: BELARUS
 tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
 tmle for:	syntype: BC, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: FULL, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
 tmle for:	syntype: FULL, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
 tmle for:	syntype: FULL, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
-tmle for:	syntype: FULL, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: EE, country: PAKISTAN
+tmle for:	syntype: FULL, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
 tmle for:	syntype: FULL, agecat: 24 months, studyid: LCNI-5, country: MALAWI
 tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: INDIA
 tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
 tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: PERU
 tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: NEPAL
 tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
-tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
 tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
 tmle for:	syntype: FULL, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
 tmle for:	syntype: FULL, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROBIT, country: BELARUS
 tmle for:	syntype: FULL, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
 tmle for:	syntype: FULL, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: QI, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
 tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: INDIA
 tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
 tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: QI, agecat: 24 months, studyid: EE, country: PAKISTAN
+tmle for:	syntype: QI, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
 tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
-tmle for:	syntype: QI, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
 tmle for:	syntype: QI, agecat: 24 months, studyid: LCNI-5, country: MALAWI
 tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: INDIA
 tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
@@ -325,12 +668,16 @@ tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Birth, country: BANGLADES
 tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
 tmle for:	syntype: QI, agecat: 24 months, studyid: PROBIT, country: BELARUS
 tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
 tmle for:	syntype: QI, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: real, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
 tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: INDIA
 tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
 tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: real, agecat: 24 months, studyid: EE, country: PAKISTAN
+tmle for:	syntype: real, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
 tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
-tmle for:	syntype: real, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
 tmle for:	syntype: real, agecat: 24 months, studyid: LCNI-5, country: MALAWI
 tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: INDIA
 tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
@@ -343,3 +690,317 @@ tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Birth, country: BANGLAD
 tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
 tmle for:	syntype: real, agecat: 24 months, studyid: PROBIT, country: BELARUS
 tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+
+runtime:  1260.579 4.666 1252.143 1.222 0.169 
+24  out of  82 
+24 ;  feducyrs ;  haz ; res exists:  FALSE 
+c("arm", "W_mage", "W_fage", "meducyrs", "hhwealth_quart", "W_mhtcm", "W_mwtkg", "W_mbmi", "W_fhtcm", "W_gagebrth", "W_birthwt", "W_birthlen", "single", "W_nrooms", "W_nhh", "W_nchldlt5", "trth2o", "cleanck", "impfloor", "impsan")feducyrshazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: BC, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: BC, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: FULL, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: FULL, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: TanzaniaChild2, country: TANZANIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: QI, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: QI, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: GUATEMALA
+tmle for:	syntype: real, agecat: 24 months, studyid: COHORTS, country: PHILIPPINES
+tmle for:	syntype: real, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: LCNI-5, country: MALAWI
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: PROBIT, country: BELARUS
+tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: ZVITAMBO, country: ZIMBABWE
+
+runtime:  978.391 7.307 975.083 1.046 0.15 
+25  out of  82 
+25 ;  hfoodsec ;  haz ; res exists:  FALSE 
+c("arm", "sex", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "vagbrth", "hdlvry", "single", "W_nrooms", "W_nhh", "W_nchldlt5", "brthmon", "W_parity", "trth2o", "cleanck", "impfloor", "impsan")hfoodsechazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+
+runtime:  414.002 0.909 408.163 0.664 0.108 
+26  out of  82 
+26 ;  anywast06 ;  haz ; res exists:  FALSE 
+c("arm", "sex", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "vagbrth", "hdlvry", "single", "W_nrooms", "W_nhh", "W_nchldlt5", "month", "brthmon", "W_parity", "trth2o", "cleanck", "impfloor", "impsan")anywast06hazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: CMIN, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: EE, country: PAKISTAN
+tmle for:	syntype: BC, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: CMIN, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: EE, country: PAKISTAN
+tmle for:	syntype: FULL, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: CMIN, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: EE, country: PAKISTAN
+tmle for:	syntype: QI, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: CMIN, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: EE, country: PAKISTAN
+tmle for:	syntype: real, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+
+runtime:  508.7 0.961 509.747 0.864 0.117 
+27  out of  82 
+27 ;  pers_wast ;  haz ; res exists:  FALSE 
+c("arm", "sex", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "vagbrth", "hdlvry", "single", "W_nrooms", "W_nhh", "W_nchldlt5", "month", "brthmon", "W_parity", "trth2o", "cleanck", "impfloor", "impsan")pers_wasthazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: CMIN, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: EE, country: PAKISTAN
+tmle for:	syntype: BC, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: CMIN, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: EE, country: PAKISTAN
+tmle for:	syntype: QI, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: CMIN, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: EE, country: PAKISTAN
+tmle for:	syntype: real, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: Keneba, country: GAMBIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+
+runtime:  270.287 0.545 270.817 0.722 0.096 
+28  out of  82 
+28 ;  trth2o ;  haz ; res exists:  FALSE 
+c("arm", "sex", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "W_mhtcm", "W_mwtkg", "W_mbmi", "W_fhtcm", "single", "W_nrooms", "W_nhh", "W_nchldlt5", "brthmon", "W_parity", "cleanck", "impfloor", "impsan")trth2ohazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BRAZIL
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+
+runtime:  132.204 0.309 133.079 0.581 0.079 
+29  out of  82 
+29 ;  cleanck ;  haz ; res exists:  FALSE 
+c("arm", "sex", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "W_mhtcm", "W_mwtkg", "W_mbmi", "W_fhtcm", "single", "W_nrooms", "W_nhh", "W_nchldlt5", "W_parity", "trth2o", "impfloor", "impsan")cleanckhazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: CMC-V-BCS-2002, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: Vellore Crypto, country: INDIA
+
+runtime:  157.242 3.369 161.121 0.485 0.077 
+30  out of  82 
+30 ;  impfloor ;  haz ; res exists:  FALSE 
+c("arm", "sex", "W_mage", "W_fage", "meducyrs", "feducyrs", "hhwealth_quart", "hfoodsec", "W_mhtcm", "W_mwtkg", "W_mbmi", "W_fhtcm", "single", "W_nrooms", "W_nhh", "W_nchldlt5", "W_parity", "trth2o", "cleanck", "impsan")impfloorhazc("syntype", "agecat", "studyid", "country")id
+TRUETRUEFALSENA
+tmle for:	syntype: BC, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: BC, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: BC, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: BC, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: FULL, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: FULL, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: FULL, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: QI, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: PERU
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: NEPAL
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: TANZANIA
+tmle for:	syntype: QI, agecat: 24 months, studyid: MAL-ED, country: SOUTH AFRICA
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Birth, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: NIH-Crypto, country: BANGLADESH
+tmle for:	syntype: QI, agecat: 24 months, studyid: PROVIDE, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: CONTENT, country: PERU
+tmle for:	syntype: real, agecat: 24 months, studyid: GMS-Nepal, country: NEPAL
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-3, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: JiVitA-4, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: INDIA
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: BANGLADESH
+tmle for:	syntype: real, agecat: 24 months, studyid: MAL-ED, country: PERU
