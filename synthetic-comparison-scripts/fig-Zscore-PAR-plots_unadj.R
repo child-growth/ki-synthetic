@@ -15,6 +15,7 @@ par <- readRDS(paste0(here::here(),"/results/rf results/pooled_Zscore_PAR_result
 
 dim(par)
 table(par$syntype)
+table(par$syntype, par$agecat)
 
 #par <- par %>% filter(intervention_variable=="single")
 table(par$syntype)
@@ -57,7 +58,7 @@ unique(par$RFlabel_ref)
 df <- par %>% subset(., select = c(outcome_variable, intervention_variable, PAR, CI1, CI2, RFlabel, RFlabel_ref,  RFtype, n_cell, n, syntype)) %>% 
   filter(!is.na(PAR)) %>% mutate(measure="PAR")
 
-df <- df %>% mutate(syntype=factor(syntype, levels=c("Real","QI","BC","FULL")))
+df <- df %>% mutate(syntype=factor(syntype, levels=c("real","QI","BC","FULL")))
 
 
 #----------------------------------------------------------

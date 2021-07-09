@@ -14,6 +14,7 @@ head(dfull)
 
 
 unique(dfull$type)
+table(dfull$syntype, dfull$agecat)
 d <- dfull %>% filter(type=="PAR")
 
 #Subset to stunting prevalence

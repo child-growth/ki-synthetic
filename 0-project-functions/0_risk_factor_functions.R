@@ -88,8 +88,6 @@ specify_longbow <- function(j, analyses_df=analyses, params=default_params){
 
 get_batch_results <- function (batch_id, results_folder = "results"){
   
-  results_folder <- paste0("/data/KI/ki-manuscript-output/longbow/",results_folder)
-  
   if (dir.exists(results_folder)) {
     unlink(results_folder, recursive = TRUE)
   }
@@ -110,10 +108,9 @@ get_batch_results <- function (batch_id, results_folder = "results"){
 
 load_batch_results <- function (results_file, results_folder = "results"){
   
-  results_folder <- paste0("/data/KI/ki-manuscript-output/longbow/",results_folder)
+  #results_folder <- paste0("/data/KI/synthetic-data/tmle/",results_folder)
   
-  all_results_folders <- dir(results_folder, full.names = TRUE, 
-                             recursive = FALSE)
+  all_results_folders <- dir(results_folder, full.names = TRUE, recursive = FALSE)
   results_files <- file.path(all_results_folders, results_file)
   one_results_file <- results_files[[1]]
   all_results <- lapply(results_files, function(one_results_file) {

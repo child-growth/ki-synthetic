@@ -16,6 +16,7 @@ head(dfull)
 
 
 table(dfull$syntype)
+table(dfull$syntype, dfull$agecat)
 unique(dfull$type)
 d <- dfull %>% filter(type=="PAR")
 
