@@ -46,7 +46,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-library(knitr)
+#library(knitr)
 knitr::opts_chunk$set(echo = FALSE, message=FALSE, eval.after = 'fig.cap')
 options(scipen=999)
 ```
@@ -159,7 +159,7 @@ strata <- collapse_strata(data, nodes)
 ## Data Summary
 ```{r data_summary}
 obs_counts <- get_obs_counts(data, nodes, tl_params)
-kable(obs_counts)
+knitr::kable(obs_counts)
 
 if(params$output_directory!=""){
   counts_file <- file.path(params$output_directory, "obs_counts.rdata")

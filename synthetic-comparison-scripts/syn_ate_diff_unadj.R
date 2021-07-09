@@ -13,19 +13,24 @@ library(gtable)
 
 #Load data
 ate <- readRDS(paste0(here::here(),"/results/rf results/pooled_ATE_results_unadj.rds"))
+table(ate$syntype)
 head(ate)
 ate$syntype <- factor(ate$syntype)
-ate$syntype <- relevel(ate$syntype, ref="Real")
+ate$syntype <- relevel(ate$syntype, ref="real")
 levels(ate$syntype)
 df <- ate %>% group_by( intervention_variable,agecat, intervention_level, baseline_level, outcome_variable, region ) %>%
   arrange(syntype) %>%
+<<<<<<< HEAD:synthetic-comparison-scripts/syn_ate_diff_unadj.R
+  mutate(diff=ATE-first(ATE)) %>% filter(syntype!="real") 
+=======
   mutate(diff=ATE-first(ATE)) %>% filter(syntype!="Real") 
+>>>>>>> bd8c5e507a9091e1e5d6d57638c4a1f20f190919:5-visualizations/comparison/syn_ate_diff_unadj.R
 head(df)
 
 df %>% group_by(syntype) %>%
   summarise(mean(diff))
   
-df <- df %>% mutate(syntype=factor(syntype, levels=c("Real","QI","BC","FULL")))
+df <- df %>% mutate(syntype=factor(syntype, levels=c("real","QI","BC","FULL")))
 
 medians <- df %>% group_by(syntype) %>% summarize(med=median(diff))
 medians

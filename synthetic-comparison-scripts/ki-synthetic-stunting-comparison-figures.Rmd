@@ -1,7 +1,7 @@
 ---
 title: "Synthetic comparison figures"
 author: "Andrew Mertens"
-date: "6/16/2021"
+date: "7/05/2021"
 output: html_document
 ---
 
@@ -34,21 +34,23 @@ theme_set(theme_ki())
 
 ```{r, include="F"}
 fig_dir="C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/"
+fig_dir="/home/andrew.mertens/ki-synthetic/figures/"
+BV_dir="/home/andrew.mertens/ki-synthetic/"
 
-pPAR <- readRDS("C:/Users/andre/Documents/HBGDki/ki-synthetic/results/rf results/rf_Zpar_plot_objects.RDS")
-pATE <- readRDS(paste0(here::here(), "/results/rf results/ate_diff_object.RDS"))
-pPAR_unadj <- readRDS("C:/Users/andre/Documents/HBGDki/ki-synthetic/results/rf results/rf_Zpar_unadj_plot_objects.RDS")
-pATE_unadj <- readRDS(paste0(here::here(), "/results/rf results/ate_diff_object_unadj.RDS"))
+pPAR <- readRDS(paste0(BV_dir,"/results/rf results/rf_Zpar_plot_objects.RDS"))
+pATE <- readRDS(paste0(BV_dir, "/results/rf results/ate_diff_object.RDS"))
+pPAR_unadj <- readRDS(paste0(BV_dir,"/results/rf results/rf_Zpar_unadj_plot_objects.RDS"))
+pATE_unadj <- readRDS(paste0(BV_dir, "/results/rf results/ate_diff_object_unadj.RDS"))
 
 
-load("C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/wasting/fig-comparisons.Rdata")
+load(paste0(BV_dir,"/figures/wasting/fig-comparisons.Rdata"))
 WLZ_plot <- Z_plot
 wast_plot <-prev_plot
 wast_ci_plot <-ci_plot
 wast_ci_africa_plot <-ci_plot_Africa
 #sevwast_plot
 
-load("C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/stunting/fig-comparisons.Rdata")
+load(paste0(BV_dir,"/figures/stunting/fig-comparisons.Rdata"))
 LAZ_plot <- Z_plot
 stunt_plot <- prev_plot_pooled
 sevstunt_plot <- prev_plot_sev

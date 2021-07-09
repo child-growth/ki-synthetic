@@ -10,6 +10,10 @@ library(longbowtools)
 library(progress)
 library(longbowRiskFactors)
 
+Sys.getenv("RSTUDIO_PANDOC")
+Sys.setenv(RSTUDIO_PANDOC="/usr/lib/rstudio-server/bin/pandoc")
+rmarkdown::pandoc_available()
+rmarkdown::pandoc_version()
 
 # 1. enumerate analysis
 setwd(here("4-longbow-tmle-analysis","run-longbow","primary-analysis"))
@@ -27,46 +31,26 @@ dim(analyses)
 analyses <- analyses %>% filter(Y=="haz" | Y=="whz")
 dim(analyses)
 
+#analyses <- analyses[5:6,]
+
+
+#only analyze 24 months for speed
+load("/data/KI/synthetic-data/st_meanZ_rf.Rdata") 
+d<-d%>% filter(agecat=="24 months") %>% droplevels() #%>% filter(studyid=="MAL-ED", syntype=="BC")
+table(d$syntype)
+table(d$agecat)
+save(d,file="/data/KI/synthetic-data/st_meanZ_rf.Rdata") 
+
+load("/data/KI/synthetic-data/wast_meanZ_rf.Rdata") 
+d<-d%>% filter(agecat=="24 months") %>% droplevels() #%>% filter(studyid=="MAL-ED", syntype=="BC")
+table(d$syntype)
+table(d$agecat)
+save(d,file="/data/KI/synthetic-data/wast_meanZ_rf.Rdata") 
+
+
 #specify analyses
 enumerated_analyses <- lapply(seq_len(nrow(analyses)), specify_longbow)
-enumerated_analyses[[17]]
-load("/data/KI/synthetic-data/st_meanZ_rf.Rdata")
-table(d$syntype)
 
-writeLines(jsonlite::toJSON(enumerated_analyses[[17]]),"single_cont_analysis.json")
-writeLines(jsonlite::toJSON(enumerated_analyses),"all_cont_analyses.json")
-
-load("/data/KI/synthetic-data/st_meanZ_rf.Rdata")
-head(d)
-
-# 2. run batch
-configure_cluster(here("0-project-functions","cluster_credentials.json"))
-
-rmd_filename <- here("4-longbow-tmle-analysis/run-longbow/longbow_RiskFactors.Rmd")
-inputs <- "single_cont_analysis.json"
-
-#run test/provisioning job
-#run_on_longbow(rmd_filename, inputs, provision = TRUE)
-
-# send the batch to longbow (with provisioning disabled)
-batch_inputs <- "all_cont_analyses.json"
-batch_id_cont <- run_on_longbow(rmd_filename, batch_inputs, provision = FALSE)
-batch_id_cont
-
-# wait for the batch to finish and track progress
-wait_for_batch(batch_id_cont)
-
-# download the longbow outputs
-get_batch_results(batch_id_cont, results_folder="results_cont")
-length(dir("results_cont"))
-
-# load and concatenate the rdata from the jobs
-results <- load_batch_results("results.rdata", results_folder = "results_cont")
-obs_counts <- load_batch_results("obs_counts.rdata", results_folder = "results_cont")
-
-# save concatenated results
-filename1 <- paste(paste('results_cont',Sys.Date( ),sep='_'),'RDS',sep='.')
-filename2 <- paste(paste('results_cont_obs_counts',Sys.Date( ),sep='_'),'RDS',sep='.')
-saveRDS(results, file=paste0(res_dir,"rf results/raw longbow results/",filename1))
-saveRDS(obs_counts, file=paste0(res_dir,"rf results/raw longbow results/",filename2))
+#run TMLE
+run_ki_tmle(enumerated_analyses, results_folder="cont", overwrite = FALSE)
 

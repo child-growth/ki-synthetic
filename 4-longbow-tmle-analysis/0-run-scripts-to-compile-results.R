@@ -16,6 +16,7 @@ source(here("4-longbow-tmle-analysis/pool_ATE.R"))
 source(here("4-longbow-tmle-analysis/pool_RR.R"))
 
 source(here("4-longbow-tmle-analysis/pool_PAF.R"))
+source(here("4-longbow-tmle-analysis/secondary outcome pooling/pool_ATE_FE_unadj.R"))
 
 
 #source(here("4-longbow-tmle-analysis/pool_Zscore_VIM.R"))

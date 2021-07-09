@@ -11,7 +11,7 @@ library(gtable)
 
 
 #Load data
-par <- readRDS(paste0(here::here(),"/results/rf results/pooled_Zscore_PAR_results_unadj.rds"))
+par <- readRDS(paste0(here::here(),"/results/rf results/pooled_Zscore_PAR_results.rds"))
 
 dim(par)
 table(par$syntype)
@@ -57,7 +57,7 @@ unique(par$RFlabel_ref)
 df <- par %>% subset(., select = c(outcome_variable, intervention_variable, PAR, CI1, CI2, RFlabel, RFlabel_ref,  RFtype, n_cell, n, syntype)) %>% 
   filter(!is.na(PAR)) %>% mutate(measure="PAR")
 
-df <- df %>% mutate(syntype=factor(syntype, levels=c("Real","QI","BC","FULL")))
+df <- df %>% mutate(syntype=factor(syntype, levels=c("real","QI","BC","FULL")))
 
 
 #----------------------------------------------------------
@@ -165,12 +165,12 @@ pPAR_wlz <-  ggplot(plotdf_laz, aes(x=RFlabel_ref, group=syntype)) +
   guides( shape=FALSE)
 pPAR_wlz
 
-ggsave(pPAR_laz, file=paste0(here::here(), "/figures/risk-factor/fig-laz-PAR_unadj.png"), height=10, width=8)
-ggsave(pPAR_wlz, file=paste0(here::here(), "/figures/risk-factor/fig-wlz-PAR_unadj.png"), height=10, width=8)
+ggsave(pPAR_laz, file=paste0(here::here(), "/figures/risk-factor/fig-laz-PAR.png"), height=10, width=8)
+ggsave(pPAR_wlz, file=paste0(here::here(), "/figures/risk-factor/fig-wlz-PAR.png"), height=10, width=8)
 
 
 
-saveRDS(list(pPAR_laz, pPAR_wlz), file=paste0(here::here(), "/results/rf results/rf_Zpar_unadj_plot_objects.RDS"))
+saveRDS(list(pPAR_laz, pPAR_wlz), file=paste0(here::here(), "/results/rf results/rf_Zpar_plot_objects.RDS"))
 
 
 

@@ -14,6 +14,7 @@ d1 <- d1 %>%
          hdlvry=factor(hdlvry))
 d2 <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds")) %>% mutate(syntype="FULL")
 d3 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized.rds"))  %>% mutate(syntype="QI")
+d4 <- readRDS(paste0(ghapdata_dir, "Ki-real-data.rds"))  %>% mutate(syntype="real")
 
 class(d1$single)
 class(d2$single)
@@ -34,18 +35,29 @@ d1 <- d1 %>%
          trth2o=factor(trth2o),
          dead=factor(dead),
          brthmon=factor(brthmon),
-         hdlvry=factor(hdlvry),
-         hdlvry=factor(hdlvry),
-         hdlvry=factor(hdlvry),
-         hdlvry=factor(hdlvry),
          hdlvry=factor(hdlvry))
 d3 <- d3 %>% mutate( brthmon=factor(brthmon),
                      dead=factor(dead),
                      single=factor(single))
+d4 <- d4 %>%
+  mutate(subjid=as.character(subjid),
+         vagbrth=factor(vagbrth),
+         hdlvry=factor(hdlvry),
+         brthmon=factor(brthmon),
+         earlybf=factor(earlybf),
+         predexfd6=factor(predexfd6),
+         single=factor(single),
+         impsan=factor(impsan),
+         safeh2o=factor(safeh2o),
+         cleanck=factor(cleanck),
+         impfloor=factor(impfloor),
+         trth2o=factor(trth2o),
+         dead=factor(dead),
+         brthmon=factor(brthmon),
+         siteid=as.character(siteid),
+         hdlvry=factor(hdlvry))
 
-
-d <- bind_rows(d1,d2,d3)
-
+d <- bind_rows(d1,d2,d3,d4)
 
 summary(d$haz)
 

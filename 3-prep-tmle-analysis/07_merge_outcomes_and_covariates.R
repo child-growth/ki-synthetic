@@ -464,7 +464,7 @@ A<-c( "sex",              "gagebrth",      "birthwt",
 
 
 
-save(d, Y, A,V, id,  file="wast_meanZ_rf.Rdata")
+save(d, Y, A,id,  file="wast_meanZ_rf.Rdata")
 
 #Save subset for mediation analysis
 d <- d %>% filter(agecat!="Birth")
