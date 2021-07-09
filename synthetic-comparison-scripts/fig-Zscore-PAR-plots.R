@@ -133,8 +133,8 @@ pPAR_laz <-  ggplot(plotdf_laz, aes(x=RFlabel_ref, group=syntype)) +
         axis.text.y = element_text(size=, hjust = 1),
         axis.text.x = element_text(size=12)) +
   scale_fill_manual(values=cbbPalette[-1]) +
-  scale_color_manual(values=cbbPalette[-1]) +
-  guides(shape=FALSE)
+  scale_color_manual(values=cbbPalette[-1]) #+
+  #guides(shape=FALSE, color=TRUE)
 pPAR_laz
 
 
@@ -161,8 +161,8 @@ pPAR_wlz <-  ggplot(plotdf_laz, aes(x=RFlabel_ref, group=syntype)) +
         axis.text.x = element_text(size=12),
         plot.margin = unit(c(0, 0, 0, 0), "cm")) +
   scale_fill_manual(values=cbbPalette[-1]) +
-  scale_color_manual(values=cbbPalette[-1]) +
-  guides( shape=FALSE)
+  scale_color_manual(values=cbbPalette[-1])# +
+ #guides( shape=FALSE, color=TRUE)
 pPAR_wlz
 
 ggsave(pPAR_laz, file=paste0(here::here(), "/figures/risk-factor/fig-laz-PAR.png"), height=10, width=8)

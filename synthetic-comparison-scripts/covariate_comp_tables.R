@@ -18,7 +18,7 @@ QI_comp <- rCompare(real_cov, covQI)
 BC_comp <- rCompare(real_cov, covBC)
 FULL_comp <- rCompare(real_cov, covFULL)
 
-#save(QI_comp, BC_comp, FULL_comp, file=paste0(fig_dir, "cov-comparisons.Rdata"))
+save(QI_comp, BC_comp, FULL_comp, file=paste0(fig_dir, "cov-comparisons.Rdata"))
 
 saveReport(QI_comp, reportName = 'QI_cov_comp')
 saveReport(BC_comp, reportName = 'BC_cov_comp')

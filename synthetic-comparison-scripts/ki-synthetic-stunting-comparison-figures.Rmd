@@ -201,8 +201,8 @@ Below are comparisons of the most challenging results to replicate with syntheti
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
-pPAR[[1]]
-pPAR[[2]]
+pPAR[[1]] + theme(legend.position = "bottom")
+pPAR[[2]] + theme(legend.position = "bottom")
 ```
 
 The synthetic data population-attributable risks are generally lower than the real estimates.  The fully-synthetic data most closely matches the real-data estimates, but some of the confidence intervals are much higher. We would have made similar inferences for almost all risk factors using the fully synthetic data, but would have concluded that some important risk factors (like maternal weight and education and household wealth are not strongly associated with poor child growth).

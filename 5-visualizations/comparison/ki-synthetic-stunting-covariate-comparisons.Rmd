@@ -1,7 +1,7 @@
 ---
 title: "Synthetic comparison figures"
 author: "Andrew Mertens"
-date: "6/16/2021"
+date: "7/09/2021"
 output: html_document
 ---
 
@@ -34,6 +34,10 @@ theme_set(theme_ki())
 
 ```{r, include="F"}
 fig_dir="C:/Users/andre/Documents/HBGDki/ki-synthetic/figures/"
+if(!dir.exists(fig_dir)){
+  fig_dir=here("figures")
+
+}
 
 load(paste0(fig_dir, "cov-comparisons.Rdata"))
 

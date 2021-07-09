@@ -84,8 +84,8 @@ body {
 <body>
 <h1>Data Comparison</h1>
 
-<p>Date comparison run: 2021-06-17 11:45:36<br/>
-Comparison run on R version 4.0.5 (2021-03-31)<br/>
+<p>Date comparison run: 2021-07-09 11:05:00<br/>
+Comparison run on R version 4.1.0 (2021-05-18)<br/>
 With dataCompareR version 0.1.3  </p>
 
 <h1>Meta Summary</h1>
@@ -99,8 +99,8 @@ With dataCompareR version 0.1.3  </p>
 </thead><tbody>
 <tr>
 <td align="left">real_cov</td>
-<td align="left">99630</td>
-<td align="left">69</td>
+<td align="left">109680</td>
+<td align="left">79</td>
 </tr>
 <tr>
 <td align="left">covBC</td>
@@ -111,75 +111,27 @@ With dataCompareR version 0.1.3  </p>
 
 <h1>Variable Summary</h1>
 
-<p>Number of columns in common: 60<br/>
-Number of columns only in real_cov: 9<br/>
-Number of columns only in covBC: 19<br/>
-Number of columns with a type mismatch: 7<br/>
+<p>Number of columns in common: 79<br/>
+Number of columns only in real_cov: 0<br/>
+Number of columns only in covBC: 0<br/>
+Number of columns with a type mismatch: 0<br/>
 No match key used, comparison is by row</p>
-
-<p>Columns only in real_cov: DATEDEL, EXCLFEED3, EXCLFEED36, EXCLFEED6, PREDFEED3, PREDFEED36, PREDFEED6, SAFEH20, SES<br/>
-Columns only in covBC: AGEDAYS, AGEDTH, AGEMONTHS, BRTHWEEK, BRTHYR, CLUSTERID, COHORTID, CTRYCD, DEAD, EXCLUDE_DESC, HTCM, LATITUDE, LENCM, LONGITUD, SAFEH2O, SITEID, STUDYIDA, SYNTYPE, WTKG<br/>
-Columns in both : ANYWAST06, ARM, BIRTHLEN, BIRTHWT, BRTHMON, CLEANCK, COUNTRY, EARLYBF, ENSTUNT, ENWAST, FAGE, FEDUCYRS, FHTCM, GAGEBRTH, HDLVRY, HFOODSEC, HHWEALTH_QUART, ID, IMPFLOOR, IMPSAN, MAGE, MBMI, MEASUREFREQ, MEDUCYRS, MHTCM, MONTH, MWTKG, NCHLDLT5, NHH, NROOMS, PARITY, PERDIAR24, PERDIAR6, PERS_WAST, PREDEXFD6, REGION, SEX, SINGLE, STUDYID, SUBJID, TR, TRTH2O, VAGBRTH, W_BIRTHLEN, W_BIRTHWT, W_FAGE, W_FEDUCYRS, W_FHTCM, W_GAGEBRTH, W_MAGE, W_MBMI, W_MEDUCYRS, W_MHTCM, W_MWTKG, W_NCHLDLT5, W_NHH, W_NROOMS, W_PARITY, W_PERDIAR24, W_PERDIAR6  </p>
-
-<h1>Listing of Common Columns with Different Data Types</h1>
-
-<table><thead>
-<tr>
-<th align="left">Column Name</th>
-<th align="left">Column Type (in real_cov)</th>
-<th align="left">Column Type (in covBC)</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">ID</td>
-<td align="left">double</td>
-<td align="left">character</td>
-</tr>
-<tr>
-<td align="left">W_FAGE</td>
-<td align="left">integer</td>
-<td align="left">double</td>
-</tr>
-<tr>
-<td align="left">W_FEDUCYRS</td>
-<td align="left">integer</td>
-<td align="left">double</td>
-</tr>
-<tr>
-<td align="left">W_GAGEBRTH</td>
-<td align="left">integer</td>
-<td align="left">double</td>
-</tr>
-<tr>
-<td align="left">W_MEDUCYRS</td>
-<td align="left">integer</td>
-<td align="left">double</td>
-</tr>
-<tr>
-<td align="left">W_NHH</td>
-<td align="left">integer</td>
-<td align="left">double</td>
-</tr>
-<tr>
-<td align="left">W_NROOMS</td>
-<td align="left">integer</td>
-<td align="left">double</td>
-</tr>
-</tbody></table>
 
 <h1>Row Summary</h1>
 
-<p>Total number of rows read from real_cov: 99630<br/>
+<p>Total number of rows read from real_cov: 109680<br/>
 Total number of rows read from covBC: 109680<br/>
-Number of rows in common: 99630<br/>
+Number of rows in common: 109680<br/>
 Number of rows dropped from real_cov: 0<br/>
-Number of rows dropped from  covBC: 10050  </p>
+Number of rows dropped from  covBC: 0  </p>
 
 <h1>Data Values Comparison Summary</h1>
 
-<p>Number of columns compared with ALL rows equal: 0<br/>
-Number of columns compared with SOME rows unequal: 60<br/>
-Number of columns with missing value differences: 11  </p>
+<p>Number of columns compared with ALL rows equal: 3<br/>
+Number of columns compared with SOME rows unequal: 76<br/>
+Number of columns with missing value differences: 24  </p>
+
+<p>Columns with all rows equal : MEASUREFREQ, STUDYID, STUDYIDA</p>
 
 <p>Summary of columns with some rows unequal: </p>
 
@@ -194,10 +146,34 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 </thead><tbody>
 <tr>
+<td align="left">AGEDAYS</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">51299</td>
+<td align="left">6489</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">AGEDTH</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">4787</td>
+<td align="left">4907</td>
+<td align="right">4649</td>
+</tr>
+<tr>
+<td align="left">AGEMONTHS</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">51299</td>
+<td align="left">213.336752507668</td>
+<td align="right">0</td>
+</tr>
+<tr>
 <td align="left">ANYWAST06</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">20267</td>
+<td align="right">4215</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -205,7 +181,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">ARM</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">84358</td>
+<td align="right">55091</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -213,7 +189,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">BIRTHLEN</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">66051</td>
+<td align="right">47375</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -221,7 +197,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">BIRTHWT</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">49883</td>
+<td align="right">33555</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -229,15 +205,47 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">BRTHMON</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">92395</td>
+<td align="right">87303</td>
 <td align="left">NA</td>
 <td align="right">0</td>
+</tr>
+<tr>
+<td align="left">BRTHWEEK</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">92646</td>
+<td align="left">52</td>
+<td align="right">2274</td>
+</tr>
+<tr>
+<td align="left">BRTHYR</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">51683</td>
+<td align="left">24</td>
+<td align="right">2274</td>
 </tr>
 <tr>
 <td align="left">CLEANCK</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">17228</td>
+<td align="right">2535</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">CLUSTERID</td>
+<td align="left">integer</td>
+<td align="left">integer</td>
+<td align="right">53450</td>
+<td align="left">42773</td>
+<td align="right">186</td>
+</tr>
+<tr>
+<td align="left">COHORTID</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">1840</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -245,7 +253,23 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">COUNTRY</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">55514</td>
+<td align="right">1840</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">CTRYCD</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">1840</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">DEAD</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">7314</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -253,7 +277,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">EARLYBF</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">39585</td>
+<td align="right">14108</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -261,7 +285,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">ENSTUNT</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">46235</td>
+<td align="right">31624</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -269,7 +293,15 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">ENWAST</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">46678</td>
+<td align="right">36781</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">EXCLUDE_DESC</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">28574</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -277,7 +309,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">FAGE</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">34035</td>
+<td align="right">13521</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -285,7 +317,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">FEDUCYRS</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">64935</td>
+<td align="right">56341</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -293,7 +325,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">FHTCM</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">22044</td>
+<td align="right">12257</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -301,7 +333,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">GAGEBRTH</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">58143</td>
+<td align="right">37394</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -309,7 +341,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">HDLVRY</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">28072</td>
+<td align="right">11197</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -317,7 +349,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">HFOODSEC</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">36976</td>
+<td align="right">26814</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -325,15 +357,23 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">HHWEALTH_QUART</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">51224</td>
+<td align="right">36633</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
 <tr>
-<td align="left">ID</td>
+<td align="left">HTCM</td>
 <td align="left">double</td>
+<td align="left">double</td>
+<td align="right">2855</td>
+<td align="left">88</td>
+<td align="right">1152</td>
+</tr>
+<tr>
+<td align="left">ID</td>
 <td align="left">character</td>
-<td align="right">99630</td>
+<td align="left">character</td>
+<td align="right">108533</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -341,7 +381,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">IMPFLOOR</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">29251</td>
+<td align="right">8090</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -349,15 +389,39 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">IMPSAN</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">49933</td>
+<td align="right">28250</td>
 <td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">LATITUDE</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">3271</td>
+<td align="left">50.47</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">LENCM</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">94628</td>
+<td align="left">45.3</td>
+<td align="right">5178</td>
+</tr>
+<tr>
+<td align="left">LONGITUD</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">3016</td>
+<td align="left">163.62</td>
 <td align="right">0</td>
 </tr>
 <tr>
 <td align="left">MAGE</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">62311</td>
+<td align="right">57053</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -365,15 +429,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">MBMI</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">58025</td>
-<td align="left">NA</td>
-<td align="right">0</td>
-</tr>
-<tr>
-<td align="left">MEASUREFREQ</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="right">35395</td>
+<td align="right">32943</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -381,7 +437,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">MEDUCYRS</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">69541</td>
+<td align="right">64497</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -389,7 +445,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">MHTCM</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">64561</td>
+<td align="right">53812</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -397,7 +453,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">MONTH</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">92237</td>
+<td align="right">86833</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -405,7 +461,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">MWTKG</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">63904</td>
+<td align="right">39453</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -413,7 +469,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">NCHLDLT5</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">40590</td>
+<td align="right">17805</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -421,7 +477,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">NHH</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">8243</td>
+<td align="right">3087</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -429,7 +485,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">NROOMS</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">51454</td>
+<td align="right">31312</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -437,7 +493,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">PARITY</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">60022</td>
+<td align="right">46662</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -445,7 +501,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">PERDIAR24</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">25670</td>
+<td align="right">6848</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -453,7 +509,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">PERDIAR6</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">10635</td>
+<td align="right">2928</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -461,7 +517,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">PERS_WAST</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">18735</td>
+<td align="right">2681</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -469,7 +525,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">PREDEXFD6</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">36964</td>
+<td align="right">25246</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -477,7 +533,15 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">REGION</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">47011</td>
+<td align="right">1520</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">SAFEH2O</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">6641</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -485,7 +549,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">SEX</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">49699</td>
+<td align="right">54770</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -493,15 +557,15 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">SINGLE</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">42515</td>
+<td align="right">9496</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
 <tr>
-<td align="left">STUDYID</td>
+<td align="left">SITEID</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">62978</td>
+<td align="right">109680</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -509,7 +573,15 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">SUBJID</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">99630</td>
+<td align="right">109680</td>
+<td align="left">NA</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="left">SYNTYPE</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="right">109680</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -517,7 +589,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">TR</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">74544</td>
+<td align="right">39832</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -525,7 +597,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">TRTH2O</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">4218</td>
+<td align="right">1490</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -533,7 +605,7 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">VAGBRTH</td>
 <td align="left">character</td>
 <td align="left">character</td>
-<td align="right">45213</td>
+<td align="right">12671</td>
 <td align="left">NA</td>
 <td align="right">0</td>
 </tr>
@@ -541,141 +613,317 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">W_BIRTHLEN</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">84999</td>
-<td align="left">41.0062083866</td>
-<td align="right">43009</td>
+<td align="right">80391</td>
+<td align="left">28.4</td>
+<td align="right">15486</td>
 </tr>
 <tr>
 <td align="left">W_BIRTHWT</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">87577</td>
-<td align="left">4570</td>
-<td align="right">33847</td>
+<td align="right">86684</td>
+<td align="left">4700</td>
+<td align="right">13982</td>
 </tr>
 <tr>
 <td align="left">W_FAGE</td>
-<td align="left">integer</td>
 <td align="left">double</td>
-<td align="right">99630</td>
-<td align="left">NA</td>
-<td align="right">0</td>
+<td align="left">double</td>
+<td align="right">27130</td>
+<td align="left">51</td>
+<td align="right">3347</td>
 </tr>
 <tr>
 <td align="left">W_FEDUCYRS</td>
-<td align="left">integer</td>
 <td align="left">double</td>
-<td align="right">99630</td>
-<td align="left">NA</td>
-<td align="right">0</td>
+<td align="left">double</td>
+<td align="right">64985</td>
+<td align="left">27</td>
+<td align="right">9374</td>
 </tr>
 <tr>
 <td align="left">W_FHTCM</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">26154</td>
-<td align="left">56</td>
-<td align="right">20250</td>
+<td align="right">20819</td>
+<td align="left">40</td>
+<td align="right">9492</td>
 </tr>
 <tr>
 <td align="left">W_GAGEBRTH</td>
-<td align="left">integer</td>
 <td align="left">double</td>
-<td align="right">99630</td>
-<td align="left">NA</td>
-<td align="right">0</td>
+<td align="left">double</td>
+<td align="right">52921</td>
+<td align="left">166</td>
+<td align="right">7710</td>
 </tr>
 <tr>
 <td align="left">W_MAGE</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">93253</td>
-<td align="left">54</td>
-<td align="right">18660</td>
+<td align="right">95452</td>
+<td align="left">48</td>
+<td align="right">6642</td>
 </tr>
 <tr>
 <td align="left">W_MBMI</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">90201</td>
-<td align="left">872.60496303202</td>
-<td align="right">43558</td>
+<td align="right">78862</td>
+<td align="left">867.336412328197</td>
+<td align="right">15005</td>
 </tr>
 <tr>
 <td align="left">W_MEDUCYRS</td>
-<td align="left">integer</td>
 <td align="left">double</td>
-<td align="right">99630</td>
-<td align="left">NA</td>
-<td align="right">0</td>
+<td align="left">double</td>
+<td align="right">77382</td>
+<td align="left">20</td>
+<td align="right">5968</td>
 </tr>
 <tr>
 <td align="left">W_MHTCM</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">93202</td>
-<td align="left">126</td>
-<td align="right">36398</td>
+<td align="right">90224</td>
+<td align="left">118</td>
+<td align="right">19534</td>
 </tr>
 <tr>
 <td align="left">W_MWTKG</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">90708</td>
-<td align="left">127.88</td>
-<td align="right">42682</td>
+<td align="right">79103</td>
+<td align="left">118.5</td>
+<td align="right">13048</td>
 </tr>
 <tr>
 <td align="left">W_NCHLDLT5</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">41335</td>
+<td align="right">19544</td>
 <td align="left">10</td>
-<td align="right">29244</td>
+<td align="right">970</td>
 </tr>
 <tr>
 <td align="left">W_NHH</td>
-<td align="left">integer</td>
 <td align="left">double</td>
-<td align="right">99630</td>
-<td align="left">NA</td>
-<td align="right">0</td>
+<td align="left">double</td>
+<td align="right">3638</td>
+<td align="left">16</td>
+<td align="right">484</td>
 </tr>
 <tr>
 <td align="left">W_NROOMS</td>
-<td align="left">integer</td>
 <td align="left">double</td>
-<td align="right">99630</td>
-<td align="left">NA</td>
-<td align="right">0</td>
+<td align="left">double</td>
+<td align="right">31735</td>
+<td align="left">76</td>
+<td align="right">4235</td>
 </tr>
 <tr>
 <td align="left">W_PARITY</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">63764</td>
+<td align="right">52799</td>
 <td align="left">17</td>
-<td align="right">34297</td>
+<td align="right">7498</td>
 </tr>
 <tr>
 <td align="left">W_PERDIAR24</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">25666</td>
-<td align="left">0.579916495713847</td>
-<td align="right">22859</td>
+<td align="right">14561</td>
+<td align="left">0.999998878139709</td>
+<td align="right">1745</td>
 </tr>
 <tr>
 <td align="left">W_PERDIAR6</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">10637</td>
-<td align="left">0.585358833526014</td>
-<td align="right">10364</td>
+<td align="right">4596</td>
+<td align="left">0.624975400249395</td>
+<td align="right">302</td>
+</tr>
+<tr>
+<td align="left">WTKG</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">107694</td>
+<td align="left">69.05</td>
+<td align="right">444</td>
 </tr>
 </tbody></table>
 
 <h1>Unequal column details</h1>
+
+<h4>Column -  AGEDAYS</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">AGEDAYS (real_cov)</th>
+<th align="right">AGEDAYS (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">296</td>
+<td align="right">272</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">24</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">279</td>
+<td align="right">274</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">5</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">22</td>
+<td align="right">29</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-7</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">32</td>
+<td align="right">1</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">31</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">205</td>
+<td align="right">272</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-67</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  AGEDTH</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">AGEDTH (real_cov)</th>
+<th align="right">AGEDTH (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">31</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">NA</td>
+<td align="right">310</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">16</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">312</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">NA</td>
+<td align="right">250</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  AGEMONTHS</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">AGEMONTHS (real_cov)</th>
+<th align="right">AGEMONTHS (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">0.0328767</td>
+<td align="right">22.6849066</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-22.6520300</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">0.0328767</td>
+<td align="right">1.1178070</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-1.0849303</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">6.0493084</td>
+<td align="right">5.5561583</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">0.4931501</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">0.0328767</td>
+<td align="right">0.4602735</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-0.4273968</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">0.0328767</td>
+<td align="right">0.1315067</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-0.0986300</td>
+</tr>
+</tbody></table>
 
 <h4>Column -  ANYWAST06</h4>
 
@@ -693,8 +941,8 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
+<td align="left">1</td>
 <td align="left">0</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -702,30 +950,30 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">2</td>
 <td align="left">0</td>
-<td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">NA</td>
 <td align="left">1</td>
+<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
+<td align="left">0</td>
 <td align="left">NA</td>
-<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -749,8 +997,8 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">Vitamin A</td>
-<td align="left">Control group</td>
+<td align="left">Control</td>
+<td align="left">Zinc Alone</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -758,31 +1006,31 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">2</td>
 <td align="left">Iron Folic Acid</td>
-<td align="left">LNS-40gM</td>
+<td align="left">Multiple Micronutrients</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">e.Control</td>
-<td align="left">NA</td>
+<td align="left">Multiple Micronutrients</td>
+<td align="left">Iron Folic Acid</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">50,000 IU nippled + 400,000 IU Oval</td>
-<td align="left">Intervention</td>
+<td align="left">Preventive Zinc: 7 mg/day</td>
+<td align="left">Intermittent Zinc: 10 mg/d for 10 days</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left"></td>
-<td align="left">NA</td>
+<td align="left">Placebo nippled + 400,000 IU Oval</td>
+<td align="left">50,000 IU nippled + 400,000 IU Oval</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -805,16 +1053,16 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">&lt;48 cm</td>
-<td align="left">NA</td>
+<td align="left">&gt;=50 cm</td>
+<td align="left">[48-50) cm</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">&gt;=50 cm</td>
-<td align="left">NA</td>
+<td align="left">&lt;48 cm</td>
+<td align="left">[48-50) cm</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -829,16 +1077,16 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">[48-50) cm</td>
 <td align="left">&lt;48 cm</td>
+<td align="left">[48-50) cm</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">[48-50) cm</td>
 <td align="left">&gt;=50 cm</td>
+<td align="left">[48-50) cm</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -862,23 +1110,23 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">1</td>
 <td align="left">Normal or high birthweight</td>
-<td align="left">NA</td>
+<td align="left">Low birthweight</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">NA</td>
 <td align="left">Normal or high birthweight</td>
+<td align="left">Low birthweight</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
+<td align="left">Normal or high birthweight</td>
 <td align="left">Low birthweight</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -894,7 +1142,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">5</td>
 <td align="left">Normal or high birthweight</td>
-<td align="left">NA</td>
+<td align="left">Low birthweight</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -917,16 +1165,16 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">9</td>
-<td align="left">4</td>
+<td align="left">11</td>
+<td align="left">7</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">7</td>
-<td align="left">NA</td>
+<td align="left">6</td>
+<td align="left">2</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -934,26 +1182,138 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">3</td>
 <td align="left">9</td>
-<td align="left">12</td>
+<td align="left">4</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">2</td>
-<td align="left">4</td>
+<td align="left">9</td>
+<td align="left">8</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
+<td align="left">3</td>
 <td align="left">12</td>
-<td align="left">2</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  BRTHWEEK</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">BRTHWEEK (real_cov)</th>
+<th align="right">BRTHWEEK (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">3</td>
+<td align="right">36</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-33</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">32</td>
+<td align="right">20</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">12</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">29</td>
+<td align="right">12</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">17</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">36</td>
+<td align="right">51</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-15</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">36</td>
+<td align="right">26</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">10</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  BRTHYR</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">BRTHYR (real_cov)</th>
+<th align="right">BRTHYR (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">1994</td>
+<td align="right">1992</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">1994</td>
+<td align="right">1995</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-1</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">1996</td>
+<td align="right">1997</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-1</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">2008</td>
+<td align="right">2011</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-3</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">2009</td>
+<td align="right">2010</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-1</td>
 </tr>
 </tbody></table>
 
@@ -973,15 +1333,15 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">0</td>
 <td align="left">NA</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">0</td>
+<td align="left">1</td>
 <td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -990,23 +1350,135 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">3</td>
 <td align="left">0</td>
-<td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
+<td align="left">0</td>
 <td align="left">1</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
+<td align="left">1</td>
 <td align="left">0</td>
-<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  CLUSTERID</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">CLUSTERID (real_cov)</th>
+<th align="right">CLUSTERID (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">2607</td>
+<td align="right">35082</td>
+<td align="left">integer</td>
+<td align="left">integer</td>
+<td align="right">-32475</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">29044</td>
+<td align="right">28646</td>
+<td align="left">integer</td>
+<td align="left">integer</td>
+<td align="right">398</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">20270</td>
+<td align="right">20139</td>
+<td align="left">integer</td>
+<td align="left">integer</td>
+<td align="right">131</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">42233</td>
+<td align="right">28852</td>
+<td align="left">integer</td>
+<td align="left">integer</td>
+<td align="right">13381</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">29454</td>
+<td align="right">8465</td>
+<td align="left">integer</td>
+<td align="left">integer</td>
+<td align="right">20989</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  COHORTID</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">COHORTID (real_cov)</th>
+<th align="left">COHORTID (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">MLED-NPL</td>
+<td align="left">MLED-ZAF</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">MLED-BRA</td>
+<td align="left">MLED-PER</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">MLED-NPL</td>
+<td align="left">MLED-ZAF</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">MLED-TZA</td>
+<td align="left">MLED-NPL</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">MLED-PER</td>
+<td align="left">MLED-BGD</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1029,40 +1501,152 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">BELARUS</td>
-<td align="left">SOUTH AFRICA</td>
+<td align="left">BANGLADESH</td>
+<td align="left">PERU</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">BURKINA FASO</td>
-<td align="left">INDIA</td>
+<td align="left">BRAZIL</td>
+<td align="left">PERU</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">TANZANIA, UNITED REPUBLIC OF</td>
 <td align="left">BANGLADESH</td>
+<td align="left">SOUTH AFRICA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
+<td align="left">PERU</td>
 <td align="left">BANGLADESH</td>
-<td align="left">BELARUS</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">MALAWI</td>
 <td align="left">INDIA</td>
+<td align="left">TANZANIA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  CTRYCD</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">CTRYCD (real_cov)</th>
+<th align="left">CTRYCD (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">PER</td>
+<td align="left">BGD</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">BGD</td>
+<td align="left">PER</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">BRA</td>
+<td align="left">TZA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">BGD</td>
+<td align="left">BRA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">NPL</td>
+<td align="left">ZAF</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  DEAD</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">DEAD (real_cov)</th>
+<th align="left">DEAD (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1085,32 +1669,32 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">0</td>
 <td align="left">NA</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
+<td align="left">1</td>
 <td align="left">0</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">NA</td>
 <td align="left">0</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">NA</td>
 <td align="left">1</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1149,15 +1733,15 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">2</td>
+<td align="left">1</td>
 <td align="left">0</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -1165,15 +1749,15 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">0</td>
 <td align="left">1</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">NA</td>
+<td align="left">0</td>
 <td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -1197,8 +1781,8 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
+<td align="left">1</td>
 <td align="left">0</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1206,15 +1790,15 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">2</td>
 <td align="left">NA</td>
-<td align="left">1</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">NA</td>
 <td align="left">0</td>
+<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1222,7 +1806,63 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">4</td>
 <td align="left">NA</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
 <td align="left">1</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  EXCLUDE_DESC</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">EXCLUDE_DESC (real_cov)</th>
+<th align="left">EXCLUDE_DESC (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Active arm</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Active arm</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Active arm</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">Active arm</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1230,7 +1870,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">5</td>
 <td align="left">NA</td>
-<td align="left">0</td>
+<td align="left">Active arm</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1253,8 +1893,8 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">NA</td>
 <td align="left">&lt;32</td>
+<td align="left">[32-38)</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1262,15 +1902,15 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">2</td>
 <td align="left">&lt;32</td>
-<td align="left">&gt;=38</td>
+<td align="left">[32-38)</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
+<td align="left">[32-38)</td>
 <td align="left">&lt;32</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1286,7 +1926,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">5</td>
 <td align="left">[32-38)</td>
-<td align="left">NA</td>
+<td align="left">&lt;32</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1310,15 +1950,15 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">1</td>
 <td align="left">Low</td>
-<td align="left">High</td>
+<td align="left">Medium</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">Medium</td>
 <td align="left">Low</td>
+<td align="left">Medium</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1326,23 +1966,23 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">3</td>
 <td align="left">Medium</td>
-<td align="left">High</td>
+<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
+<td align="left">High</td>
 <td align="left">Low</td>
-<td align="left">Medium</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
+<td align="left">Medium</td>
 <td align="left">Low</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1366,7 +2006,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">1</td>
 <td align="left">NA</td>
-<td align="left">&lt;162 cm</td>
+<td align="left">&gt;=167 cm</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1374,14 +2014,14 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">2</td>
 <td align="left">&lt;162 cm</td>
-<td align="left">NA</td>
+<td align="left">&gt;=167 cm</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">&lt;162 cm</td>
+<td align="left">&gt;=167 cm</td>
 <td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -1389,8 +2029,8 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">NA</td>
 <td align="left">&gt;=167 cm</td>
+<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1398,7 +2038,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">5</td>
 <td align="left">&gt;=167 cm</td>
-<td align="left">NA</td>
+<td align="left">[162-167) cm</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1421,40 +2061,40 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">NA</td>
 <td align="left">Full or late term</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">NA</td>
 <td align="left">Preterm</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
-<td align="left">3</td>
-<td align="left">Full or late term</td>
+<td align="left">2</td>
+<td align="left">Preterm</td>
 <td align="left">Early term</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Early term</td>
+<td align="left">Full or late term</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">NA</td>
 <td align="left">Full or late term</td>
+<td align="left">Early term</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">NA</td>
 <td align="left">Early term</td>
+<td align="left">Full or late term</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1477,31 +2117,31 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">NA</td>
 <td align="left">0</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">NA</td>
-<td align="left">0</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">NA</td>
 <td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
-<td align="left">4</td>
+<td align="left">2</td>
+<td align="left">1</td>
 <td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">1</td>
+<td align="left">NA</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">0</td>
 <td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -1533,7 +2173,7 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">NA</td>
+<td align="left">Mildly Food Insecure</td>
 <td align="left">Food Secure</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -1541,31 +2181,31 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">2</td>
+<td align="left">Food Secure</td>
 <td align="left">Food Insecure</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
+<td align="left">Mildly Food Insecure</td>
 <td align="left">Food Secure</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
+<td align="left">Food Insecure</td>
 <td align="left">NA</td>
-<td align="left">Food Secure</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">Food Insecure</td>
+<td align="left">NA</td>
 <td align="left">Food Secure</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -1589,15 +2229,15 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">NA</td>
-<td align="left">WealthQ3</td>
+<td align="left">WealthQ1</td>
+<td align="left">WealthQ2</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">WealthQ4</td>
+<td align="left">WealthQ1</td>
 <td align="left">WealthQ2</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -1605,27 +2245,83 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">3</td>
+<td align="left">WealthQ2</td>
 <td align="left">WealthQ1</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">WealthQ1</td>
-<td align="left">NA</td>
+<td align="left">WealthQ2</td>
+<td align="left">WealthQ4</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
+<td align="left">WealthQ3</td>
 <td align="left">WealthQ4</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  HTCM</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">HTCM (real_cov)</th>
+<th align="right">HTCM (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">NA</td>
+<td align="right">96.8</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">92.7</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">68.2</td>
+<td align="right">75.4</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-7.2</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">45.5</td>
+<td align="right">47.5</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-2.0</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">87.0</td>
+<td align="right">NA</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">NA</td>
 </tr>
 </tbody></table>
 
@@ -1636,7 +2332,7 @@ Number of columns with missing value differences: 11  </p>
 <table><thead>
 <tr>
 <th align="left"></th>
-<th align="right">ID (real_cov)</th>
+<th align="left">ID (real_cov)</th>
 <th align="left">ID (covBC)</th>
 <th align="left">Type (real_cov)</th>
 <th align="left">Type (covBC)</th>
@@ -1645,41 +2341,41 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">21729</td>
-<td align="left">syn-CORT-PHL-311</td>
-<td align="left">double</td>
+<td align="left">35768</td>
+<td align="left">35342</td>
+<td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">20323</td>
-<td align="left">36383</td>
-<td align="left">double</td>
+<td align="left">35454</td>
+<td align="left">35131</td>
+<td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">30561</td>
-<td align="left">syn-CORT-IND-4597</td>
-<td align="left">double</td>
+<td align="left">19523</td>
+<td align="left">7634</td>
+<td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">18219</td>
-<td align="left">11302</td>
-<td align="left">double</td>
+<td align="left">40020902</td>
+<td align="left">syn-CORT-PHL-1751</td>
+<td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">23546</td>
-<td align="left">syn-CORT-IND-5932</td>
-<td align="left">double</td>
+<td align="left">30677</td>
+<td align="left">36476</td>
+<td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
@@ -1702,7 +2398,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">1</td>
 <td align="left">0</td>
-<td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1710,31 +2406,31 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">2</td>
 <td align="left">0</td>
-<td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
+<td align="left">1</td>
 <td align="left">0</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">NA</td>
 <td align="left">1</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">1</td>
 <td align="left">NA</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1757,8 +2453,8 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">NA</td>
 <td align="left">0</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1774,7 +2470,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">3</td>
 <td align="left">0</td>
-<td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1790,10 +2486,178 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">5</td>
 <td align="left">NA</td>
-<td align="left">1</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  LATITUDE</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">LATITUDE (real_cov)</th>
+<th align="right">LATITUDE (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">-3.51</td>
+<td align="right">27.67</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-31.18</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">23.81</td>
+<td align="right">24.10</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-0.29</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">23.81</td>
+<td align="right">27.67</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-3.86</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">-3.20</td>
+<td align="right">-3.75</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">0.55</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">12.92</td>
+<td align="right">-22.80</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">35.72</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  LENCM</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">LENCM (real_cov)</th>
+<th align="right">LENCM (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">48.5</td>
+<td align="right">48.0</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">0.5</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">74.9</td>
+<td align="right">64.7</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">10.2</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">49.5</td>
+<td align="right">50.4</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-0.9</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">68.3</td>
+<td align="right">70.5</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-2.2</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">52.0</td>
+<td align="right">49.0</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">3.0</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  LONGITUD</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">LONGITUD (real_cov)</th>
+<th align="right">LONGITUD (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">35.48</td>
+<td align="right">35.25</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">0.23</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">35.25</td>
+<td align="right">35.28</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-0.03</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">30.40</td>
+<td align="right">-38.54</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">68.94</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">90.33</td>
+<td align="right">90.09</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">0.24</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">35.25</td>
+<td align="right">35.28</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-0.03</td>
 </tr>
 </tbody></table>
 
@@ -1821,7 +2685,7 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">[20-30)</td>
+<td align="left">&gt;=30</td>
 <td align="left">&lt;20</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -1829,24 +2693,24 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">3</td>
+<td align="left">&gt;=30</td>
 <td align="left">[20-30)</td>
-<td align="left">&lt;20</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
+<td align="left">&gt;=30</td>
 <td align="left">[20-30)</td>
-<td align="left">&lt;20</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">NA</td>
 <td align="left">&lt;20</td>
+<td align="left">[20-30)</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1869,15 +2733,15 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
+<td align="left">NA</td>
 <td align="left">Normal weight</td>
-<td align="left">Underweight</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">Underweight</td>
+<td align="left">NA</td>
 <td align="left">Normal weight</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -1885,80 +2749,24 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">3</td>
+<td align="left">Normal weight</td>
 <td align="left">NA</td>
-<td align="left">Underweight</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">NA</td>
-<td align="left">Underweight</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">5</td>
 <td align="left">NA</td>
 <td align="left">Normal weight</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
-</tbody></table>
-
-<h4>Column -  MEASUREFREQ</h4>
-
-<p>Showing sample of size 5</p>
-
-<table><thead>
-<tr>
-<th align="left"></th>
-<th align="left">MEASUREFREQ (real_cov)</th>
-<th align="left">MEASUREFREQ (covBC)</th>
-<th align="left">Type (real_cov)</th>
-<th align="left">Type (covBC)</th>
-<th align="left">Difference</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">1</td>
-<td align="left">quarterly</td>
-<td align="left">yearly</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">quarterly</td>
-<td align="left">monthly</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">yearly</td>
-<td align="left">quarterly</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left">quarterly</td>
-<td align="left">yearly</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
 <tr>
 <td align="left">5</td>
-<td align="left">yearly</td>
-<td align="left">quarterly</td>
+<td align="left">Normal weight</td>
+<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -1982,15 +2790,15 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">1</td>
 <td align="left">Medium</td>
-<td align="left">NA</td>
+<td align="left">Low</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">NA</td>
-<td align="left">Low</td>
+<td align="left">Medium</td>
+<td align="left">High</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2005,7 +2813,7 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">Medium</td>
+<td align="left">High</td>
 <td align="left">Low</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2013,8 +2821,8 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">5</td>
+<td align="left">Low</td>
 <td align="left">High</td>
-<td align="left">Medium</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2038,22 +2846,22 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">1</td>
 <td align="left">NA</td>
-<td align="left">&lt;151 cm</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">NA</td>
 <td align="left">&gt;=155 cm</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
-<td align="left">3</td>
+<td align="left">2</td>
+<td align="left">[151-155) cm</td>
 <td align="left">&lt;151 cm</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">[151-155) cm</td>
 <td align="left">&gt;=155 cm</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2069,8 +2877,8 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">5</td>
+<td align="left">&lt;151 cm</td>
 <td align="left">&gt;=155 cm</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2093,40 +2901,40 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">8</td>
 <td align="left">10</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">5</td>
 <td align="left">12</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
+<td align="left">2</td>
+<td align="left">9</td>
 <td align="left">3</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">2</td>
 <td align="left">1</td>
-<td align="left">11</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">6</td>
-<td align="left">10</td>
+<td align="left">5</td>
+<td align="left">8</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">9</td>
-<td align="left">11</td>
+<td align="left">1</td>
+<td align="left">12</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2149,7 +2957,7 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">NA</td>
+<td align="left">&lt;52 kg</td>
 <td align="left">&gt;=58 kg</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2157,31 +2965,31 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">2</td>
+<td align="left">[52-58) kg</td>
 <td align="left">&gt;=58 kg</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">&lt;52 kg</td>
-<td align="left">NA</td>
+<td align="left">&gt;=58 kg</td>
+<td align="left">[52-58) kg</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">&gt;=58 kg</td>
-<td align="left">NA</td>
+<td align="left">&lt;52 kg</td>
+<td align="left">[52-58) kg</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">[52-58) kg</td>
+<td align="left">NA</td>
 <td align="left">&lt;52 kg</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2205,24 +3013,24 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">2+</td>
 <td align="left">1</td>
+<td align="left">2+</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">NA</td>
 <td align="left">2+</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">2+</td>
 <td align="left">1</td>
+<td align="left">2+</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2230,14 +3038,14 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">4</td>
 <td align="left">1</td>
-<td align="left">NA</td>
+<td align="left">2+</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">NA</td>
+<td align="left">2+</td>
 <td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2261,24 +3069,24 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">NA</td>
-<td align="left">4-5</td>
+<td align="left">3 or less</td>
+<td align="left">8+</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
+<td align="left">6-7</td>
 <td align="left">4-5</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">3 or less</td>
-<td align="left">NA</td>
+<td align="left">6-7</td>
+<td align="left">4-5</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2286,15 +3094,15 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">4</td>
 <td align="left">8+</td>
-<td align="left">NA</td>
+<td align="left">3 or less</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">NA</td>
-<td align="left">3 or less</td>
+<td align="left">8+</td>
+<td align="left">4-5</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2317,7 +3125,7 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">4+</td>
+<td align="left">2</td>
 <td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2325,15 +3133,15 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">2</td>
+<td align="left">NA</td>
 <td align="left">2</td>
-<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">NA</td>
+<td align="left">2</td>
 <td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2341,8 +3149,8 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">1</td>
-<td align="left">NA</td>
+<td align="left">3</td>
+<td align="left">2</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2350,7 +3158,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">5</td>
 <td align="left">1</td>
-<td align="left">2</td>
+<td align="left">4+</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2373,8 +3181,8 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
+<td align="left">2</td>
 <td align="left">3+</td>
-<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2382,23 +3190,23 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">2</td>
 <td align="left">1</td>
-<td align="left">3+</td>
+<td align="left">2</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">1</td>
 <td align="left">2</td>
+<td align="left">3+</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
+<td align="left">1</td>
 <td align="left">3+</td>
-<td align="left">2</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2429,31 +3237,31 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">NA</td>
 <td align="left">(0%, 5%]</td>
+<td align="left">&gt;5%</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">[0%, 2%]</td>
-<td align="left">NA</td>
+<td align="left">0%</td>
+<td align="left">(0%, 5%]</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">[0%, 2%]</td>
-<td align="left">NA</td>
+<td align="left">&gt;5%</td>
+<td align="left">0%</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">NA</td>
+<td align="left">0%</td>
 <td align="left">(0%, 5%]</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2461,8 +3269,8 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">NA</td>
 <td align="left">(0%, 5%]</td>
+<td align="left">&gt;5%</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2485,39 +3293,39 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">[0%, 2%]</td>
-<td align="left">NA</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">[0%, 2%]</td>
-<td align="left">NA</td>
-<td align="left">character</td>
-<td align="left">character</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">NA</td>
+<td align="left">&gt;5%</td>
 <td align="left">0%</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
+<td align="left">2</td>
+<td align="left">&gt;5%</td>
+<td align="left">0%</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">0%</td>
+<td align="left">(0%, 5%]</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
 <td align="left">4</td>
-<td align="left">[0%, 2%]</td>
-<td align="left">NA</td>
+<td align="left">(0%, 5%]</td>
+<td align="left">0%</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">NA</td>
+<td align="left">&gt;5%</td>
 <td align="left">0%</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2557,16 +3365,16 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">NA</td>
 <td align="left">0</td>
+<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">NA</td>
 <td align="left">0</td>
+<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2574,7 +3382,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">5</td>
 <td align="left">0</td>
-<td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2605,7 +3413,7 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">NA</td>
+<td align="left">0</td>
 <td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2629,7 +3437,7 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">1</td>
+<td align="left">0</td>
 <td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2654,7 +3462,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">1</td>
 <td align="left">South Asia</td>
-<td align="left">Africa</td>
+<td align="left">Latin America</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2662,7 +3470,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">2</td>
 <td align="left">South Asia</td>
-<td align="left">Africa</td>
+<td align="left">Latin America</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2670,15 +3478,15 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">3</td>
 <td align="left">South Asia</td>
-<td align="left">Latin America</td>
+<td align="left">Africa</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">Europe</td>
 <td align="left">South Asia</td>
+<td align="left">Latin America</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2687,6 +3495,62 @@ Number of columns with missing value differences: 11  </p>
 <td align="left">5</td>
 <td align="left">Africa</td>
 <td align="left">South Asia</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  SAFEH2O</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">SAFEH2O (real_cov)</th>
+<th align="left">SAFEH2O (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2709,8 +3573,8 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">Female</td>
 <td align="left">Male</td>
+<td align="left">Female</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2733,8 +3597,8 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">Male</td>
 <td align="left">Female</td>
+<td align="left">Male</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2765,15 +3629,15 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">0</td>
 <td align="left">NA</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2789,7 +3653,7 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -2797,23 +3661,23 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">NA</td>
 <td align="left">1</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 </tbody></table>
 
-<h4>Column -  STUDYID</h4>
+<h4>Column -  SITEID</h4>
 
 <p>Showing sample of size 5</p>
 
 <table><thead>
 <tr>
 <th align="left"></th>
-<th align="left">STUDYID (real_cov)</th>
-<th align="left">STUDYID (covBC)</th>
+<th align="left">SITEID (real_cov)</th>
+<th align="left">SITEID (covBC)</th>
 <th align="left">Type (real_cov)</th>
 <th align="left">Type (covBC)</th>
 <th align="left">Difference</th>
@@ -2821,40 +3685,40 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">JiVitA-4</td>
-<td align="left">JiVitA-3</td>
+<td align="left">2</td>
+<td align="left">****</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">iLiNS-Zinc</td>
-<td align="left">COHORTS</td>
+<td align="left">2</td>
+<td align="left">****</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">JiVitA-3</td>
-<td align="left">COHORTS</td>
+<td align="left">2</td>
+<td align="left">****</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">MAL-ED</td>
-<td align="left">JiVitA-4</td>
+<td align="left">21</td>
+<td align="left">****</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">TanzaniaChild2</td>
-<td align="left">PROBIT</td>
+<td align="left">2</td>
+<td align="left">****</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2877,40 +3741,96 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">60553</td>
-<td align="left">syn-JVT4-BGD-5150</td>
+<td align="left">241681</td>
+<td align="left">syn-ZVIT-ZWE-9951</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left">11987</td>
-<td align="left">syn-JVT3-BGD-10985</td>
+<td align="left">2730</td>
+<td align="left">syn-VITA-IND-2735</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">1034</td>
-<td align="left">syn-PRBT-BLR-7055</td>
+<td align="left">111011</td>
+<td align="left">syn-ZVIT-ZWE-10987</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">3943</td>
-<td align="left">syn-PRBT-BLR-9674</td>
+<td align="left">173461</td>
+<td align="left">syn-ZVIT-ZWE-3875</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left">216751</td>
-<td align="left">syn-ZVIT-ZWE-11363</td>
+<td align="left">61752</td>
+<td align="left">syn-TZC2-TZA-21</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
+<h4>Column -  SYNTYPE</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="left">SYNTYPE (real_cov)</th>
+<th align="left">SYNTYPE (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="left">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">real</td>
+<td align="left">BC</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">real</td>
+<td align="left">BC</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">real</td>
+<td align="left">BC</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">real</td>
+<td align="left">BC</td>
+<td align="left">character</td>
+<td align="left">character</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">real</td>
+<td align="left">BC</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2942,7 +3862,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">2</td>
 <td align="left">Maternal</td>
-<td align="left">Other</td>
+<td align="left">Control</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2950,7 +3870,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">3</td>
 <td align="left">Control</td>
-<td align="left"></td>
+<td align="left">LNS</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2958,7 +3878,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">4</td>
 <td align="left">Control</td>
-<td align="left"></td>
+<td align="left">Maternal</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2966,7 +3886,7 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">5</td>
 <td align="left">Control</td>
-<td align="left"></td>
+<td align="left">Maternal</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -2990,22 +3910,22 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">1</td>
 <td align="left">NA</td>
-<td align="left">0</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">2</td>
+<td align="left">0</td>
 <td align="left">1</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -3013,16 +3933,16 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">0</td>
 <td align="left">NA</td>
+<td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">5</td>
+<td align="left">1</td>
 <td align="left">0</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -3045,8 +3965,8 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="left">0</td>
 <td align="left">1</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -3054,14 +3974,14 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">2</td>
 <td align="left">NA</td>
-<td align="left">1</td>
+<td align="left">0</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left">NA</td>
+<td align="left">0</td>
 <td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -3069,7 +3989,7 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">NA</td>
+<td align="left">0</td>
 <td align="left">1</td>
 <td align="left">character</td>
 <td align="left">character</td>
@@ -3077,8 +3997,8 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">5</td>
+<td align="left">0</td>
 <td align="left">1</td>
-<td align="left">NA</td>
 <td align="left">character</td>
 <td align="left">character</td>
 <td align="left"></td>
@@ -3101,43 +4021,43 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">52.0</td>
-<td align="right">45.00483</td>
+<td align="right">49.00000</td>
+<td align="right">55.0000</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">6.995169</td>
+<td align="right">-6.00000</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">49.8</td>
-<td align="right">43.90000</td>
+<td align="right">53.00000</td>
+<td align="right">52.4000</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">5.900000</td>
+<td align="right">0.60000</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">NA</td>
-<td align="right">52.00000</td>
+<td align="right">45.50000</td>
+<td align="right">47.0000</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-1.50000</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">49.5</td>
-<td align="right">52.00000</td>
+<td align="right">48.99919</td>
+<td align="right">47.9948</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-2.500000</td>
+<td align="right">1.00439</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">49.0</td>
-<td align="right">49.50000</td>
+<td align="right">53.30000</td>
+<td align="right">48.1000</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-0.500000</td>
+<td align="right">5.20000</td>
 </tr>
 </tbody></table>
 
@@ -3157,39 +4077,39 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">4360</td>
-<td align="right">3045.000</td>
+<td align="right">2440</td>
+<td align="right">NA</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">1315.0000</td>
+<td align="right">NA</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">2470</td>
-<td align="right">3240.000</td>
+<td align="right">2310</td>
+<td align="right">2770</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-770.0000</td>
+<td align="right">-460</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">3432</td>
-<td align="right">2601.582</td>
+<td align="right">2930</td>
+<td align="right">2700</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">830.4176</td>
+<td align="right">230</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">3400</td>
-<td align="right">2940.000</td>
+<td align="right">3000</td>
+<td align="right">3500</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">460.0000</td>
+<td align="right">-500</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">2370</td>
+<td align="right">2200</td>
 <td align="right">NA</td>
 <td align="left">double</td>
 <td align="left">double</td>
@@ -3208,48 +4128,48 @@ Number of columns with missing value differences: 11  </p>
 <th align="right">W_FAGE (covBC)</th>
 <th align="left">Type (real_cov)</th>
 <th align="left">Type (covBC)</th>
-<th align="left">Difference</th>
+<th align="right">Difference</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">27</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">36</td>
+<td align="right">25</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">11</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">27</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">18</td>
+<td align="right">39</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-21</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">34</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">25</td>
+<td align="right">23</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">2</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">70</td>
+<td align="right">31</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">39</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">NA</td>
 <td align="right">25</td>
-<td align="left">integer</td>
+<td align="right">28</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-3</td>
 </tr>
 </tbody></table>
 
@@ -3264,48 +4184,48 @@ Number of columns with missing value differences: 11  </p>
 <th align="right">W_FEDUCYRS (covBC)</th>
 <th align="left">Type (real_cov)</th>
 <th align="left">Type (covBC)</th>
-<th align="left">Difference</th>
+<th align="right">Difference</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">5</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">14</td>
+<td align="right">0</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">14</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">12</td>
-<td align="right">12</td>
-<td align="left">integer</td>
+<td align="right">11</td>
+<td align="right">13</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-2</td>
 </tr>
 <tr>
 <td align="left">3</td>
+<td align="right">1</td>
 <td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">NA</td>
 </tr>
 <tr>
 <td align="left">4</td>
 <td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">2</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">NA</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">5</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">3</td>
+<td align="right">6</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-3</td>
 </tr>
 </tbody></table>
 
@@ -3325,6 +4245,14 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
+<td align="right">172</td>
+<td align="right">176</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-4</td>
+</tr>
+<tr>
+<td align="left">2</td>
 <td align="right">180</td>
 <td align="right">NA</td>
 <td align="left">double</td>
@@ -3332,36 +4260,28 @@ Number of columns with missing value differences: 11  </p>
 <td align="right">NA</td>
 </tr>
 <tr>
-<td align="left">2</td>
-<td align="right">NA</td>
-<td align="right">178</td>
-<td align="left">double</td>
-<td align="left">double</td>
-<td align="right">NA</td>
-</tr>
-<tr>
 <td align="left">3</td>
-<td align="right">181</td>
 <td align="right">176</td>
+<td align="right">170</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">5</td>
+<td align="right">6</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">170</td>
-<td align="right">182</td>
+<td align="right">NA</td>
+<td align="right">175</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-12</td>
+<td align="right">NA</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">NA</td>
-<td align="right">154</td>
+<td align="right">175</td>
+<td align="right">164</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">11</td>
 </tr>
 </tbody></table>
 
@@ -3376,48 +4296,48 @@ Number of columns with missing value differences: 11  </p>
 <th align="right">W_GAGEBRTH (covBC)</th>
 <th align="left">Type (real_cov)</th>
 <th align="left">Type (covBC)</th>
-<th align="left">Difference</th>
+<th align="right">Difference</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">268</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">287</td>
+<td align="right">284</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">3</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">283</td>
-<td align="right">270</td>
-<td align="left">integer</td>
+<td align="right">268</td>
+<td align="right">293</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-25</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">280</td>
+<td align="right">273</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">7</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">273</td>
+<td align="right">280</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-7</td>
 </tr>
 <tr>
 <td align="left">5</td>
+<td align="right">273</td>
 <td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">NA</td>
 </tr>
 </tbody></table>
 
@@ -3437,43 +4357,43 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
+<td align="right">30</td>
 <td align="right">17</td>
-<td align="right">24</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-7</td>
+<td align="right">13</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">24</td>
-<td align="right">27</td>
+<td align="right">22</td>
+<td align="right">34</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-3</td>
+<td align="right">-12</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">19</td>
-<td align="right">18</td>
+<td align="right">50</td>
+<td align="right">NA</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">1</td>
+<td align="right">NA</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">15</td>
-<td align="right">20</td>
+<td align="right">24</td>
+<td align="right">25</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-5</td>
+<td align="right">-1</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">27</td>
-<td align="right">20</td>
+<td align="right">NA</td>
+<td align="right">32</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">7</td>
+<td align="right">NA</td>
 </tr>
 </tbody></table>
 
@@ -3493,43 +4413,43 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">21.3599</td>
-<td align="right">26.58918</td>
+<td align="right">19.81000</td>
+<td align="right">16.47263</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-5.229283</td>
+<td align="right">3.337371</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">20.5400</td>
-<td align="right">21.27656</td>
+<td align="right">25.77000</td>
+<td align="right">22.79606</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-0.736558</td>
+<td align="right">2.973935</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">18.0951</td>
-<td align="right">24.52839</td>
+<td align="right">25.35496</td>
+<td align="right">15.98249</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-6.433293</td>
+<td align="right">9.372469</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">NA</td>
-<td align="right">26.35372</td>
+<td align="right">22.23100</td>
+<td align="right">24.05693</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-1.825935</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">21.5858</td>
-<td align="right">22.77319</td>
+<td align="right">17.47284</td>
+<td align="right">27.07062</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-1.187386</td>
+<td align="right">-9.597788</td>
 </tr>
 </tbody></table>
 
@@ -3544,48 +4464,48 @@ Number of columns with missing value differences: 11  </p>
 <th align="right">W_MEDUCYRS (covBC)</th>
 <th align="left">Type (real_cov)</th>
 <th align="left">Type (covBC)</th>
-<th align="left">Difference</th>
+<th align="right">Difference</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">8</td>
+<td align="right">5</td>
 <td align="right">0</td>
-<td align="left">integer</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">5</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">0</td>
-<td align="right">7</td>
-<td align="left">integer</td>
+<td align="right">10</td>
+<td align="right">11</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-1</td>
 </tr>
 <tr>
 <td align="left">3</td>
 <td align="right">0</td>
 <td align="right">8</td>
-<td align="left">integer</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-8</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">15</td>
-<td align="right">2</td>
-<td align="left">integer</td>
+<td align="right">10</td>
+<td align="right">0</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">10</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">integer</td>
+<td align="right">11</td>
+<td align="right">6</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">5</td>
 </tr>
 </tbody></table>
 
@@ -3605,31 +4525,31 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">NA</td>
-<td align="right">161.5</td>
+<td align="right">160.0</td>
+<td align="right">170.0</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-10.0</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">149.5</td>
-<td align="right">160.8</td>
+<td align="right">145.4</td>
+<td align="right">158.5</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-11.3</td>
+<td align="right">-13.1</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">NA</td>
-<td align="right">160.0</td>
+<td align="right">144.0</td>
+<td align="right">145.0</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-1.0</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">169.6</td>
+<td align="right">154.6</td>
 <td align="right">NA</td>
 <td align="left">double</td>
 <td align="left">double</td>
@@ -3637,11 +4557,11 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">159.9</td>
-<td align="right">NA</td>
+<td align="right">144.5</td>
+<td align="right">144.9</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-0.4</td>
 </tr>
 </tbody></table>
 
@@ -3661,43 +4581,43 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">92.3</td>
-<td align="right">NA</td>
+<td align="right">53.5</td>
+<td align="right">41.3</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">12.2</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">34.8</td>
-<td align="right">42.044</td>
+<td align="right">46.5</td>
+<td align="right">52.8</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-7.244</td>
+<td align="right">-6.3</td>
 </tr>
 <tr>
 <td align="left">3</td>
 <td align="right">NA</td>
-<td align="right">69.000</td>
+<td align="right">46.0</td>
 <td align="left">double</td>
 <td align="left">double</td>
 <td align="right">NA</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">57.0</td>
-<td align="right">NA</td>
+<td align="right">56.0</td>
+<td align="right">75.0</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-19.0</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">82.0</td>
-<td align="right">56.000</td>
+<td align="right">56.0</td>
+<td align="right">NA</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">26.000</td>
+<td align="right">NA</td>
 </tr>
 </tbody></table>
 
@@ -3725,27 +4645,27 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">2</td>
+<td align="right">2</td>
 <td align="right">1</td>
-<td align="right">NA</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">NA</td>
 <td align="right">1</td>
+<td align="right">2</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-1</td>
 </tr>
 <tr>
 <td align="left">4</td>
+<td align="right">1</td>
 <td align="right">2</td>
-<td align="right">NA</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-1</td>
 </tr>
 <tr>
 <td align="left">5</td>
@@ -3768,48 +4688,48 @@ Number of columns with missing value differences: 11  </p>
 <th align="right">W_NHH (covBC)</th>
 <th align="left">Type (real_cov)</th>
 <th align="left">Type (covBC)</th>
-<th align="left">Difference</th>
+<th align="right">Difference</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">4</td>
+<td align="right">7</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-3</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">3</td>
+<td align="right">5</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-2</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">5</td>
+<td align="right">8</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-3</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">3</td>
+<td align="right">4</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-1</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">5</td>
+<td align="right">3</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">2</td>
 </tr>
 </tbody></table>
 
@@ -3824,48 +4744,48 @@ Number of columns with missing value differences: 11  </p>
 <th align="right">W_NROOMS (covBC)</th>
 <th align="left">Type (real_cov)</th>
 <th align="left">Type (covBC)</th>
-<th align="left">Difference</th>
+<th align="right">Difference</th>
 </tr>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">NA</td>
 <td align="right">1</td>
-<td align="left">integer</td>
+<td align="right">2</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-1</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">NA</td>
-<td align="right">1</td>
-<td align="left">integer</td>
+<td align="right">2</td>
+<td align="right">3</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">-1</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="left">integer</td>
+<td align="right">2</td>
+<td align="right">1</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">1</td>
 </tr>
 <tr>
 <td align="left">4</td>
+<td align="right">NA</td>
 <td align="right">1</td>
-<td align="right">2</td>
-<td align="left">integer</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">NA</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">3</td>
-<td align="right">4</td>
-<td align="left">integer</td>
+<td align="right">2</td>
+<td align="right">1</td>
 <td align="left">double</td>
-<td align="left"></td>
+<td align="left">double</td>
+<td align="right">1</td>
 </tr>
 </tbody></table>
 
@@ -3886,10 +4806,10 @@ Number of columns with missing value differences: 11  </p>
 <tr>
 <td align="left">1</td>
 <td align="right">1</td>
-<td align="right">5</td>
+<td align="right">4</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">-4</td>
+<td align="right">-3</td>
 </tr>
 <tr>
 <td align="left">2</td>
@@ -3901,27 +4821,27 @@ Number of columns with missing value differences: 11  </p>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">NA</td>
 <td align="right">3</td>
-<td align="left">double</td>
-<td align="left">double</td>
-<td align="right">NA</td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="right">NA</td>
-<td align="right">3</td>
-<td align="left">double</td>
-<td align="left">double</td>
-<td align="right">NA</td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="right">NA</td>
 <td align="right">1</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-1</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-3</td>
 </tr>
 </tbody></table>
 
@@ -3941,43 +4861,43 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">NA</td>
-<td align="right">0.0000144</td>
+<td align="right">0.0387275</td>
+<td align="right">0.0182191</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">0.0205084</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">NA</td>
-<td align="right">0.0069831</td>
+<td align="right">0.1058394</td>
+<td align="right">0.0000047</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">0.1058348</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">NA</td>
-<td align="right">0.0089336</td>
+<td align="right">0.0187166</td>
+<td align="right">0.0752743</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-0.0565578</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">NA</td>
-<td align="right">0.0000003</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0537993</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-0.0537993</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="right">NA</td>
-<td align="right">0.0081077</td>
+<td align="right">0.0161725</td>
+<td align="right">0.0408516</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-0.0246791</td>
 </tr>
 </tbody></table>
 
@@ -3997,43 +4917,99 @@ Number of columns with missing value differences: 11  </p>
 </thead><tbody>
 <tr>
 <td align="left">1</td>
-<td align="right">NA</td>
-<td align="right">0.0000000</td>
+<td align="right">0.0171429</td>
+<td align="right">0.1079292</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-0.0907864</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="right">NA</td>
-<td align="right">0.0000000</td>
+<td align="right">0.0989011</td>
+<td align="right">0.0000132</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">0.0988879</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="right">0.0054945</td>
-<td align="right">NA</td>
+<td align="right">0.0000000</td>
+<td align="right">0.0000322</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">-0.0000322</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="right">NA</td>
-<td align="right">0.0000000</td>
+<td align="right">0.3000000</td>
+<td align="right">0.1228960</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">0.1771040</td>
 </tr>
 <tr>
 <td align="left">5</td>
+<td align="right">NaN</td>
 <td align="right">NA</td>
-<td align="right">0.0329628</td>
 <td align="left">double</td>
 <td align="left">double</td>
-<td align="right">NA</td>
+<td align="right">NaN</td>
+</tr>
+</tbody></table>
+
+<h4>Column -  WTKG</h4>
+
+<p>Showing sample of size 5</p>
+
+<table><thead>
+<tr>
+<th align="left"></th>
+<th align="right">WTKG (real_cov)</th>
+<th align="right">WTKG (covBC)</th>
+<th align="left">Type (real_cov)</th>
+<th align="left">Type (covBC)</th>
+<th align="right">Difference</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">1</td>
+<td align="right">4.10</td>
+<td align="right">3.085</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">1.015</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="right">6.79</td>
+<td align="right">8.800</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-2.010</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="right">2.41</td>
+<td align="right">3.160</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">-0.750</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="right">2.91</td>
+<td align="right">2.530</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">0.380</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="right">6.33</td>
+<td align="right">5.750</td>
+<td align="left">double</td>
+<td align="left">double</td>
+<td align="right">0.580</td>
 </tr>
 </tbody></table>
 
