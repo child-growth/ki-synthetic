@@ -20,6 +20,17 @@ Zscores <- bind_rows(Zscores_syn, Zscores_syn_unadj)
 
 table(Zscores$syntype, Zscores$agecat)
 
+Zscores <- Zscores %>% mutate(
+               syntype= case_when(
+                 syntype=="real" ~"Real",
+                 syntype=="QI" ~"QI",
+                 syntype=="BC" ~"BC",
+                 syntype=="FULL" ~"Full"
+               ),
+               syntype= factor(syntype, levels=c("Real","QI","BC","Full"))
+              )
+
+
 
 d <- Zscores %>% filter(intervention_variable!="perdiar24" & intervention_variable!="perdiar6" & !(intervention_variable=="fhtcm" & outcome_variable=="haz"))
 

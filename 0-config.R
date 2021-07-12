@@ -128,3 +128,21 @@ theme_set(theme_ki())
 
 cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
+
+ 
+
+scale_color_mert <- function(...){
+  ggplot2:::manual_scale(
+    'color', 
+    values = setNames(c("#000000", "#E69F00", "#56B4E9", "#009E73"), c("Real", "QI", "BC", "FULL")), 
+    ...
+  )
+}
+
+scale_fill_mert <- function(...){
+  ggplot2:::manual_scale(
+    'color', 
+    values = setNames(c("#000000", "#E69F00", "#56B4E9", "#009E73"), c("Real", "QI", "BC", "FULL")), 
+    ...
+  )
+}

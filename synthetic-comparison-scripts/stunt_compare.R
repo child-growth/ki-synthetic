@@ -40,9 +40,13 @@ expand_scale = function(mult = 0, add = 0) {
 theme_set(theme_ki())
 
 #Load data
-d <- readRDS(paste0(here(),"/results/desc_data_comp_df.rds")) %>% mutate(dataset=factor(syntype, levels=c("real","QI","BC","FULL")))
-
-
+d <- readRDS(paste0(here(),"/results/desc_data_comp_df.rds")) %>% 
+  mutate(dataset=factor(case_when(
+    syntype=="real" ~"Real",
+    syntype=="QI" ~"QI",
+    syntype=="BC" ~"BC",
+    syntype=="FULL" ~"Full"
+  ), levels=c("Real","QI","BC","Full")))
 
 
 Disease="Stunting"

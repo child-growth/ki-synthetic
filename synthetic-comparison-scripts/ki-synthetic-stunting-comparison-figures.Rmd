@@ -72,6 +72,19 @@ The report compares estimates from 3 synthetic datasets with the raw KI values. 
   *  BC: Partially synthetic dataset with quasi-identifiers and baseline characteristics synthesized, but not child age/anthropometry
   *  Full: Fully synthesized dataset using updated deep learning model. Each cohort is generated through a model either trained exclusively on that cohort, or on a group of sufficiently similar cohorts, depending on the number of individuals in the cohort.
   
+### For the QI dataset, the following variables were synthesized:
+QI_syn_cov <-  c("country", "arm", "sex",  "brthyr", "brthmon", "brthweek",  "W_mage", "mage", "W_mhtcm", "mhtcm", "W_mwtkg", "mwtkg",
+"W_mbmi",  "mbmi", "W_meducyrs", "meducyrs", "single", "W_fage", "fage", "W_fhtcm", "fhtcm", "W_feducyrs", "feducyrs",
+"hhwealth_quart", "dead")
+
+### For the BC dataset, the following variables were synthesized:
+BC_syn_cov <-  c( "country", "measurefreq", "arm", "sex", "W_gagebrth", "gagebrth", "vagbrth", "hdlvry", "brthyr", "brthmon", "brthweek",
+"earlybf", "predexfd6", "W_parity", "parity", "W_mage", "mage", "W_mhtcm", "mhtcm", "W_mwtkg", "mwtkg", "W_mbmi",
+"mbmi", "W_meducyrs", "meducyrs", "single", "W_fage", "fage", "W_fhtcm", "fhtcm", "W_feducyrs", "feducyrs",
+"hhwealth_quart", "hfoodsec", "impsan", "safeh2o", "trth2o", "cleanck", "impfloor", "W_nrooms", "nrooms",  "W_nhh",
+"nhh", "W_nchldlt5", "nchldlt5", "W_perdiar6", "perdiar6", "W_perdiar24", "perdiar24", "dead", "agedth")
+
+  
 
 
 ## Descriptive epidemiology comparisons of Z-scores and age-specific wasting and stunting prevalences/incidences
@@ -205,7 +218,7 @@ pPAR[[1]] + theme(legend.position = "bottom")
 pPAR[[2]] + theme(legend.position = "bottom")
 ```
 
-The synthetic data population-attributable risks are generally lower than the real estimates.  The fully-synthetic data most closely matches the real-data estimates, but some of the confidence intervals are much higher. We would have made similar inferences for almost all risk factors using the fully synthetic data, but would have concluded that some important risk factors (like maternal weight and education and household wealth are not strongly associated with poor child growth).
+The synthetic data population-attributable risks are generally lower than the real estimates.  The fully-synthetic data most closely matches the real-data estimates except for non-synthesized QI risk factors, though those have some small differences due to synthesized adjustment covariates. Also, the fully-synthesized estimates most closely mathc the real-data estimates for the strongest, most important risk factors. The fully synthesized data confidence intervals are generally higher than from the real data. We would have made similar inferences for many but not all of risk factors using the fully synthetic data, but would have concluded that some important risk factors (like father;s education and improved sanitation are not strongly associated with poor child growth).
 
 
 ### Comparison of difference in cohort-specific targeted learning estimates
@@ -215,7 +228,7 @@ The synthetic data population-attributable risks are generally lower than the re
 pATE
 ```
 
-When comparing all cohort-specific average-treatment effects (rather than just pooled population-attribuable risks of Z-scores at 24 months), the QI datasets match the real-data estimates most closely. 
+The median difference between the real data estimates and the QI and full data is closer to 0 than from the BC data. The variance in the difference between real data and synthetic data estimates is larger for the fully synthesized data than the QI dataset.
 
 ## Unadjusted, linear regression estimates
 
@@ -228,17 +241,17 @@ pPAR_unadj[[1]]
 pPAR_unadj[[2]]
 ```
 
-Similar to the adjusted, SuperLearner estimates, the fully-synthetic data most closely matches the real-data estimates, but the synthetic data population-attributable risks are generally lower. 
+Because these estimates are not adjusted for other covariates, the QI and real data estimates match exactly for non-synthesized risk factors, but differ for synthesized risk factors. How well each dataset specific risk factor matched the real-data estimates varies by risk factor. 
 
-### Comparison of difference in cohort-specific targeted learning estimates
+### Comparison of difference in cohort-specific unadjusted estimates
 
-The median difference between the fully synthetic and real data is near-zero, and overall, the bias is smaller from the fully synthetic data compared to the QI/BC data.
+
 
 ```{r, echo=FALSE, fig.height = 8, fig.width = 8, fig.align = "center"}
 
 pATE_unadj
 ```
 
-
+These comparisons don't include the QI risk factors that were not synthesized. The median estimate is slightly closer to the real data estimates when using the fully synthesized data, and the variance in the estimate differences are similar across the three different methods.
 
 

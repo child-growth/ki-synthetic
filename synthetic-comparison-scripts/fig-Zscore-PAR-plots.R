@@ -57,7 +57,7 @@ unique(par$RFlabel_ref)
 df <- par %>% subset(., select = c(outcome_variable, intervention_variable, PAR, CI1, CI2, RFlabel, RFlabel_ref,  RFtype, n_cell, n, syntype)) %>% 
   filter(!is.na(PAR)) %>% mutate(measure="PAR")
 
-df <- df %>% mutate(syntype=factor(syntype, levels=c("real","QI","BC","FULL")))
+df <- df %>% mutate(syntype=factor(syntype, levels=c("Real","QI","BC","Full")))
 
 
 #----------------------------------------------------------

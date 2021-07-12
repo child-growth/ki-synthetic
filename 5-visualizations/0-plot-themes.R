@@ -5,7 +5,7 @@ theme_ki <- function() {
   theme_bw() %+replace%
     theme(
       strip.background = element_blank(),
-      legend.position="none",
+      #legend.position="none",
       plot.title = element_text(size = 16, face = "bold"),
       strip.text = element_text(size=14),
       axis.title = element_text(size=12),

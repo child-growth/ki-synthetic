@@ -14,19 +14,25 @@ library(gtable)
 #Load data
 ate <- readRDS(paste0(here::here(),"/results/rf results/pooled_ATE_results_unadj.rds"))
 table(ate$syntype)
-head(ate)
-ate$syntype <- factor(ate$syntype)
-ate$syntype <- relevel(ate$syntype, ref="real")
+
+#Drop non-synthesized QI variables
+QI_syn_cov <-  c("country", "arm", "sex",  "brthyr", "brthmon", "brthweek",  "W_mage", "mage", "W_mhtcm", "mhtcm", "W_mwtkg", "mwtkg",
+                 "W_mbmi",  "mbmi", "W_meducyrs", "meducyrs", "single", "W_fage", "fage", "W_fhtcm", "fhtcm", "W_feducyrs", "feducyrs",
+                 "hhwealth_quart", "dead")
+ate <- ate %>% filter(intervention_variable %in% QI_syn_cov | syntype!="QI")
+
+
+
 levels(ate$syntype)
 df <- ate %>% group_by( intervention_variable,agecat, intervention_level, baseline_level, outcome_variable, region ) %>%
   arrange(syntype) %>%
-  mutate(diff=ATE-first(ATE)) %>% filter(syntype!="real") 
+  mutate(diff=ATE-first(ATE)) %>% filter(syntype!="Real") 
 head(df)
 
 df %>% group_by(syntype) %>%
   summarise(mean(diff))
   
-df <- df %>% mutate(syntype=factor(syntype, levels=c("real","QI","BC","FULL")))
+df <- df %>% mutate(syntype=factor(syntype, levels=c("Real","QI","BC","Full")))
 
 medians <- df %>% group_by(syntype) %>% summarize(med=median(diff))
 medians

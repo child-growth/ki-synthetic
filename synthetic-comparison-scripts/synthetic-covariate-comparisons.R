@@ -32,10 +32,10 @@ BC_syn_cov <-  c( "country", "measurefreq", "arm", "sex", "W_gagebrth", "gagebrt
 
 
 #load synthetic datasets
-d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds")) %>% filter(syntype!="FULL")
+d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds")) %>% filter(syntype!="Full")
 QI_full <- d %>% filter(syntype=="QI")
 BC_full <- d %>% filter(syntype=="BC")
-real_full <- d %>% filter(syntype=="real")
+real_full <- d %>% filter(syntype=="Real")
 table(d$syntype)
 head(d)
 

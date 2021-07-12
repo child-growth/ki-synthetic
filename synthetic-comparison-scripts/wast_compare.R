@@ -3,8 +3,14 @@ rm(list=ls())
 source(paste0(here::here(), "/0-config.R"))
 
 #Load data
-d <- readRDS(paste0(here(),"/results/desc_data_comp_df.rds")) %>% mutate(dataset=factor(syntype, levels=c("real","QI","BC","FULL")))
-
+d <- readRDS(paste0(here(),"/results/desc_data_comp_df.rds")) %>% 
+  mutate(dataset=factor(case_when(
+    syntype=="real" ~"Real",
+    syntype=="QI" ~"QI",
+    syntype=="BC" ~"BC",
+    syntype=="FULL" ~"Full"
+  ), levels=c("Real","QI","BC","Full")))
+table(d$dataset)
 
 #Subset to primary analysis
 d <- d %>% mutate(pooling=ifelse(cohort=="pooled" & is.na(pooling),region,pooling)) %>%
