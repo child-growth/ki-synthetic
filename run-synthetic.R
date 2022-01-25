@@ -10,7 +10,7 @@ source(here("/1-data-cleaning/6_anthro_prepdata.R"))
 #source(here("/1-data-cleaning/9_seasonality_prepdata.R"))
 
 #Plot Z-score differences
-source(here("/1-data-cleaning/2-combine-with-real-data.R"))
+#source(here("/1-data-cleaning/2-combine-with-real-data.R"))
 
 #Descriptive
 source(here("2-descriptive-outcomes/wasting/0-run-descriptive-outcomes-wasting.R"))

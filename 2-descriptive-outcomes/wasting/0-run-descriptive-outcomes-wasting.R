@@ -10,7 +10,7 @@ source(here("2-descriptive-outcomes/wasting/4_co_summarize_outcomes.R"))
 source(here("2-descriptive-outcomes/wasting/5_co_flowdata.R"))
 source(here("2-descriptive-outcomes/wasting/7_wast_ir_sensitivity.R"))
 source(here("2-descriptive-outcomes/wasting/8_wast_manuscript_extra_stats.R"))
-source(here("2-descriptive-outcomes/wasting/9_create_wast_seasonality_datasets.R"))
-source(here("2-descriptive-outcomes/wasting/13_create_birth_wast_seasonality_dataset.R"))
+# source(here("2-descriptive-outcomes/wasting/9_create_wast_seasonality_datasets.R"))
+# source(here("2-descriptive-outcomes/wasting/13_create_birth_wast_seasonality_dataset.R"))
 
 

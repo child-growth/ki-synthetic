@@ -8,13 +8,13 @@ rm(list=ls())
 source(paste0(here::here(), "/0-config.R"))
 library(growthstandards)
 
-d <- readRDS(paste0(ghapdata_dir,"ki-synthetic-dataset.rds"))
+d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 
 #Drop yearly
 d <- d %>% filter(measurefreq!="yearly")
 
 d <- as.data.table(d)
-setkeyv(d, cols = c("country","studyid","subjid"))
+setkeyv(d, cols = c("country","studyid","subjid","syntype"))
 
 #--------------------------------------------------------
 # filter out obs with missing sex
@@ -37,14 +37,14 @@ d <- d[!(is.na(d$haz) & is.na(d$waz)), ]
 #--------------------------------------------------------------------------
 table(d$studyid, is.na(d$W_birthlen))
 table(d$studyid, is.na(d$W_birthwt))
-dblenwt <- d[,list(W_birthwt=first(W_birthwt), W_birthlen=first(W_birthlen), sex=first(sex)), by = list(studyid, country, subjid)]
+dblenwt <- d[,list(W_birthwt=first(W_birthwt), W_birthlen=first(W_birthlen), sex=first(sex)), by = list(studyid, country, subjid, syntype)]
 dblenwt <- dblenwt[!(is.na(W_birthwt) & is.na(W_birthlen)), ]
 dblenwt[is.na(W_birthlen), ]
 dblenwt[is.na(W_birthwt), ]
 dblenwt[, agedays := 0]
 dblenwt[, waz := round(who_wtkg2zscore(agedays, W_birthwt/1000, sex = sex),2)]
 dblenwt[, haz := round(who_htcm2zscore(agedays, W_birthlen, sex = sex),2)]
-setkeyv(dblenwt, cols = c("country","studyid", "subjid", "agedays"))
+setkeyv(dblenwt, cols = c("country","studyid", "subjid", "agedays","syntype"))
 
 ## check things are matching with main haz/waz when agedays=1 was observed
 d[subjid==5444, ]
@@ -52,11 +52,11 @@ dblenwt[subjid==5444, ]
 dblenwt[, W_birthwt := NULL][, W_birthlen := NULL]
 
 ## merge birth haz / waz into main dataset
-d <- merge(d, dblenwt, all=TRUE, by = c("country","studyid", "subjid","sex","agedays"))
+d <- merge(d, dblenwt, all=TRUE, by = c("country","studyid", "subjid","sex","agedays","syntype"))
 setnames(d,c("waz.x","haz.x"),c("waz","haz"))
 d[agedays==0, waz := waz.y][, waz.y := NULL]
 d[agedays==0, haz := haz.y][, haz.y := NULL]
-setkeyv(d, cols = c("country","studyid","subjid","agedays"))
+setkeyv(d, cols = c("country","studyid","subjid","agedays","syntype"))
 
 #Drop outlier birth HAZ and WAZ
 d[waz < -6 | waz > 5, waz := NA]
@@ -88,7 +88,7 @@ outvec = c("haz","waz","lencm","wtkg")
 # yname    ## outcome
 growth_velocity = function(d, t1mths, t2mths, yname = "haz", tgap = 14) {
   daysmth = 30.4167 ## average number of months in a year
-  setkeyv(d, cols = c("country","studyid", "subjid", "sex","agedays"))
+  setkeyv(d, cols = c("country","studyid", "subjid", "sex","agedays","syntype"))
   t1 <- as.integer(round((daysmth)*t1mths,0))
   t1_int <- c(t1-tgap,t1+tgap)
   t2 <- as.integer(round((daysmth)*t2mths,0))
@@ -97,14 +97,14 @@ growth_velocity = function(d, t1mths, t2mths, yname = "haz", tgap = 14) {
   d_yt1 <- d[(agedays >= t1_int[1]) & (agedays <= t1_int[2]) & (!is.na(eval(as.name(yname)))), ]
   d_yt2 <- d[(agedays >= t2_int[1]) & (agedays <= t2_int[2]) & (!is.na(eval(as.name(yname)))), ]
   
-  dd_yt1 <- d_yt1[, list(t1agedays = agedays[which.min(abs(t1-agedays))], t1y = eval(as.name(yname))[which.min(abs(t1-agedays))]), by = list(country,studyid,subjid,sex)]
-  dd_yt2 <- d_yt2[, list(t2agedays = agedays[which.min(abs(t2-agedays))], t2y = eval(as.name(yname))[which.min(abs(t2-agedays))]), by = list(country,studyid,subjid,sex)]
+  dd_yt1 <- d_yt1[, list(t1agedays = agedays[which.min(abs(t1-agedays))], t1y = eval(as.name(yname))[which.min(abs(t1-agedays))]), by = list(country,studyid,subjid,sex,syntype)]
+  dd_yt2 <- d_yt2[, list(t2agedays = agedays[which.min(abs(t2-agedays))], t2y = eval(as.name(yname))[which.min(abs(t2-agedays))]), by = list(country,studyid,subjid,sex,syntype)]
   
   ## merge both time-points and auto drop when one of the measurements is missing 
   ## obtain a single dataset where both measurements must be present)
-  setkeyv(dd_yt1, cols = c("country","studyid","subjid", "sex"))
-  setkeyv(dd_yt2, cols = c("country","studyid","subjid", "sex"))
-  dd_diff <- merge(dd_yt1, dd_yt2, all=FALSE, by=c("country","studyid","subjid", "sex"))
+  setkeyv(dd_yt1, cols = c("country","studyid","subjid", "sex","syntype"))
+  setkeyv(dd_yt2, cols = c("country","studyid","subjid", "sex","syntype"))
+  dd_diff <- merge(dd_yt1, dd_yt2, all=FALSE, by=c("country","studyid","subjid", "sex","syntype"))
   dd_diff[is.na(t1y),]
   dd_diff[is.na(t2y),]
   ## calculate diff in agedays between (t1,t2), convert to months
@@ -151,10 +151,10 @@ saveRDS(dd_out, file=paste0(ghapdata_dir,"velocity_longfmt_rf.rds"))
 dd_sub <- as.data.frame(dd_out)
 
 df <- as.data.frame(d)
-df <- df %>% filter(agedays!=0) %>% subset(., select = c("studyid","subjid","tr")) %>% group_by(studyid, subjid) %>% slice(1)
+df <- df %>% filter(agedays!=0) %>% subset(., select = c("studyid","subjid","tr", "syntype")) %>% group_by(studyid, subjid, syntype) %>% slice(1)
 
 dim(dd_sub)
-dd_sub <- left_join(dd_sub, df, by=c("studyid","subjid"))
+dd_sub <- left_join(dd_sub, df, by=c("studyid","subjid","syntype"))
 dim(dd_sub)
 dd_sub$tr[is.na(dd_sub$tr)]<-""
 

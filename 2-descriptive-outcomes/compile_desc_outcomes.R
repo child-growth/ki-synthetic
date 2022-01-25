@@ -17,23 +17,23 @@ stunt = readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects.RDS")) %>% muta
 co_desc_data <- readRDS(paste0(res_dir,"co_desc_data.rds")) %>% mutate(analysis = "Primary", pooling=ifelse(!is.na(country) & pooling!="no pooling", "country",NA))
 
 
-#Fixed effects
-stunt_fe <- readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_fe.RDS")) %>% mutate(analysis = "Fixed effects")
-wast_fe <- readRDS(paste0(res_dir,"wasting_desc_data_FE.RDS")) %>% mutate(analysis = "Fixed effects")
-co_fe <- readRDS(paste0(res_dir,"co_desc_data_FE.rds")) %>% mutate(analysis = "Fixed effects")
+# #Fixed effects
+# stunt_fe <- readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_fe.RDS")) %>% mutate(analysis = "Fixed effects")
+# wast_fe <- readRDS(paste0(res_dir,"wasting_desc_data_FE.RDS")) %>% mutate(analysis = "Fixed effects")
+# co_fe <- readRDS(paste0(res_dir,"co_desc_data_FE.rds")) %>% mutate(analysis = "Fixed effects")
 
 
-#Other sensitivity
-stunt_monthly24 = readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_monthly24.RDS")) %>% mutate(analysis = "Cohorts monthly 0-24 m", measure=paste0(measure," - monthly cohorts"))
-stunt_noProbit = readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_no_probit.RDS")) %>% mutate(analysis = "No Probit")
-stunt_noProbit_fe <- readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_fe_no_probit.RDS")) %>% mutate(analysis = "No Probit - Fixed effects")
-
-wast_noKenabaBirth =  readRDS(paste0(res_dir,"wasting_desc_data_no_Kenaba_bw.RDS")) %>% mutate(analysis = "No Kenaba birth")
-co_noKenabaBirth <- readRDS(paste0(res_dir,"co_desc_data_no_Kenaba.rds")) %>% mutate(analysis = "No Kenaba birth")
-
-stunt_noKenaba_monthly24 = readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_monthly24_no_Kenaba_birth.RDS")) %>% mutate(analysis = "No Kenaba - monthly 0-24 m", measure=paste0(measure," - monthly cohorts"))
-stunt_noKenaba = readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_no_Kenaba_birth.RDS")) %>% mutate(analysis = "No Kenaba")
-stunt_noKenaba_fe <- readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_fe_no_Kenaba_birth.RDS")) %>% mutate(analysis = "No Kenaba - Fixed effects")
+# #Other sensitivity
+# stunt_monthly24 = readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_monthly24.RDS")) %>% mutate(analysis = "Cohorts monthly 0-24 m", measure=paste0(measure," - monthly cohorts"))
+# stunt_noProbit = readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_no_probit.RDS")) %>% mutate(analysis = "No Probit")
+# stunt_noProbit_fe <- readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_fe_no_probit.RDS")) %>% mutate(analysis = "No Probit - Fixed effects")
+# 
+# wast_noKenabaBirth =  readRDS(paste0(res_dir,"wasting_desc_data_no_Kenaba_bw.RDS")) %>% mutate(analysis = "No Kenaba birth")
+# co_noKenabaBirth <- readRDS(paste0(res_dir,"co_desc_data_no_Kenaba.rds")) %>% mutate(analysis = "No Kenaba birth")
+# 
+# stunt_noKenaba_monthly24 = readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_monthly24_no_Kenaba_birth.RDS")) %>% mutate(analysis = "No Kenaba - monthly 0-24 m", measure=paste0(measure," - monthly cohorts"))
+# stunt_noKenaba = readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_no_Kenaba_birth.RDS")) %>% mutate(analysis = "No Kenaba")
+# stunt_noKenaba_fe <- readRDS(paste0(res_dir,"shiny_desc_data_stunting_objects_fe_no_Kenaba_birth.RDS")) %>% mutate(analysis = "No Kenaba - Fixed effects")
 
 
 
@@ -63,11 +63,11 @@ d$ub[grepl("Incidence rate", d$measure)] <- d$ub[grepl("Incidence rate", d$measu
 d$measure <- gsub("Incidence_proportion", "Incidence proportion", d$measure)
 
 
-#Check for duplicates
-dim(d)
-# Return all duplicated elements
-dups <- d %>% filter(duplicated(.) | duplicated(., fromLast = TRUE))
-head(dups)
+# #Check for duplicates
+# dim(d)
+# # Return all duplicated elements
+# dups <- d %>% filter(duplicated(.) | duplicated(., fromLast = TRUE))
+# head(dups)
 #drop any duplicated analyses
 d<-distinct(d)
 dim(d)

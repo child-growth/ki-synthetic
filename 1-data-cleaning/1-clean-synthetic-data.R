@@ -8,13 +8,21 @@ source(paste0(here::here(), "/0-config.R"))
 # Read in synthetic data file
 #--------------------------------------------
 
-d1 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All BC Synthesized.rds")) %>% mutate(syntype="BC")
+# d1 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All BC Synthesized.rds")) %>% mutate(syntype="BC")
+# d1 <- d1 %>%
+#   mutate(vagbrth=factor(vagbrth),
+#          hdlvry=factor(hdlvry))
+# d2 <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds")) %>% mutate(syntype="FULL")
+# d3 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized.rds"))  %>% mutate(syntype="QI")
+d1 <- read.csv(paste0(ghapdata_dir, "Partially Synthetic Data - All BC Synthesized v2.csv")) %>% mutate(syntype="BC")
 d1 <- d1 %>%
   mutate(vagbrth=factor(vagbrth),
          hdlvry=factor(hdlvry))
 d2 <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds")) %>% mutate(syntype="FULL")
-d3 <- readRDS(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized.rds"))  %>% mutate(syntype="QI")
+d3 <- read.csv(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized v2.csv"))  %>% mutate(syntype="QI")
 d4 <- readRDS(paste0(ghapdata_dir, "Ki-real-data.rds"))  %>% mutate(syntype="real")
+
+
 
 class(d1$single)
 class(d2$single)
@@ -56,6 +64,45 @@ d4 <- d4 %>%
          brthmon=factor(brthmon),
          siteid=as.character(siteid),
          hdlvry=factor(hdlvry))
+
+class(d1$brthmon)
+class(d2$brthmon)
+class(d3$brthmon)
+class(d4$brthmon)
+
+d1$dead <- factor(d1$dead)
+d1$brthmon <- factor(d1$brthmon)
+d1$single <- factor(d1$single)
+d1$trth2o <- factor(d1$trth2o)
+d1$cleanck <- factor(d1$cleanck)
+d3$cleanck <- factor(d3$cleanck)
+d1$impfloor <- factor(d1$impfloor)
+d3$impfloor <- factor(d3$impfloor)
+d1$earlybf <- factor(d1$earlybf)
+d3$earlybf <- factor(d3$earlybf)
+d1$anywast06 <- factor(d1$anywast06)
+d3$anywast06 <- factor(d3$anywast06)
+d1$pers_wast <- factor(d1$pers_wast)
+d3$pers_wast <- factor(d3$pers_wast)
+d1$enstunt <- factor(d1$enstunt)
+d3$enstunt <- factor(d3$enstunt)
+d1$enwast <- factor(d1$enwast)
+d3$enwast <- factor(d3$enwast)
+d1$impsan <- factor(d1$impsan)
+d3$impsan <- factor(d3$impsan)
+d1$predexfd6 <- factor(d1$predexfd6)
+d3$predexfd6 <- factor(d3$predexfd6)
+d1$vagbrth <- factor(d1$vagbrth)
+d3$vagbrth <- factor(d3$vagbrth)
+d1$hdlvry <- factor(d1$hdlvry)
+d3$hdlvry <- factor(d3$hdlvry)
+d3$trth2o <- factor(d3$trth2o)
+d1$exclude_desc <- factor(d1$exclude_desc)
+d3$exclude_desc <- factor(d3$exclude_desc)
+
+d1$subjid <- as.character(d1$subjid)
+d2$subjid <- as.character(d2$subjid)
+d3$subjid <- as.character(d3$subjid)
 
 d <- bind_rows(d1,d2,d3,d4)
 
