@@ -52,5 +52,7 @@ save(d,file="/data/KI/synthetic-data/wast_meanZ_rf.Rdata")
 enumerated_analyses <- lapply(seq_len(nrow(analyses)), specify_longbow)
 
 #run TMLE
-run_ki_tmle(enumerated_analyses, results_folder="cont", overwrite = FALSE)
+run_ki_tmle(enumerated_analyses, results_folder="cont", overwrite = T)
 
+
+paste0(ghapdata_dir,"/tmle/",results_folder,"/")
