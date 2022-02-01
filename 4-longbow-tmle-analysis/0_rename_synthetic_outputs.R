@@ -5,13 +5,14 @@ rm(list=ls())
 source(paste0(here::here(), "/0-config.R"))
 source(paste0(here::here(), "/0-project-functions/0_risk_factor_functions.R"))
 
-Zscores_syn <- readRDS(("/home/andrew.mertens/ki-synthetic/results/rf results/raw longbow results/results_cont_2022-01-25.RDS")) 
+Zscores_syn <- readRDS(("/home/andrew.mertens/ki-synthetic/results/rf results/raw longbow results/results_cont_2022-01-26.RDS")) 
 
 #Zscores_syn_unadj <- readRDS( "/home/andrew.mertens/ki-synthetic/results/rf results/raw longbow results/results_cont_unadj_2022-01-26.RDS") 
 Zscores_syn_unadj <- readRDS( "/home/andrew.mertens/ki-synthetic/results/rf results/raw longbow results/results_cont_unadj_2022-01-27.RDS") 
 
 table(Zscores_syn$syntype)
 Zscores <- bind_rows(Zscores_syn, Zscores_syn_unadj)
+table(Zscores$syntype)
 
 table(Zscores$syntype, Zscores$agecat)
 
