@@ -5,15 +5,10 @@ rm(list=ls())
 source(paste0(here::here(), "/0-config.R"))
 source(paste0(here::here(), "/0-project-functions/0_risk_factor_functions.R"))
 
+Zscores_syn <- readRDS(("/home/andrew.mertens/ki-synthetic/results/rf results/raw longbow results/results_cont_2022-01-25.RDS")) 
 
-# Zscores_BC <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-05-11.RDS")) %>% mutate(syntype="BC")
-# Zscores_QI <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-06-03.RDS")) %>% mutate(syntype="QI")
-# Zscores_full <-readRDS(here("/results/rf results/raw longbow results/results_cont_2021-06-03.RDS")) %>% mutate(syntype="Full")
-Zscores_syn <- readRDS(("/home/andrew.mertens/ki-synthetic/results/rf results/raw longbow results/results_cont_2021-07-07.RDS")) 
-#Zscores_real <- readRDS("/data/KI/ki-manuscript-output/results/rf results/longbow results/results_cont.RDS") %>% mutate(syntype="Real")
-
-Zscores_syn_unadj <- readRDS( "/home/andrew.mertens/ki-synthetic/results/rf results/raw longbow results/results_cont_unadj_2021-07-08.RDS") 
-#Zscores_real_unadj <- readRDS("/data/KI/ki-manuscript-output/results/rf results/longbow results/results_cont_unadj.RDS") %>% mutate(syntype="Real")
+#Zscores_syn_unadj <- readRDS( "/home/andrew.mertens/ki-synthetic/results/rf results/raw longbow results/results_cont_unadj_2022-01-26.RDS") 
+Zscores_syn_unadj <- readRDS( "/home/andrew.mertens/ki-synthetic/results/rf results/raw longbow results/results_cont_unadj_2022-01-27.RDS") 
 
 table(Zscores_syn$syntype)
 Zscores <- bind_rows(Zscores_syn, Zscores_syn_unadj)

@@ -77,6 +77,20 @@ if(tl_params$parallelize){
 if(length(nodes$W)==0){
   nodes$W=NULL
 }
+
+
+# knit_exit<-function(append, fully = TRUE){
+#     if (missing(append)) 
+#         append = if (knitr:::out_format(c("latex", "sweave", "listings"))) 
+#             "\\end{document}"
+#         else if (knitr:::out_format("html")) 
+#             "</body>\n</html>"
+#         else ""
+#     .knitEnv$terminate = append
+#     .knitEnv$terminate_fully = fully
+#     invisible()
+# }
+
 ```
 
 ```{r preprocessing}
@@ -207,7 +221,7 @@ if(nrow(dropped_strata)>0){
 
 if(nrow(data)==0){
   cat("\n\nALL STRATA DROPPED. JOB FINISHED\n")
-  knit_exit()
+  knitr::knit_exit()
 }
 ```
 

@@ -4,11 +4,12 @@ try(.libPaths( c( "/data/KI/R/x86_64-pc-linux-gnu-library/4.0/" , .libPaths() ) 
 
 source(paste0(here::here(), "/0-config.R"))
 try(.libPaths( "~/rlibs" ))
-# library(data.table)
-# library(longbowtools)
-# #library(jsonlite)
-# library(progress)
-# library(longbowRiskFactors)
+library(data.table)
+library(longbowtools)
+#library(jsonlite)
+library(progress)
+library(longbowRiskFactors)
+#library(knitr)
 
 Sys.getenv("RSTUDIO_PANDOC")
 Sys.setenv(RSTUDIO_PANDOC="/usr/lib/rstudio-server/bin/pandoc")
@@ -39,6 +40,7 @@ enumerated_analyses <- lapply(seq_len(nrow(analyses)), specify_longbow)
 
 
 run_ki_tmle(enumerated_analyses, results_folder="cont_unadj",
-            rmd_filename = here("4-longbow-tmle-analysis/run-longbow/longbow_RiskFactors_unadj.Rmd"))
+            rmd_filename = here("4-longbow-tmle-analysis/run-longbow/longbow_RiskFactors_unadj.Rmd"),
+            overwrite=F)
 
 
