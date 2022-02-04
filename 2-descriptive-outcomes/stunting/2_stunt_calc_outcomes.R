@@ -34,6 +34,8 @@ source(paste0(here::here(), "/0-project-functions/0_descriptive_epi_stunt_functi
 
 d <- readRDS(paste0(ghapdata_dir, "stunting_data.rds"))
 
+table(d$syntype, d$studyid)
+
 head(d)
 d <- d %>% subset(., select = -c(tr))
 

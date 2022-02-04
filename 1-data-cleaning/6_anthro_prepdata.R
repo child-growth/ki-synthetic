@@ -38,7 +38,7 @@ drop_int_arms <- function(d){
 d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 dim(d)
 
-saveRDS(d, file=here("/data/ki-synthetic-dataset.rds"))
+saveRDS(d, file=paste0(here(),"/data/ki-synthetic-dataset.rds"))
 
 length(unique(paste0(d$studyid,d$country,d$subjid)))
 
@@ -52,7 +52,7 @@ d %>% group_by(syntype) %>% summarize(mean(haz < -2, na.rm=T)*100)
 d <- d %>% subset(., select=c(studyid, subjid, country, region, measurefreq, tr, sex, agedays, haz, whz, waz, muaz, latitude, longitud, syntype))
 
 #Check for duplicate agedays
-dup_age <- d %>% group_by(studyid, subjid, agedays) %>%
+dup_age <- d %>% group_by(syntype, studyid, subjid, agedays) %>%
   summarize(N=n())
 mean(dup_age$N)
 

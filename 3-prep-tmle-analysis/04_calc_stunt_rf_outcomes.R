@@ -16,6 +16,8 @@ source(paste0(here::here(),"/0-project-functions/0_descriptive_epi_wast_function
 
 d <- readRDS(rf_stunting_data_path)
 
+
+
 #--------------------------------------
 # Calculate cumulative incidence of
 # Stunting in certain age ranges for the

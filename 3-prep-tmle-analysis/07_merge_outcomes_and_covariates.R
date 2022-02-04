@@ -10,6 +10,9 @@ source(paste0(here::here(), "/0-config.R"))
 #load covariates
 cov<-readRDS(clean_covariates_path)
 
+table(cov$syntype, is.na(cov$id))
+
+
 #Check reference levels
 for(i in 3:ncol(cov)){
   cat(colnames(cov)[i],":\n")
@@ -32,8 +35,8 @@ cov$predfeed36 <- NA
 cov$exclfeed36 <- NA
 cov$predexfd6 <- relevel(factor(cov$predexfd6), ref="1")
 
-
-
+colnames(cov)
+cov <- cov %>% subset(., select = -c(waz,haz,whz,muaz))
 # cov$perdiar6 <- relevel(cov$perdiar6, ref="[0%, 2%]")
 # cov$perdiar24 <- relevel(cov$perdiar24, ref="[0%, 2%]")
 
@@ -187,6 +190,18 @@ save(d, Y, A,V, id,  file="st_prev_rf.Rdata")
 #merge in covariates
 d <- left_join(meanHAZ, cov, by=c("syntype","studyid", "subjid", "country"))
 head(d)
+table(d$syntype, is.na(d$id))
+table(cov$syntype, is.na(cov$id))
+
+unique(meanHAZ$studyid)
+unique(cov$studyid[cov$syntype=="QI"])
+unique(cov$studyid[cov$syntype=="real"])
+
+unique(meanHAZ$subjid)
+unique(cov$subjid[cov$syntype=="QI"])
+
+unique(meanHAZ$country)
+unique(cov$country[cov$syntype=="QI"])
 
 
 #Vector of outcome names
@@ -882,5 +897,5 @@ adjustment_sets <- list(
             "brthmon","W_parity",
             "trth2o","cleanck","impfloor","impsan")
 )
-save(adjustment_sets, file=here("/results/adjustment_sets_list.Rdata"))
+#save(adjustment_sets, file=here("/results/adjustment_sets_list.Rdata"))
 

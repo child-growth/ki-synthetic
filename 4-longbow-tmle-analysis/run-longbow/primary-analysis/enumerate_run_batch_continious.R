@@ -38,6 +38,7 @@ dim(analyses)
 load("/data/KI/synthetic-data/st_meanZ_rf.Rdata") 
 d<-d%>% filter(agecat=="24 months") %>% droplevels() #%>% filter(studyid=="MAL-ED", syntype=="BC")
 table(d$syntype)
+table(d$syntype, is.na(d$haz))
 table(d$agecat)
 save(d,file="/data/KI/synthetic-data/st_meanZ_rf.Rdata") 
 

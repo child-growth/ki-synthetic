@@ -18,11 +18,16 @@ d1 <- read.csv(paste0(ghapdata_dir, "Partially Synthetic Data - All BC Synthesiz
 d1 <- d1 %>%
   mutate(vagbrth=factor(vagbrth),
          hdlvry=factor(hdlvry))
-d2 <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds")) %>% mutate(syntype="FULL")
+d2 <- NULL
+# d2 <- readRDS(paste0(ghapdata_dir, "Complete Cohorts Fully Synthetic Data v2.rds")) %>% mutate(syntype="FULL")
 d3 <- read.csv(paste0(ghapdata_dir, "Partially Synthetic Data - All QI Synthesized v2.csv"))  %>% mutate(syntype="QI")
-d4 <- readRDS(paste0(ghapdata_dir, "Ki-real-data.rds"))  %>% mutate(syntype="real")
+#d4 <- readRDS(paste0(ghapdata_dir, "Ki-real-data.rds"))  %>% mutate(syntype="real")
+d4 <- readRDS("/data/KI/UCB-SuperLearner/Manuscript analysis data/ki-manuscript-dataset.rds")  %>% mutate(syntype="real")
 
-
+length(unique(d1$id))
+length(unique(d2$id))
+length(unique(d3$id))
+length(unique(d4$id))
 
 class(d1$single)
 class(d2$single)
@@ -104,7 +109,16 @@ d1$subjid <- as.character(d1$subjid)
 d2$subjid <- as.character(d2$subjid)
 d3$subjid <- as.character(d3$subjid)
 
-d <- bind_rows(d1,d2,d3,d4)
+d4$dead <- factor(d4$dead)
+d1$safeh20 <- factor(d1$safeh20)
+d3$safeh20 <- factor(d3$safeh20)
+
+d1$exclude_desc <- as.numeric(d1$exclude_desc)
+d2$exclude_desc <- as.numeric(d2$exclude_desc)
+d3$exclude_desc <- as.numeric(d3$exclude_desc)
+
+#d <- bind_rows(d1,d2,d3,d4)
+d <- bind_rows(d1,d3,d4)
 
 summary(d$haz)
 
@@ -242,7 +256,8 @@ table(d$studyid, d$tr)
 saveRDS(d, paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 
 
-
+table(d$syntype, d$study)
+table(d$syntype, is.na(d$id))
 
 
 

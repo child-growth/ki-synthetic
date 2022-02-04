@@ -20,6 +20,8 @@ library(growthstandards)
 d <- readRDS(paste0(ghapdata_dir, "ki-synthetic-dataset.rds"))
 head(d)
 
+table(d$syntype, is.na(d$id))
+
 # real_cov <- readRDS("/data/KI/UCB-SuperLearner/Manuscript analysis data/FINAL_clean_covariates.rds")
 # saveRDS(real_cov, here("data/real_cov.rds"))
 
@@ -31,51 +33,55 @@ d <- d %>% group_by(studyid, subjid, syntype) %>%
 
 
 
-#--------------------------------------------------------
-# create id variable for unit of independent observation
-# (At level of child for most studies, but some trials are cluster-randomized)
-#--------------------------------------------------------
-
-d$id <- NA
-d$id[d$studyid %in% c("iLiNS-Zinc",
-                      "JiVitA-3",    
-                      "JiVitA-4",
-                      "PROBIT",
-                      "SAS-CompFeed")] <-d$clusterid[d$studyid %in% c("iLiNS-Zinc",
-                                                                               "JiVitA-3",    
-                                                                               "JiVitA-4",
-                                                                               "PROBIT",
-                                                                               "SAS-CompFeed")]
-# d$id[!(d$studyid %in% c("iLiNS-Zinc",
-#                         "JiVitA-3",    
-#                         "JiVitA-4",
-#                         "PROBIT",
-#                         "SAS-CompFeed"))] <-d$subjid[!(d$studyid %in% c("iLiNS-Zinc",
-#                                                                                    "JiVitA-3",    
-                                                                               # "JiVitA-4",
-                                                                               #     "PROBIT",
-                                                                               #     "SAS-CompFeed"))]
-d$id[is.na(d$id)]   <-  d$subjid[is.na(d$id)]  
-
-#use siteid from PROBIT
-#d$id[d$studyid %in% c("PROBIT")] <-d$siteid[d$studyid %in% c("PROBIT")]
-
-table(is.na(d$id))
-
-
-colnames(d)
-d <- subset(d, select = -c(haz,whz,waz, muaz))
-# d <- subset(d, select = c(studyid,       subjid,        sex,           month,  country,       region,         arm,           tr,            gagebrth,     
-#                            brthmon,       parity,       
-#                            birthwt,       birthlen,      vagbrth,       hdlvry,        mage,          mhtcm,        
-#                            mwtkg,         mbmi,          meducyrs,      single,        fage,          fhtcm,         feducyrs,     
-#                            trth2o,        cleanck,       impfloor,      nrooms,        nhh,           nchldlt5,              
-#                            earlybf,       hfoodsec,   measurefreq,   anywast06,    
-#                            pers_wast,     enstunt,       enwast,     hhwealth_quart,      id))
-
-
-
-d$parity <- relevel(d$parity, ref="1")
+# #--------------------------------------------------------
+# # create id variable for unit of independent observation
+# # (At level of child for most studies, but some trials are cluster-randomized)
+# #--------------------------------------------------------
+# 
+# d$id <- NA
+# d$id[d$studyid %in% c("iLiNS-Zinc",
+#                       "JiVitA-3",    
+#                       "JiVitA-4",
+#                       "PROBIT",
+#                       "SAS-CompFeed")] <-d$clusterid[d$studyid %in% c("iLiNS-Zinc",
+#                                                                                "JiVitA-3",    
+#                                                                                "JiVitA-4",
+#                                                                                "PROBIT",
+#                                                                                "SAS-CompFeed")]
+# # d$id[!(d$studyid %in% c("iLiNS-Zinc",
+# #                         "JiVitA-3",    
+# #                         "JiVitA-4",
+# #                         "PROBIT",
+# #                         "SAS-CompFeed"))] <-d$subjid[!(d$studyid %in% c("iLiNS-Zinc",
+# #                                                                                    "JiVitA-3",    
+#                                                                                # "JiVitA-4",
+#                                                                                #     "PROBIT",
+#                                                                                #     "SAS-CompFeed"))]
+# d$id[is.na(d$id)]   <-  d$subjid[is.na(d$id)]  
+# 
+# #use siteid from PROBIT
+# #d$id[d$studyid %in% c("PROBIT")] <-d$siteid[d$studyid %in% c("PROBIT")]
+# 
+# table(d$syntype, is.na(d$id))
+# table(is.na(d$id))
+# 
+# d %>% group_by(syntype) %>% distinct(id) %>% summarise(N=n())
+# d$id[d$syntype=="BC"]
+# d$id[d$syntype=="real"]
+# 
+# colnames(d)
+# d <- subset(d, select = -c(haz,whz,waz, muaz))
+# # d <- subset(d, select = c(studyid,       subjid,        sex,           month,  country,       region,         arm,           tr,            gagebrth,     
+# #                            brthmon,       parity,       
+# #                            birthwt,       birthlen,      vagbrth,       hdlvry,        mage,          mhtcm,        
+# #                            mwtkg,         mbmi,          meducyrs,      single,        fage,          fhtcm,         feducyrs,     
+# #                            trth2o,        cleanck,       impfloor,      nrooms,        nhh,           nchldlt5,              
+# #                            earlybf,       hfoodsec,   measurefreq,   anywast06,    
+# #                            pers_wast,     enstunt,       enwast,     hhwealth_quart,      id))
+# 
+# 
+# 
+# d$parity <- relevel(d$parity, ref="1")
 
 
 
@@ -245,5 +251,9 @@ levels(d$safeh20)
 
 #Save dataset
 saveRDS(d, clean_covariates_path)
+d$id[d$syntype=="BC"]
+d$id[d$syntype=="FULL"]
 
+table(d$syntype, is.na(d$id))
 
+table(d$syntype, (d$studyid))
